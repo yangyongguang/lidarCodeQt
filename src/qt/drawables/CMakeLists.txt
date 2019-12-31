@@ -1,0 +1,12 @@
+include_directories(drawables)
+add_library(drawable SHARED
+            drawable_cloud.cpp
+            drawable_line.cpp
+            )
+
+target_link_libraries(drawable
+                     utils
+                    ${OPENGL_gl_LIBRARY}
+                    ${OPENGL_glu_LIBRARY})
+                    
+                    

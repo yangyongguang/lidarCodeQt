@@ -1,0 +1,23 @@
+<!DOCTYPE QGLVIEWER>
+<QGLViewer version="2.6.3">
+  <State stereo="false">
+    <foregroundColor green="180" red="180" blue="180"/>
+    <backgroundColor green="1" red="1" blue="1"/>
+  </State>
+  <Display FPSIsDisplayed="false" cameraIsEdited="false" axisIsDrawn="false" gridIsDrawn="false"/>
+  <Geometry posX="215" height="849" fullScreen="false" posY="64" width="1386"/>
+  <Camera>
+    <Parameters zClippingCoefficient="1.73205" fieldOfView="0.785398" orthoCoef="0.414214" sceneRadius="100" zNearCoefficient="0.005" Type="PERSPECTIVE">
+      <SceneCenter y="0" z="0" x="0"/>
+    </Parameters>
+    <Stereo physScreenWidth="0.5" IODist="0.062" focusDistance="241.421"/>
+    <ManipulatedCameraFrame>
+      <position y="-1.08729e-09" z="56.7086" x="2.40553e-10"/>
+      <orientation q2="-2.40741e-33" q1="-5.65318e-18" q0="5.61532e-35" q3="-1"/>
+      <ManipulatedParameters spinSens="0.3" zoomSens="1" rotSens="1" wheelSens="1" transSens="1"/>
+      <ManipulatedCameraParameters flySpeed="1" zoomsOnPivotPoint="false" rotatesAroundUpVector="false">
+        <sceneUpVector y="1" z="0" x="0"/>
+      </ManipulatedCameraParameters>
+    </ManipulatedCameraFrame>
+  </Camera>
+</QGLViewer>
