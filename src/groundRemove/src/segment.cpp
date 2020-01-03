@@ -525,6 +525,7 @@ void Segment::splitAndMerger()
 
     // 填充直线段, split and merge 的 merge 部分
     mergeLine();
+    // fprintf(stderr, "max_slope_:%f\n", max_slope_);
 }
 
 // 合并且过滤一部分拟合错误的直线
@@ -592,10 +593,10 @@ void Segment::mergeLine()
         // if (std::abs(slope - firstSlopeIter->first) < 0.1)
         // 夹角越大值越小
         // printf("cos theate %f (%f)\n", std::abs(cosAngle), cos(5.0 / 180 * M_PI));
-        if (isDebug)
-        {
-            fprintf(stderr, "current angle :%f\n", cosAngle / M_PI * 180);
-        }
+        // if (isDebug)
+        // {
+        //     fprintf(stderr, "current angle :%f\n", cosAngle / M_PI * 180);
+        // }
 
         if (std::abs(cosAngle) > cos(6.0 / 180 * M_PI))
         {
@@ -614,20 +615,20 @@ void Segment::mergeLine()
         }
     }
 
-    if (isDebug)
-    {
-        fprintf(stderr, "after insert the line : %d\n", lines_.size());
-        auto it_slope = linesSlopes_.begin();
-        for(auto it = lines_.begin(); it != lines_.end(); ++it, ++it_slope)
-        {
-            it->first.print();
-            fprintf(stderr, " ---->  ");
-            it->second.print();
-            fprintf(stderr, "    (slope %f  )", it_slope->first);
-            fprintf(stderr, "\nbinIdx %d -->  %d\n",getBinIdxFromDist(it->first.d), getBinIdxFromDist(it->second.d));
-        }
-        fprintf(stderr, "\n\n\n");
-    }
+    // if (isDebug)
+    // {
+    //     fprintf(stderr, "after insert the line : %d\n", lines_.size());
+    //     auto it_slope = linesSlopes_.begin();
+    //     for(auto it = lines_.begin(); it != lines_.end(); ++it, ++it_slope)
+    //     {
+    //         it->first.print();
+    //         fprintf(stderr, " ---->  ");
+    //         it->second.print();
+    //         fprintf(stderr, "    (slope %f  )", it_slope->first);
+    //         fprintf(stderr, "\nbinIdx %d -->  %d\n",getBinIdxFromDist(it->first.d), getBinIdxFromDist(it->second.d));
+    //     }
+    //     fprintf(stderr, "\n\n\n");
+    // }
 
     // 过滤不需要的直线
     bool is_long_line = false;
@@ -714,19 +715,19 @@ void Segment::mergeLine()
     //         printf("\n");
     //     }
     // }
-    if (isDebug)
-    {
-        // fprintf(stderr, "(%f--->%f)\n", lines_.back().second.d - lines_.front().first.d);
-        double length = lines_.back().second.d  - lines_.front().first.d;
-        fprintf(stderr, "curr segment has %d lines\n", lines_.size());
-        fprintf(stderr, "curr segment lines length: %f\n", length);
+    // if (isDebug)
+    // {
+    //     // fprintf(stderr, "(%f--->%f)\n", lines_.back().second.d - lines_.front().first.d);
+    //     double length = lines_.back().second.d  - lines_.front().first.d;
+    //     fprintf(stderr, "curr segment has %d lines\n", lines_.size());
+    //     fprintf(stderr, "curr segment lines length: %f\n", length);
 
-        for (auto it = lines_.begin(); it != lines_.end(); ++it)
-        {
-            fprintf(stderr, "(d: %f --> %f)\n", it->first.d, it->second.d);
-            fprintf(stderr, "(z: %f --> %f)\n", it->first.z, it->second.z);
-        }
-    }
+    //     for (auto it = lines_.begin(); it != lines_.end(); ++it)
+    //     {
+    //         fprintf(stderr, "(d: %f --> %f)\n", it->first.d, it->second.d);
+    //         fprintf(stderr, "(z: %f --> %f)\n", it->first.z, it->second.z);
+    //     }
+    // }
 
 }
 

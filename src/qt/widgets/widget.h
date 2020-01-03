@@ -64,6 +64,9 @@ private slots:
 
     // 改变参数类型， 为了调整参数
     void onParamSet();
+
+    // 清除选择的 ID
+    void onClearSelection();
 private:
     // Ui::Widget *ui;
     std::unique_ptr<Ui::Widget> ui;

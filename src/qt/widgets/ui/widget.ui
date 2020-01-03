@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1386</width>
-    <height>849</height>
+    <width>1189</width>
+    <height>880</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -75,7 +75,7 @@
           </font>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="choose">
           <property name="locale">
@@ -268,7 +268,7 @@
           <attribute name="title">
            <string>页</string>
           </attribute>
-          <widget class="QWidget" name="">
+          <widget class="QWidget" name="layoutWidget">
            <property name="geometry">
             <rect>
              <x>0</x>
@@ -343,6 +343,13 @@ max_slope                   default(0.35)        ID(1)</string>
         <widget class="QPushButton" name="updatePB">
          <property name="text">
           <string>update</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="clearSelectionPB">
+         <property name="text">
+          <string>clearSelection</string>
          </property>
         </widget>
        </item>

@@ -28,6 +28,8 @@ GroundSegmentation::GroundSegmentation(const GroundSegmentationParams & params):
 {
     // 在使用 atiomic 的时候，初始化全部在 : 后实现， 不再括号内部实现， 原因还不知道
     std::atomic_init(&count_, 0);
+    fprintf(stderr, "in GroundSegmentation params_.max_slope: %f\n", params_.max_slope);
+    fprintf(stderr, "in GroundSegmentation params.max_slope: %f\n", params.max_slope);
 }
 
 // 插入点云
@@ -466,6 +468,7 @@ void GroundSegmentation::assignClusterThread(const unsigned int &start_index,
             int steps = 1;
             // dist == -1 说明不再找到的 lines 的范围内
             // 如果此处没有线段， 就在其领域搜索，搜索的角步长， 和搜索的角度
+            fprintf(stderr, "in assignClusterThread::line_search_angle %f\n", params_.line_search_angle);
             while (dist == -1 && steps * segment_step < params_.line_search_angle) 
             {
                 // Fix indices that are out of bounds.
@@ -545,6 +548,8 @@ void GroundSegmentation::updateBinGroundThread(const size_t & start_idx, const s
 
 void GroundSegmentation::assignClusterByLine(std::vector<int> * segmentation)
 {
+    fprintf(stderr, "in assignClusterByLine::line_search_angle %f\n", params_.line_search_angle);
+    fprintf(stderr, "in assignClusterByLine::max_slope %f\n", params_.max_slope);
     std::vector<std::thread> thread_vec(params_.n_threads);
     const size_t cloud_size = segmentation->size();
     const int num_pre_thread = cloud_size / params_.n_threads; 
@@ -571,23 +576,37 @@ void GroundSegmentation::assignClusterByLineThread(const unsigned int &start_ind
 {
     const double segment_step = 2 * M_PI / params_.n_segments;
     for (unsigned int idx = start_index; idx < end_index; ++idx)
-    {
+    {     
+        // 是否调试   
+        bool isDebug = false;
+
         Bin::MinZPoint point_2d = segment_coordinates_[idx];
         const int segment_idx = bin_index_[idx].first;
         const int bin_idx = bin_index_[idx].second;
-        if (segment_idx >= 0 && bin_idx >= 0) // 但前 bin 有点
+
+        // 寻找 debug 的 Bin 的格子
+        if (segment_idx == debugSegIdx && bin_idx == debugBinIdx)
+        {
+            fprintf(stderr, "segment_idx, bin_idx : (%d, %d)\n", segment_idx, bin_idx);
+            isDebug = true;
+        }
+
+        //
+        if (segment_idx >= 0 && bin_idx >= 0) // 当前 bin 有点
         {
             // 当前点有点， 且是地面点， 且符合距离的情况就是地面点， 其他都是提升点            
             // segmentation->at(idx) = 1; 
             // 如果此处没有线段， 或者没有地面， 就找隔壁圆心
             // 如果本地找到了线段
             bool is_ground = false;
-            bool between_one_and_two = false;
+            bool between_one_and_two = false; // 距离在指定的允许距离的一倍到俩倍之间
             if (segments_[segment_idx][bin_idx].isThisGround())
             {
                 double dist = point_2d.z - segments_[segment_idx][bin_idx].getMinZ();
                 if (dist < params_.max_dist_to_line)
                 {
+                    if (isDebug)
+                        fprintf(stderr, "dist: %f\n", dist);    
                     segmentation->at(idx) = 1;
                     continue;
                 }
@@ -597,8 +616,9 @@ void GroundSegmentation::assignClusterByLineThread(const unsigned int &start_ind
                 }
             }
             // else
-            if (!segments_[segment_idx][bin_idx].isThisGround() || between_one_and_two)  // 不是地面点就去隔壁找找， 或者说大于一倍小于俩倍的距离点都去隔壁找找
+            if (!segments_[segment_idx][bin_idx].isThisGround() || between_one_and_two)  
             {
+                // 不是地面点就去隔壁找找， 或者说大于一倍小于俩倍的距离点都去隔壁找找
                 // if (true) //不去隔壁找
                 // {
                     // 去几个隔壁找
@@ -606,18 +626,27 @@ void GroundSegmentation::assignClusterByLineThread(const unsigned int &start_ind
                     bool find_ground = false;
                     while (!find_ground && steps * segment_step < params_.line_search_angle)
                     {
+                        
                         // Fix indices that are out of bounds.
                         int index_1 = segment_idx + steps;
                         while (index_1 >= params_.n_segments) index_1 -= params_.n_segments;
                         int index_2 = segment_idx - steps;
                         while (index_2 < 0) index_2 += params_.n_segments;
-
                         find_ground = segments_[index_1][bin_idx].isThisGround();
+
+                        if (isDebug)
+                        {
+                            fprintf(stderr, "find segment in neighbor [%d][%d]\n", index_1, bin_idx);
+                            fprintf(stderr, "find_ground %d, is_ground %d\n", find_ground, is_ground);
+                        }                           
+                        
                         if (find_ground && !is_ground)
                         {
                             if (point_2d.z - segments_[index_1][bin_idx].getMinZ() < params_.max_dist_to_line)
                             {
                                 is_ground = true;
+                                if (isDebug)
+                                    fprintf(stderr, "dist 640: %f\n", point_2d.z - segments_[index_1][bin_idx].getMinZ());
                                 segmentation->at(idx) = 1;
                                 // break;  // 找到了地面就不找了
                             }
@@ -630,6 +659,8 @@ void GroundSegmentation::assignClusterByLineThread(const unsigned int &start_ind
                             if (point_2d.z - segments_[index_2][bin_idx].getMinZ() < params_.max_dist_to_line)
                             {
                                 is_ground = true;
+                                if (isDebug)
+                                    fprintf(stderr, "dist 653: %f\n", point_2d.z - segments_[index_2][bin_idx].getMinZ());
                                 segmentation->at(idx) = 1;
                                 // break; // 找到了就步找了
                             }
@@ -683,6 +714,8 @@ void GroundSegmentation::setClickedPoint(double & x, double & y)
     const double angle = std::atan2(y, x);
     // const int segment_idx = (angle + M_PI) / segment_step;
     debugSegIdx = (angle + M_PI) / segment_step;
+    double dist = std::sqrt(x * x + y *y);
+    debugBinIdx = getBinIdxFromDist(dist);
     // for (int idx = 0; idx < params_.n_segments; ++idx)
     // {
     //     if (idx == segment_idx)

@@ -41,7 +41,7 @@ struct GroundSegmentationParams{
     max_long_height(0.2),
     max_start_height(0.3),
     sensor_height(1.70),
-    line_search_angle(6),  // 改为搜索的 segments 数量
+    line_search_angle(2),  // 改为搜索的 segments 数量
     //###########
     n_threads(1),
     //###########
@@ -198,6 +198,7 @@ public:
     Cloud::Ptr thisCloud = nullptr;
     point clickedPoint;
     int debugSegIdx = -1;
+    int debugBinIdx = -1;
 };
 
 class SegmentaionNode
@@ -208,9 +209,11 @@ private:
 public:
     SegmentaionNode(){}
     SegmentaionNode(const GroundSegmentationParams &params):
-    params_(params)
+    params_(params),
+    segmenter(params_)  // 初始化对象， 最好放在这儿， 不要放在下面的位置
     {
         // segmenter(params_);
+        // segmenter.params_ = params_;
     }
 
     void scanCallBack(Cloud & cloud, Cloud & ground_cloud, Cloud & obstacle_cloud)

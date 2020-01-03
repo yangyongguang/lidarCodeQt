@@ -2,6 +2,7 @@
 #include "ui_widget.h"
 #include "drawable_cloud.h"
 #include "drawable_line.h"
+#include "drawable_selectable_cloud.h"
 
 #include <QColor>
 #include <QDebug>
@@ -35,6 +36,7 @@ Widget::Widget(QWidget *parent):
     connect(ui->updatePB, SIGNAL(released()), this, SLOT(onUpdate()));
 
     connect(ui->paramDSB, SIGNAL(valueChanged(double)), this, SLOT(onParamSet()));
+    connect(ui->clearSelectionPB, SIGNAL(released()), this, SLOT(onClearSelection()));
     // connect(ui->infoTab->curr
     // auto it = ui->infoTab->widget(0)->findChild<QRadioButton>("groundRB");
 
@@ -64,7 +66,7 @@ Widget::Widget(QWidget *parent):
     ui->infoTab->setTabText(2, tr("params"));
     ui->infoTab->setCurrentIndex(0);
     // 
-    ui->cloudCB->setChecked(false);
+    ui->cloudCB->setChecked(true);
     ui->groundCB->setChecked(false);
     ui->obstacleCB->setChecked(true);
     ui->insertCB->setChecked(false);
@@ -75,6 +77,9 @@ Widget::Widget(QWidget *parent):
     ui->paramDSB->setRange(-1000, 1000);
     ui->paramDSB->setSingleStep(0.1);
     ui->paramDSB->setDecimals(3);
+    ui->clearSelectionPB->setEnabled(false);
+
+
 }
 
 Widget::~Widget()
@@ -120,6 +125,7 @@ void Widget::onOpenFolderToRead()
     ui->DataIdxVSlider->setEnabled(true);
     ui->playBT->setEnabled(true);
     ui->updatePB->setEnabled(true);
+    ui->clearSelectionPB->setEnabled(true);
 }
 
 // onPlayClouds 函数会改变 VSlider 的值， 所以会触发控件对应的槽函数 onSliderMovedTo 
@@ -181,6 +187,9 @@ void Widget::onSliderMovedTo(int cloud_number)
     // 去地
     fprintf(stderr, "<<<<<<<<<<<<<<<-------------------------------\n");
     SegmentaionNode groundRemove(params_groundRemove);
+    fprintf(stderr, "params_groundRemove.line_search_angle : %f\n", params_groundRemove.line_search_angle);
+    fprintf(stderr, "params_groundRemove.max_slope : %f\n", params_groundRemove.max_slope);
+    
 
     // 查看点击的位置 跟新点击的位置
     double poseX, poseY;
@@ -197,24 +206,29 @@ void Widget::onSliderMovedTo(int cloud_number)
     fprintf(stderr, "------------------------------->>>>>>>>>>>>>>>\n");
     // 添加点云显示
     _viewer->Clear();
+    GLfloat pointSize(1.8);
     Cloud::Ptr insertCloud(new Cloud);
     if (ui->cloudCB->isChecked())
     {
-        _viewer->AddDrawable(DrawableCloud::FromCloud(_cloud));
+        // _viewer->AddDrawable(DrawableCloud::FromCloud(_cloud));
+        _viewer->AddDrawable(DrawSelectAbleCloud::FromCloud(_cloud));
+        // 为 viewer 的 drawSelectableCloud 赋值
+        // _viewer->selection.clear();
+        if (_viewer->drawSelectableCloud.objects.size() == 0)
+            _viewer->drawSelectableCloud = DrawSelectAbleCloud(_cloud);
     }
 
     if (ui->groundCB->isChecked())
     {
         Eigen::Vector3f color;
         color << 0.0, 1.0, 0.0;
-        _viewer->AddDrawable(DrawableCloud::FromCloud(ground_cloud, color));
+        _viewer->AddDrawable(DrawableCloud::FromCloud(ground_cloud, color, pointSize));
     }
 
     if (ui->obstacleCB->isChecked())
     {
         Eigen::Vector3f color;
         color << 1.0, 0.0, 0.0;
-        GLfloat pointSize(1.8);
         _viewer->AddDrawable(DrawableCloud::FromCloud(obstacle_cloud, color, pointSize));
     }
 
@@ -251,15 +265,16 @@ void Widget::moveCursorToEnd()
 
 void Widget::onUpdateShow()
 {
-    if (ui->obstacleCB->isChecked() || ui->groundCB->isChecked())
-        ui->cloudCB->setChecked(false);
-    if (ui->cloudCB->isChecked())
-    {
-        ui->groundCB->setChecked(false);
-        ui->obstacleCB->setChecked(false);
-    }
+    // if (ui->obstacleCB->isChecked() || ui->groundCB->isChecked())
+    //     ui->cloudCB->setChecked(false);
+    // if (ui->cloudCB->isChecked())
+    // {
+    //     ui->groundCB->setChecked(false);
+    //     ui->obstacleCB->setChecked(false);
+    // }
     
     // qDebug() << "some this occur" << endl;
+    
     for (int i = curr_data_idx; i < ui->DataIdxVSlider->maximum(); ++i)
     {
         if (!playCloud) return;
@@ -277,5 +292,27 @@ void Widget::onUpdate()
 
 void Widget::onParamSet()
 {
-    fprintf(stderr, "current value %f\n", ui->paramDSB->value());
+    fprintf(stderr, "current value %f", ui->paramDSB->value());
+    fprintf(stderr, "   curren paramID %d", ui->paramSB->value());
+    int paramID = ui->paramSB->value();
+    double paramValue = ui->paramDSB->value();
+    switch (paramID)
+    {
+        case (0): params_groundRemove.line_search_angle = paramValue;           break;
+        case (1): params_groundRemove.max_slope = paramValue;                   break; 
+        default:
+            break;
+    }
+
+    fprintf(stderr, "params_groundRemove.line_search_angle %f", params_groundRemove.line_search_angle);
+    fprintf(stderr, "params_groundRemove.max_slope %d", params_groundRemove.max_slope);
+    // update show
+    onUpdate();
+}
+
+void Widget::onClearSelection()
+{
+    // fprintf(stderr, "current elsection id :\n");
+    // for (auto & elem : _viewer->selection) fprintf(stderr, "\n%d ",elem);
+    _viewer->selection.clear();
 }
