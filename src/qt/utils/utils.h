@@ -6,6 +6,7 @@
 // 文件夹操作
 #include <vector>
 #include "groundRemove/include/cloud.h"
+#include <QImage>
 
 namespace utils
 {
@@ -20,5 +21,7 @@ namespace utils
     void ReadKittiImageByPath(const std::string & path, cv::Mat & img);
     
     void ReadKittiFileByDir(const std::string & dir, std::vector<std::string> &fileNames);
+
+    QImage MatToQImage(const cv::Mat &image);
 
 }

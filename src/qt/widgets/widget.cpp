@@ -66,8 +66,8 @@ Widget::Widget(QWidget *parent):
     ui->infoTab->setTabText(2, tr("params"));
     ui->infoTab->setCurrentIndex(0);
     // 
-    ui->cloudCB->setChecked(true);
-    ui->groundCB->setChecked(false);
+    ui->cloudCB->setChecked(false);
+    ui->groundCB->setChecked(true);
     ui->obstacleCB->setChecked(true);
     ui->insertCB->setChecked(false);
     ui->lineCB->setChecked(false); 
@@ -79,7 +79,14 @@ Widget::Widget(QWidget *parent):
     ui->paramDSB->setDecimals(3);
     ui->clearSelectionPB->setEnabled(false);
 
+    // 数据 序列显示
+    ui->dataSeqSB->setValue(13);
+    ui->dataSeqSB->setRange(0, 21);
 
+    //
+    ui->showImageGV->setStyleSheet("padding:0px;border:0px");
+
+    
 }
 
 Widget::~Widget()
@@ -101,22 +108,39 @@ void Widget::keyPressEvent(QKeyEvent *event) {
 
 void Widget::onOpenFolderToRead()
 {
-    QString folder_name = QFileDialog::getExistingDirectory(this, "打开数据路径",
-    QString::fromStdString(_params.kitti_velo_dir));
-    if (folder_name.size() == 0) return; // no dir choosed
+    int dataSeq = ui->dataSeqSB->value();
+    std::string kitti_img_dir = 
+        "/media/yyg/YYG/lidarVisualization/data_odometry_color/dataset/sequences/" +
+            std::to_string(dataSeq) + "/image_2";
+
+    std::string kitti_velo_dir = 
+        "/media/yyg/YYG/lidarVisualization/data_odometry_velodyne/dataset/sequences/" +
+            std::to_string(dataSeq) + "/velodyne";
+
+    // QString folder_name = QFileDialog::getExistingDirectory(this, "打开数据路径",
+    // QString::fromStdString(_params.kitti_velo_dir));
+    // QString folder_name = QString::fromStdString(_params.kitti_velo_dir);
+    // if (folder_name.size() == 0) return; // no dir choosed
     //ui->infoTextEdit->append(QString::fromStdString("Picked path: " + folder_name.toStdString()));
     moveCursorToEnd();
 
-    qDebug() << "Picked path:" << folder_name;
+    // qDebug() << "Picked path:" << folder_name;
 
     _file_names_velo.clear();
     _file_names_img.clear();
 
-    utils::ReadKittiFileByDir(folder_name.toStdString(), _file_names_velo);
+    // utils::ReadKittiFileByDir(folder_name.toStdString(), _file_names_velo);
+    utils::ReadKittiFileByDir(kitti_velo_dir, _file_names_velo);
+    utils::ReadKittiFileByDir(kitti_img_dir, _file_names_img);
+    // utils::ReadKittiFileByDir(_params.kitti_img_dir, _file_names_img);
     std::sort(_file_names_velo.begin(), _file_names_velo.end()); // 对文件夹排序
+    std::sort(_file_names_img.begin(), _file_names_img.end());
     numData = _file_names_velo.size();
     if (numData > 0)
+    {
         infoTextEdit->append(QString::fromStdString(_file_names_velo[0]));
+        infoTextEdit->append(QString::fromStdString(_file_names_img[0]));
+    }
     moveCursorToEnd();
     ui->DataIdxVSlider->setMaximum(numData - 1);
     ui->DataIdxSBox->setMaximum(numData - 1);
@@ -147,7 +171,7 @@ void Widget::onPlayClouds()
     for (int i = curr_data_idx; i < ui->DataIdxVSlider->maximum(); ++i)
     {
         if (!playCloud) return;
-        curr_data_idx = i; // record current data Idx
+        curr_data_idx = i; // recselectObjectIDsord current data Idx
         ui->DataIdxVSlider->setValue(i);
         ui->CloudViewer->update();
         QApplication::processEvents();
@@ -185,37 +209,42 @@ void Widget::onSliderMovedTo(int cloud_number)
         ui->resetBT->setEnabled(true);
 
     // 去地
-    fprintf(stderr, "<<<<<<<<<<<<<<<-------------------------------\n");
+    // fprintf(stderr, "<<<<<<<<<<<<<<<-------------------------------\n");
     SegmentaionNode groundRemove(params_groundRemove);
-    fprintf(stderr, "params_groundRemove.line_search_angle : %f\n", params_groundRemove.line_search_angle);
-    fprintf(stderr, "params_groundRemove.max_slope : %f\n", params_groundRemove.max_slope);
+    // fprintf(stderr, "params_groundRemove.line_search_angle : %f\n", params_groundRemove.line_search_angle);
+    // fprintf(stderr, "params_groundRemove.max_slope : %f\n", params_groundRemove.max_slope);
     
 
     // 查看点击的位置 跟新点击的位置
-    double poseX, poseY;
-    _viewer->getClickedPoint(poseX, poseY);
-    fprintf(stderr, "clicked(%f, %f)\n", poseX, poseY);
-    groundRemove.setClickedPoint(poseX, poseY);
+    // double poseX, poseY;
+    // _viewer->getClickedPoint(poseX, poseY);
+    // fprintf(stderr, "clicked(%f, %f)\n", poseX, poseY);
+    // groundRemove.setClickedPoint(poseX, poseY);
     //////
-
+    // 获取选择的 ID
+    if (_viewer->selection.size())
+    {
+        groundRemove.setSelectObjectID(_viewer->selection);
+    }
+    // 结束
     Cloud::Ptr ground_cloud(new Cloud);
     Cloud::Ptr obstacle_cloud(new Cloud);
     // Cloud ground_cloud, obstacle_cloud;
     
     groundRemove.scanCallBack(*_cloud, *ground_cloud, *obstacle_cloud);
-    fprintf(stderr, "------------------------------->>>>>>>>>>>>>>>\n");
+    // fprintf(stderr, "------------------------------->>>>>>>>>>>>>>>\n");
     // 添加点云显示
     _viewer->Clear();
     GLfloat pointSize(1.8);
     Cloud::Ptr insertCloud(new Cloud);
+
+    _viewer->drawSelectableCloud = DrawSelectAbleCloud(_cloud);
     if (ui->cloudCB->isChecked())
     {
         // _viewer->AddDrawable(DrawableCloud::FromCloud(_cloud));
         _viewer->AddDrawable(DrawSelectAbleCloud::FromCloud(_cloud));
         // 为 viewer 的 drawSelectableCloud 赋值
         // _viewer->selection.clear();
-        if (_viewer->drawSelectableCloud.objects.size() == 0)
-            _viewer->drawSelectableCloud = DrawSelectAbleCloud(_cloud);
     }
 
     if (ui->groundCB->isChecked())
@@ -251,6 +280,17 @@ void Widget::onSliderMovedTo(int cloud_number)
         color << 1.0, 1.0, 0.0;
         _viewer->AddDrawable(DrawableLine::FromCloud(lines_cloud, color));
     }
+
+    // 显示图像
+    cv::Mat imgShowCV;
+    _scene.reset(new QGraphicsScene);
+    utils::ReadKittiImageByPath(_file_names_img[cloud_number], imgShowCV);    
+    
+    cv::cvtColor(imgShowCV, imgShowCV, cv::COLOR_BGR2RGB);
+    QImage qimage = utils::MatToQImage(imgShowCV);
+    _scene->addPixmap(QPixmap::fromImage(qimage));
+    ui->showImageGV->setScene(_scene.get());
+    ui->showImageGV->fitInView(_scene->itemsBoundingRect());
     _viewer->update();
 
 }
@@ -292,14 +332,38 @@ void Widget::onUpdate()
 
 void Widget::onParamSet()
 {
-    fprintf(stderr, "current value %f", ui->paramDSB->value());
-    fprintf(stderr, "   curren paramID %d", ui->paramSB->value());
+    // fprintf(stderr, "current value %f", ui->paramDSB->value());
+    // fprintf(stderr, "   curren paramID %d", ui->paramSB->value());
     int paramID = ui->paramSB->value();
     double paramValue = ui->paramDSB->value();
     switch (paramID)
     {
         case (0): params_groundRemove.line_search_angle = paramValue;           break;
         case (1): params_groundRemove.max_slope = paramValue;                   break; 
+        case (2): params_groundRemove.tHmin = paramValue;                       break; 
+        case (3): params_groundRemove.tHmax = paramValue;                       break; 
+        case (4): params_groundRemove.tHDiff = paramValue;                      break; 
+        case (5): params_groundRemove.hSensor = paramValue;                     break; 
+        case (6): params_groundRemove.r_min_bin = paramValue;                   break; 
+        case (7): params_groundRemove.r_max_bin = paramValue;                   break; 
+        case (8): params_groundRemove.r_min_square = paramValue;                break; 
+        case (9): params_groundRemove.r_max_square = paramValue;                break; 
+        case (10): params_groundRemove.n_bins = paramValue;                     break; 
+        case (11): params_groundRemove.n_segments = paramValue;                 break; 
+        // case (12):
+        case (13):params_groundRemove.max_dist_to_line = paramValue;            break; 
+        // case (14):
+        case (15): params_groundRemove.max_error_square = paramValue;           break; 
+        case (16): params_groundRemove.long_threshold = paramValue;             break; 
+        case (17): params_groundRemove.max_long_height = paramValue;            break; 
+        case (18): params_groundRemove.max_start_height = paramValue;           break; 
+        case (19): params_groundRemove.sensor_height = paramValue;              break; 
+        // case (20): 
+        // case (21):
+        case (22):params_groundRemove.min_split_dist = paramValue;              break; 
+        case (23):params_groundRemove.theta_start = paramValue;                 break; 
+        case (24): params_groundRemove.theta_end = paramValue;                  break; 
+        case (25): params_groundRemove.angle_resolution = paramValue;           break; 
         default:
             break;
     }
@@ -315,4 +379,12 @@ void Widget::onClearSelection()
     // fprintf(stderr, "current elsection id :\n");
     // for (auto & elem : _viewer->selection) fprintf(stderr, "\n%d ",elem);
     _viewer->selection.clear();
+}
+
+
+// 为了窗口跟随， 移动到中间， 重写的事件
+void Widget::resizeEvent(QResizeEvent *event)
+{
+    int showImageGV_x = (ui->CloudViewer->width() - ui->showImageGV->width()) / 2;
+    ui->showImageGV->move(showImageGV_x, 0);
 }

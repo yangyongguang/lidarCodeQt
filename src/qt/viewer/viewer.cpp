@@ -67,9 +67,9 @@ void Viewer::drawWithNames()
     //     objects_.at(i)->draw();
     //     glPopName();
     // }
-    fprintf(stderr, "Viewer::drawWithNames()\n");
-    fprintf(stderr, "drawSelectableCloud.objects.size : %d\n",
-                    drawSelectableCloud.objects.size());
+    // fprintf(stderr, "Viewer::drawWithNames()\n");
+    // fprintf(stderr, "drawSelectableCloud.objects.size : %d\n",
+    //                 drawSelectableCloud.objects.size());
     // 非空 画图
     if (drawSelectableCloud.objects.size() != 0)
     {
@@ -148,7 +148,7 @@ void Viewer::mouseReleaseEvent(QMouseEvent *e)
 void Viewer::endSelection(const QPoint &) 
 {
     // Flush GL buffers
-    fprintf(stderr, "Viewer::endSelection(const QPoint &)\n");
+    // fprintf(stderr, "Viewer::endSelection(const QPoint &)\n");
     glFlush();
 
     // Get the number of objects that were seen through the pick matrix frustum.
@@ -243,8 +243,8 @@ void Viewer::drawSelectionRectangle() const
 {
     startScreenCoordinatesSystem();
     glDisable(GL_LIGHTING);
-    glEnable(GL_BLEND);
 
+    glEnable(GL_BLEND);
     glColor4f(0.0, 0.0, 0.3f, 0.3f);
     glBegin(GL_QUADS);
     glVertex2i(rectangle_.left(), rectangle_.top());

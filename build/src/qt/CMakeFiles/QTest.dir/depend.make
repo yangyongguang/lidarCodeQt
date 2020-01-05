@@ -127,6 +127,7 @@ src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/Q
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qopenglfunctions.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qopenglversionfunctions.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpaintdevice.h
+src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpainter.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpainterpath.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpalette.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpen.h
@@ -148,6 +149,8 @@ src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/Q
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qwindowdefs_win.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QApplication
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QFileDialog
+src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QGraphicsScene
+src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QGraphicsView
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QOpenGLWidget
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QTextEdit
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QWidget
@@ -157,7 +160,10 @@ src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/Q
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qdialog.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qfiledialog.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qframe.h
+src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgraphicsscene.h
+src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgraphicsview.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qopenglwidget.h
+src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qscrollarea.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qsizepolicy.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qtextedit.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qwidget.h

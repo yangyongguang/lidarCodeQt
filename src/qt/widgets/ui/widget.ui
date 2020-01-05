@@ -50,6 +50,16 @@
          <property name="mouseTracking">
           <bool>false</bool>
          </property>
+         <widget class="QGraphicsView" name="showImageGV">
+          <property name="geometry">
+           <rect>
+            <x>40</x>
+            <y>0</y>
+            <width>827</width>
+            <height>250</height>
+           </rect>
+          </property>
+         </widget>
         </widget>
        </item>
        <item>
@@ -75,7 +85,7 @@
           </font>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="choose">
           <property name="locale">
@@ -274,12 +284,15 @@
              <x>0</x>
              <y>0</y>
              <width>281</width>
-             <height>461</height>
+             <height>781</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_4">
             <property name="spacing">
              <number>0</number>
+            </property>
+            <property name="sizeConstraint">
+             <enum>QLayout::SetMaximumSize</enum>
             </property>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_9">
@@ -324,9 +337,33 @@
             <item>
              <widget class="QPlainTextEdit" name="paramPTE">
               <property name="plainText">
-               <string>groundRemove:
-line_search_angle     default(6)              ID(0)
-max_slope                   default(0.35)        ID(1)</string>
+               <string>groundRemove:                                           ID
+line_search_angle(2)                                   0
+max_slope(0.35)                                           1
+tHmin(-2.15)                                                   2
+tHmax(1.0)                                                      3
+tHDiff(0.2)                                                       4
+hSensor(1.73)                                                 5
+r_min_bin(0.05)                                              6
+r_max_bin(2)                                                   7
+r_min_square(3 * 3)                                      8
+r_max_square(120 * 120)                            9
+n_bins(120)                                                     10
+n_segments(240)                                          11
+null                                                                    12
+max_dist_to_line(0.15)                               13
+null                                                                    14
+max_error_square(0.01)                             15
+long_threshold(2.0)                                      16
+max_long_height(0.2)                                  17
+max_start_height(0.3)                                 18
+sensor_height(1.70)                                     19
+null                                                                     20
+null                                                                     21
+min_split_dist(0.1)                                         22
+theta_start(65.1277)                                     23
+theta_end(2)                                                    24
+angle_resolution(0.41)                                 25</string>
               </property>
              </widget>
             </item>
@@ -371,6 +408,9 @@ max_slope                   default(0.35)        ID(1)</string>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QSpinBox" name="dataSeqSB"/>
+       </item>
        <item>
         <widget class="QPushButton" name="openFolderBT">
          <property name="text">

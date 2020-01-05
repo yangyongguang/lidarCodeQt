@@ -43,7 +43,7 @@ struct GroundSegmentationParams{
     sensor_height(1.70),
     line_search_angle(2),  // 改为搜索的 segments 数量
     //###########
-    n_threads(1),
+    n_threads(8),
     //###########
     min_split_dist(0.1),
     theta_start(65.1277),  // 90 - 24.8723
@@ -191,6 +191,9 @@ public:
     // 设置选择屏幕上选择的点
     void setClickedPoint(double & x, double & y);
 
+    // 选择屏幕上的集合
+    void setSelectObjectID(std::vector<int> & selects);
+
 // 选择的点
     bool hasClickedPoint;
     // point clickedPoint;
@@ -199,6 +202,8 @@ public:
     point clickedPoint;
     int debugSegIdx = -1;
     int debugBinIdx = -1;
+
+    std::vector<int> selectObjectIDs;
 };
 
 class SegmentaionNode
@@ -230,7 +235,6 @@ public:
         // GroundSegmentation segmenter(params_);
         // labels all cloud points to be ground of not
         std::vector<int> labels;
-
         std::chrono::high_resolution_clock::time_point start = std::chrono::high_resolution_clock::now();
         /////////////////////////////////////////////////////////////
         segmenter.segment(cloudfilter, &labels);           
@@ -261,6 +265,11 @@ public:
     void setClickedPoint(double & x, double & y)
     {
         segmenter.setClickedPoint(x, y);
+    }
+
+    void setSelectObjectID(std::vector<int> & selects)
+    {
+        segmenter.setSelectObjectID(selects);
     }
 
 private:

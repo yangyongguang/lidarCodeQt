@@ -24,6 +24,15 @@
 #include "groundRemove/include/groundRemove.h"
 #include <QTextEdit>
 
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QPixmap>
+
+#include <opencv2/core.hpp>
+#include <opencv2/opencv.hpp>
+#include <opencv2/highgui.hpp>
+#include <opencv2/imgproc.hpp>
+
 namespace Ui {
 class Widget;
 }
@@ -48,6 +57,8 @@ public:
     GroundSegmentationParams params_groundRemove;
 protected:
     void keyPressEvent(QKeyEvent *event) override;
+    virtual void resizeEvent(QResizeEvent *event) override;
+
 private slots:
     void onOpenFolderToRead();
     /**
@@ -89,6 +100,8 @@ private:
     // new widget
     QTextEdit *infoTextEdit = nullptr;
 
+    // 显示图像
+    std::unique_ptr<QGraphicsScene> _scene = nullptr;
 };
 
 #endif // WIDGET_H

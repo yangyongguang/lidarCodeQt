@@ -28,8 +28,8 @@ GroundSegmentation::GroundSegmentation(const GroundSegmentationParams & params):
 {
     // 在使用 atiomic 的时候，初始化全部在 : 后实现， 不再括号内部实现， 原因还不知道
     std::atomic_init(&count_, 0);
-    fprintf(stderr, "in GroundSegmentation params_.max_slope: %f\n", params_.max_slope);
-    fprintf(stderr, "in GroundSegmentation params.max_slope: %f\n", params.max_slope);
+    // fprintf(stderr, "in GroundSegmentation params_.max_slope: %f\n", params_.max_slope);
+    // fprintf(stderr, "in GroundSegmentation params.max_slope: %f\n", params.max_slope);
 }
 
 // 插入点云
@@ -97,10 +97,10 @@ void GroundSegmentation::insertPointThread(const Cloud & cloud,
 
             // double c = r_min - params_.r_min_bin - range;
             // unsigned int bin_idx = (-b + sqrt(b * b  - 4 * a * c)) / (2 * a);
-            if (bin_idx < 0 || bin_idx >= params_.n_bins)
-            {
-                printf("d:%f, bin_idx %d\n", range, bin_idx);
-            }
+            // if (bin_idx < 0 || bin_idx >= params_.n_bins)
+            // {
+            //     printf("d:%f, bin_idx %d\n", range, bin_idx);
+            // }
             assert(bin_idx >= 0 && bin_idx < params_.n_bins);
             // unsigned int bin_idx = (range - r_min + params_.r_min_bin + 2 * detaX) /
             //                             (params_.r_min_bin + detaX);
@@ -548,8 +548,8 @@ void GroundSegmentation::updateBinGroundThread(const size_t & start_idx, const s
 
 void GroundSegmentation::assignClusterByLine(std::vector<int> * segmentation)
 {
-    fprintf(stderr, "in assignClusterByLine::line_search_angle %f\n", params_.line_search_angle);
-    fprintf(stderr, "in assignClusterByLine::max_slope %f\n", params_.max_slope);
+    // fprintf(stderr, "in assignClusterByLine::line_search_angle %f\n", params_.line_search_angle);
+    // fprintf(stderr, "in assignClusterByLine::max_slope %f\n", params_.max_slope);
     std::vector<std::thread> thread_vec(params_.n_threads);
     const size_t cloud_size = segmentation->size();
     const int num_pre_thread = cloud_size / params_.n_threads; 
@@ -574,6 +574,7 @@ void GroundSegmentation::assignClusterByLineThread(const unsigned int &start_ind
                                              const unsigned int &end_index,
                                              std::vector<int> *segmentation) 
 {
+    // fprintf(stderr, "_params.n_segments: %d\n", params_.n_segments);
     const double segment_step = 2 * M_PI / params_.n_segments;
     for (unsigned int idx = start_index; idx < end_index; ++idx)
     {     
@@ -585,13 +586,19 @@ void GroundSegmentation::assignClusterByLineThread(const unsigned int &start_ind
         const int bin_idx = bin_index_[idx].second;
 
         // 寻找 debug 的 Bin 的格子
-        if (segment_idx == debugSegIdx && bin_idx == debugBinIdx)
+        // if (segment_idx == debugSegIdx && bin_idx == debugBinIdx)
+        // {
+        //     fprintf(stderr, "segment_idx, bin_idx : (%d, %d)\n", segment_idx, bin_idx);
+        //     isDebug = true;
+        // }
+        
+        if (std::find(selectObjectIDs.begin(), selectObjectIDs.end(), idx) != selectObjectIDs.end())
         {
-            fprintf(stderr, "segment_idx, bin_idx : (%d, %d)\n", segment_idx, bin_idx);
             isDebug = true;
         }
 
         //
+        
         if (segment_idx >= 0 && bin_idx >= 0) // 当前 bin 有点
         {
             // 当前点有点， 且是地面点， 且符合距离的情况就是地面点， 其他都是提升点            
@@ -615,7 +622,10 @@ void GroundSegmentation::assignClusterByLineThread(const unsigned int &start_ind
                     between_one_and_two = true;
                 }
             }
+            
+            
             // else
+            
             if (!segments_[segment_idx][bin_idx].isThisGround() || between_one_and_two)  
             {
                 // 不是地面点就去隔壁找找， 或者说大于一倍小于俩倍的距离点都去隔壁找找
@@ -626,7 +636,11 @@ void GroundSegmentation::assignClusterByLineThread(const unsigned int &start_ind
                     bool find_ground = false;
                     while (!find_ground && steps * segment_step < params_.line_search_angle)
                     {
-                        
+                        if (isDebug)
+                        {
+                            fprintf(stderr, "steps[%d] * segment_step[%f] = :%f < params_.line_search_angle[%f]", 
+                                steps, segment_step, steps * segment_step ,params_.line_search_angle);
+                        }
                         // Fix indices that are out of bounds.
                         int index_1 = segment_idx + steps;
                         while (index_1 >= params_.n_segments) index_1 -= params_.n_segments;
@@ -650,7 +664,8 @@ void GroundSegmentation::assignClusterByLineThread(const unsigned int &start_ind
                                 segmentation->at(idx) = 1;
                                 // break;  // 找到了地面就不找了
                             }
-                            // break;
+                            break;  // 在邻居这边， 一旦发现可以参考的地面就不再
+                                    // 继续找下去。 不管但前的是否是地面， 都以邻居的地面为标准
                         }
 
                         find_ground = segments_[index_2][bin_idx].isThisGround();
@@ -664,7 +679,7 @@ void GroundSegmentation::assignClusterByLineThread(const unsigned int &start_ind
                                 segmentation->at(idx) = 1;
                                 // break; // 找到了就步找了
                             }
-                            // break;
+                            break; // 在邻居这边， 一旦发现可以参考的地面就不再继续找下去。
                         }  
                         ++steps;                  
                     }        
@@ -672,6 +687,7 @@ void GroundSegmentation::assignClusterByLineThread(const unsigned int &start_ind
             }
             
         }
+        
     }
 }
 
@@ -739,4 +755,9 @@ void GroundSegmentation::setClickedPoint(double & x, double & y)
 
     //     }
     // }
+}
+
+void GroundSegmentation::setSelectObjectID(std::vector<int> & selects)
+{
+    selectObjectIDs.assign(selects.begin(), selects.end());
 }

@@ -630,6 +630,7 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qopenglfunctions.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qopenglversionfunctions.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpaintdevice.h
+ /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpainter.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpainterpath.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpalette.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpen.h
@@ -650,6 +651,8 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qwindowdefs.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qwindowdefs_win.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QFileDialog
+ /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QGraphicsScene
+ /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QGraphicsView
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QOpenGLWidget
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QTextEdit
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QWidget
@@ -657,7 +660,10 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qdialog.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qfiledialog.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qframe.h
+ /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgraphicsscene.h
+ /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgraphicsview.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qopenglwidget.h
+ /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qscrollarea.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qsizepolicy.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qtextedit.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qwidget.h
@@ -1129,6 +1135,7 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qopenglfunctions.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qopenglversionfunctions.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpaintdevice.h
+ /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpainter.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpainterpath.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpalette.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpen.h
@@ -1157,6 +1164,8 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QCheckBox
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QDoubleSpinBox
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QFileDialog
+ /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QGraphicsScene
+ /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QGraphicsView
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QHBoxLayout
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QHeaderView
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QLabel
@@ -1187,6 +1196,8 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qdialog.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qfiledialog.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qframe.h
+ /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgraphicsscene.h
+ /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgraphicsview.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgridlayout.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qheaderview.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qlabel.h
@@ -1197,6 +1208,7 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qpushbutton.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qradiobutton.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qrubberband.h
+ /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qscrollarea.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qsizepolicy.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qslider.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qspinbox.h

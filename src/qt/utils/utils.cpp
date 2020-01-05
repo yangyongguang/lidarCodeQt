@@ -49,6 +49,7 @@ namespace utils
 
     void ReadKittiImageByPath(const std::string & path, cv::Mat & img)
     {
+        // fprintf(stderr, "path: %s\n", path.c_str());
         img = cv::imread(path);
         if (img.empty())
         {
@@ -67,5 +68,41 @@ namespace utils
             std::string filename =  fileIt->path().string();
             fileNames.emplace_back(filename);         
         }
+    }
+
+    QImage MatToQImage(const cv::Mat &image) 
+    {
+        auto qimage = QImage(image.cols, image.rows, QImage::Format_RGB888);
+        if (image.type() == CV_32F) 
+        {
+            for (int r = 0; r < image.rows; ++r) 
+            {
+                for (int c = 0; c < image.cols; ++c) 
+                {
+                    if (image.at<float>(r, c) == 666) 
+                    {
+                        auto color = qRgb(0, 200, 0);
+                        qimage.setPixel(c, r, color);
+                        continue;
+                    }
+                    const float &val = image.at<float>(r, c) * 10;
+                    auto color = qRgb(val, val, val);
+                    qimage.setPixel(c, r, color);
+                }
+            }
+        } 
+        else 
+        {
+            for (int r = 0; r < image.rows; ++r) 
+            {
+                for (int c = 0; c < image.cols; ++c) 
+                {
+                    auto val = image.at<cv::Vec3b>(r, c);
+                    auto color = qRgb(val[0], val[1], val[2]);
+                    qimage.setPixel(c, r, color);
+                }
+            }
+        }
+        return qimage;
     }
 }

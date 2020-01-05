@@ -629,6 +629,7 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qopenglfunctions.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qopenglversionfunctions.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpaintdevice.h
+src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpainter.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpainterpath.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpalette.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpen.h
@@ -649,6 +650,8 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qwindowdefs.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qwindowdefs_win.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QFileDialog
+src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QGraphicsScene
+src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QGraphicsView
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QOpenGLWidget
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QTextEdit
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QWidget
@@ -656,7 +659,10 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qdialog.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qfiledialog.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qframe.h
+src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgraphicsscene.h
+src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgraphicsview.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qopenglwidget.h
+src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qscrollarea.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qsizepolicy.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qtextedit.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qwidget.h
@@ -1128,6 +1134,7 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/g
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qopenglfunctions.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qopenglversionfunctions.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpaintdevice.h
+src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpainter.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpainterpath.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpalette.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpen.h
@@ -1156,6 +1163,8 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/g
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QCheckBox
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QDoubleSpinBox
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QFileDialog
+src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QGraphicsScene
+src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QGraphicsView
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QHBoxLayout
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QHeaderView
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QLabel
@@ -1186,6 +1195,8 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/g
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qdialog.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qfiledialog.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qframe.h
+src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgraphicsscene.h
+src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgraphicsview.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgridlayout.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qheaderview.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qlabel.h
@@ -1196,6 +1207,7 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/g
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qpushbutton.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qradiobutton.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qrubberband.h
+src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qscrollarea.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qsizepolicy.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qslider.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qspinbox.h

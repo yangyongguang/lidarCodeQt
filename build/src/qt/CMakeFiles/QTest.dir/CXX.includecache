@@ -115,6 +115,8 @@ vector
 -
 groundRemove/include/cloud.h
 ../src/qt/utils/groundRemove/include/cloud.h
+QImage
+-
 
 ../src/qt/viewer/viewer.h
 memory
@@ -148,6 +150,8 @@ viewer.h
 
 ../src/qt/widgets/param.h
 string
+-
+math.h
 -
 
 ../src/qt/widgets/widget.h
@@ -184,6 +188,20 @@ base_viewer_widget.h
 groundRemove/include/groundRemove.h
 ../src/qt/widgets/groundRemove/include/groundRemove.h
 QTextEdit
+-
+QGraphicsView
+-
+QGraphicsScene
+-
+QPixmap
+-
+opencv2/core.hpp
+-
+opencv2/opencv.hpp
+-
+opencv2/highgui.hpp
+-
+opencv2/imgproc.hpp
 -
 
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtCore/QDebug
@@ -1266,6 +1284,36 @@ QtGui/qwindowdefs.h
 QtCore/qrect.h
 -
 
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpainter.h
+QtCore/qnamespace.h
+-
+QtCore/qrect.h
+-
+QtCore/qpoint.h
+-
+QtCore/qscopedpointer.h
+-
+QtGui/qpixmap.h
+-
+QtGui/qimage.h
+-
+QtGui/qtextoption.h
+-
+QtGui/qpolygon.h
+-
+QtGui/qpen.h
+-
+QtGui/qbrush.h
+-
+QtGui/qmatrix.h
+-
+QtGui/qtransform.h
+-
+QtGui/qfontinfo.h
+-
+QtGui/qfontmetrics.h
+-
+
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qpainterpath.h
 QtGui/qmatrix.h
 -
@@ -1448,6 +1496,14 @@ qapplication.h
 qfiledialog.h
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qfiledialog.h
 
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QGraphicsScene
+qgraphicsscene.h
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgraphicsscene.h
+
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QGraphicsView
+qgraphicsview.h
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgraphicsview.h
+
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QOpenGLWidget
 qopenglwidget.h
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qopenglwidget.h
@@ -1502,6 +1558,34 @@ QtWidgets/qdialog.h
 QtWidgets/qwidget.h
 -
 
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgraphicsscene.h
+QtCore/qobject.h
+-
+QtCore/qpoint.h
+-
+QtCore/qrect.h
+-
+QtGui/qbrush.h
+-
+QtGui/qfont.h
+-
+QtGui/qtransform.h
+-
+QtGui/qmatrix.h
+-
+QtGui/qpen.h
+-
+
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgraphicsview.h
+QtCore/qmetatype.h
+-
+QtGui/qpainter.h
+-
+QtWidgets/qscrollarea.h
+-
+QtWidgets/qgraphicsscene.h
+-
+
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qopenglwidget.h
 QtCore/qglobal.h
 -
@@ -1510,6 +1594,10 @@ QtWidgets/QWidget
 QtGui/QSurfaceFormat
 -
 QtGui/qopengl.h
+-
+
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qscrollarea.h
+QtWidgets/qabstractscrollarea.h
 -
 
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qsizepolicy.h

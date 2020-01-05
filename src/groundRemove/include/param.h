@@ -20,7 +20,8 @@ public:
     double dist_length = max_dist - min_dist;
 
     // 文件读取参数
-    int sequences = 13;
+    // int sequences = 13;
+    int sequences = 21;
     std::string kitti_img_dir = 
         "/media/yyg/YYG/lidarVisualization/data_odometry_color/dataset/sequences/" +
             std::to_string(sequences) + "/image_2";
@@ -28,4 +29,6 @@ public:
     std::string kitti_velo_dir = 
         "/media/yyg/YYG/lidarVisualization/data_odometry_velodyne/dataset/sequences/" +
             std::to_string(sequences) + "/velodyne";
+
+    std::string kitti_base_dir = "/media/yyg/YYG/lidarVisualization/data_odometry_color/dataset/sequences/";
 };

@@ -16,6 +16,7 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDoubleSpinBox>
+#include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -38,6 +39,7 @@ public:
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout_2;
     Viewer *CloudViewer;
+    QGraphicsView *showImageGV;
     QTabWidget *infoTab;
     QWidget *choose;
     QWidget *layoutWidget;
@@ -77,6 +79,7 @@ public:
     QPushButton *resetBT;
     QPushButton *quit;
     QHBoxLayout *horizontalLayout;
+    QSpinBox *dataSeqSB;
     QPushButton *openFolderBT;
     QPushButton *playBT;
     QSpinBox *DataIdxSBox;
@@ -107,6 +110,9 @@ public:
         sizePolicy.setHeightForWidth(CloudViewer->sizePolicy().hasHeightForWidth());
         CloudViewer->setSizePolicy(sizePolicy);
         CloudViewer->setMouseTracking(false);
+        showImageGV = new QGraphicsView(CloudViewer);
+        showImageGV->setObjectName(QStringLiteral("showImageGV"));
+        showImageGV->setGeometry(QRect(40, 0, 827, 250));
 
         horizontalLayout_2->addWidget(CloudViewer);
 
@@ -238,11 +244,12 @@ public:
         tab->setObjectName(QStringLiteral("tab"));
         layoutWidget1 = new QWidget(tab);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(0, 0, 281, 461));
+        layoutWidget1->setGeometry(QRect(0, 0, 281, 781));
         verticalLayout_4 = new QVBoxLayout(layoutWidget1);
         verticalLayout_4->setSpacing(0);
         verticalLayout_4->setContentsMargins(11, 11, 11, 11);
         verticalLayout_4->setObjectName(QStringLiteral("verticalLayout_4"));
+        verticalLayout_4->setSizeConstraint(QLayout::SetMaximumSize);
         verticalLayout_4->setContentsMargins(0, 0, 0, 0);
         horizontalLayout_9 = new QHBoxLayout();
         horizontalLayout_9->setSpacing(6);
@@ -322,6 +329,11 @@ public:
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(6);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        dataSeqSB = new QSpinBox(Widget);
+        dataSeqSB->setObjectName(QStringLiteral("dataSeqSB"));
+
+        horizontalLayout->addWidget(dataSeqSB);
+
         openFolderBT = new QPushButton(Widget);
         openFolderBT->setObjectName(QStringLiteral("openFolderBT"));
 
@@ -356,7 +368,7 @@ public:
         QObject::connect(DataIdxVSlider, SIGNAL(valueChanged(int)), DataIdxSBox, SLOT(setValue(int)));
         QObject::connect(quit, SIGNAL(clicked()), Widget, SLOT(close()));
 
-        infoTab->setCurrentIndex(0);
+        infoTab->setCurrentIndex(1);
 
 
         QMetaObject::connectSlotsByName(Widget);
@@ -378,9 +390,34 @@ public:
         infoTab->setTabText(infoTab->indexOf(choose), QApplication::translate("Widget", "\351\241\265", Q_NULLPTR));
         label_6->setText(QApplication::translate("Widget", "paramID", Q_NULLPTR));
         label_7->setText(QApplication::translate("Widget", "value", Q_NULLPTR));
-        paramPTE->setPlainText(QApplication::translate("Widget", "groundRemove:\n"
-"line_search_angle     default(6)              ID(0)\n"
-"max_slope                   default(0.35)        ID(1)", Q_NULLPTR));
+        paramPTE->setPlainText(QApplication::translate("Widget", "groundRemove:                                           ID\n"
+"line_search_angle(2)                                   0\n"
+"max_slope(0.35)                                           1\n"
+"tHmin(-2.15)                                                   2\n"
+"tHmax(1.0)                                                      3\n"
+"tHDiff(0.2)                                                       4\n"
+"hSensor(1.73)                                                 5\n"
+"r_min_bin(0.05)                                              6\n"
+"r_max_bin(2)                                                   7\n"
+"r_min_square(3 * 3)                                      8\n"
+"r_max_square(120 * 120)                            9\n"
+"n_bins(120)                                                     10\n"
+"n_segments(240)                                          11\n"
+"null                                                                    12\n"
+"max_dist_to_line(0.15)                               13\n"
+"null                        "
+                        "                                            14\n"
+"max_error_square(0.01)                             15\n"
+"long_threshold(2.0)                                      16\n"
+"max_long_height(0.2)                                  17\n"
+"max_start_height(0.3)                                 18\n"
+"sensor_height(1.70)                                     19\n"
+"null                                                                     20\n"
+"null                                                                     21\n"
+"min_split_dist(0.1)                                         22\n"
+"theta_start(65.1277)                                     23\n"
+"theta_end(2)                                                    24\n"
+"angle_resolution(0.41)                                 25", Q_NULLPTR));
         infoTab->setTabText(infoTab->indexOf(tab), QApplication::translate("Widget", "\351\241\265", Q_NULLPTR));
         updatePB->setText(QApplication::translate("Widget", "update", Q_NULLPTR));
         clearSelectionPB->setText(QApplication::translate("Widget", "clearSelection", Q_NULLPTR));
