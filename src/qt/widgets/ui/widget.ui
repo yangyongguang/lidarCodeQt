@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1189</width>
-    <height>880</height>
+    <width>1399</width>
+    <height>1020</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -34,6 +34,9 @@
      <property name="spacing">
       <number>0</number>
      </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
@@ -53,13 +56,28 @@
          <widget class="QGraphicsView" name="showImageGV">
           <property name="geometry">
            <rect>
-            <x>40</x>
+            <x>150</x>
             <y>0</y>
             <width>827</width>
             <height>250</height>
            </rect>
           </property>
+          <property name="backgroundBrush">
+           <brush brushstyle="NoBrush">
+            <color alpha="255">
+             <red>170</red>
+             <green>44</green>
+             <blue>44</blue>
+            </color>
+           </brush>
+          </property>
          </widget>
+         <zorder>showImageGV</zorder>
+         <zorder>infoTab</zorder>
+         <zorder>infoTab</zorder>
+         <zorder>dockWidget</zorder>
+         <zorder>infoTab</zorder>
+         <zorder>infoTab</zorder>
         </widget>
        </item>
        <item>
@@ -85,7 +103,7 @@
           </font>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="choose">
           <property name="locale">
@@ -97,15 +115,15 @@
           <widget class="QWidget" name="layoutWidget">
            <property name="geometry">
             <rect>
-             <x>0</x>
+             <x>10</x>
              <y>0</y>
-             <width>271</width>
-             <height>181</height>
+             <width>261</width>
+             <height>196</height>
             </rect>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_3">
             <property name="spacing">
-             <number>0</number>
+             <number>5</number>
             </property>
             <item>
              <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -115,7 +133,7 @@
               <item>
                <widget class="QLabel" name="label_3">
                 <property name="text">
-                 <string>               orgin   </string>
+                 <string>              orgin   </string>
                 </property>
                </widget>
               </item>
@@ -210,6 +228,40 @@
              </layout>
             </item>
             <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_10">
+              <item>
+               <widget class="QLabel" name="label_8">
+                <property name="text">
+                 <string>         cluster    </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_6">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeType">
+                 <enum>QSizePolicy::Expanding</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QCheckBox" name="clusterCB">
+                <property name="text">
+                 <string> cluster      </string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
              <layout class="QHBoxLayout" name="horizontalLayout_7">
               <item>
                <widget class="QLabel" name="label_4">
@@ -268,6 +320,33 @@
                  <string>     line       </string>
                 </property>
                </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_11">
+              <item>
+               <widget class="QLabel" name="label_9">
+                <property name="text">
+                 <string>       gridNum    </string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_7">
+                <property name="orientation">
+                 <enum>Qt::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QSpinBox" name="girdNumSB"/>
               </item>
              </layout>
             </item>
@@ -352,7 +431,7 @@ n_bins(120)                                                     10
 n_segments(240)                                          11
 null                                                                    12
 max_dist_to_line(0.15)                               13
-null                                                                    14
+visualize                                                           14
 max_error_square(0.01)                             15
 long_threshold(2.0)                                      16
 max_long_height(0.2)                                  17
@@ -363,11 +442,50 @@ null                                                                     21
 min_split_dist(0.1)                                         22
 theta_start(65.1277)                                     23
 theta_end(2)                                                    24
-angle_resolution(0.41)                                 25</string>
+angle_resolution(0.41)                                 25
+applayMedianFilterMinZ(0)                         26</string>
               </property>
              </widget>
             </item>
            </layout>
+          </widget>
+         </widget>
+         <widget class="QWidget" name="tab_2">
+          <attribute name="title">
+           <string>页</string>
+          </attribute>
+          <widget class="QDockWidget" name="dockWidget">
+           <property name="geometry">
+            <rect>
+             <x>50</x>
+             <y>20</y>
+             <width>191</width>
+             <height>111</height>
+            </rect>
+           </property>
+           <widget class="QWidget" name="dockWidgetContents"/>
+          </widget>
+          <widget class="QDockWidget" name="dockWidget_2">
+           <property name="geometry">
+            <rect>
+             <x>70</x>
+             <y>170</y>
+             <width>161</width>
+             <height>111</height>
+            </rect>
+           </property>
+           <widget class="QWidget" name="dockWidgetContents_2"/>
+          </widget>
+          <widget class="QDockWidget" name="dockWidget_3">
+           <property name="geometry">
+            <rect>
+             <x>60</x>
+             <y>340</y>
+             <width>181</width>
+             <height>121</height>
+            </rect>
+           </property>
+           <widget class="QWidget" name="dockWidgetContents_3"/>
           </widget>
          </widget>
         </widget>

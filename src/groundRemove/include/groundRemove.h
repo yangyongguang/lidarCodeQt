@@ -145,6 +145,8 @@ public:
     void updateGroundThread(const size_t & start_idx, const size_t & end_idx);
 
     void applayMedianFilter();
+
+    void applayMedianFilterMinZ();
     
     void outlierFilter();
 

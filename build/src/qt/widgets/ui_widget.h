@@ -15,6 +15,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>
+#include <QtWidgets/QDockWidget>
 #include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QHBoxLayout>
@@ -56,6 +57,10 @@ public:
     QLabel *label_2;
     QSpacerItem *horizontalSpacer_2;
     QCheckBox *obstacleCB;
+    QHBoxLayout *horizontalLayout_10;
+    QLabel *label_8;
+    QSpacerItem *horizontalSpacer_6;
+    QCheckBox *clusterCB;
     QHBoxLayout *horizontalLayout_7;
     QLabel *label_4;
     QSpacerItem *horizontalSpacer_4;
@@ -64,6 +69,10 @@ public:
     QLabel *label_5;
     QSpacerItem *horizontalSpacer_5;
     QCheckBox *lineCB;
+    QHBoxLayout *horizontalLayout_11;
+    QLabel *label_9;
+    QSpacerItem *horizontalSpacer_7;
+    QSpinBox *girdNumSB;
     QWidget *tab;
     QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_4;
@@ -73,6 +82,13 @@ public:
     QLabel *label_7;
     QDoubleSpinBox *paramDSB;
     QPlainTextEdit *paramPTE;
+    QWidget *tab_2;
+    QDockWidget *dockWidget;
+    QWidget *dockWidgetContents;
+    QDockWidget *dockWidget_2;
+    QWidget *dockWidgetContents_2;
+    QDockWidget *dockWidget_3;
+    QWidget *dockWidgetContents_3;
     QHBoxLayout *horizontalLayout_3;
     QPushButton *updatePB;
     QPushButton *clearSelectionPB;
@@ -89,7 +105,7 @@ public:
     {
         if (Widget->objectName().isEmpty())
             Widget->setObjectName(QStringLiteral("Widget"));
-        Widget->resize(1189, 880);
+        Widget->resize(1399, 1020);
         verticalLayout_2 = new QVBoxLayout(Widget);
         verticalLayout_2->setSpacing(0);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
@@ -98,6 +114,7 @@ public:
         verticalLayout = new QVBoxLayout();
         verticalLayout->setSpacing(0);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(-1, -1, -1, 0);
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setSpacing(6);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
@@ -112,7 +129,11 @@ public:
         CloudViewer->setMouseTracking(false);
         showImageGV = new QGraphicsView(CloudViewer);
         showImageGV->setObjectName(QStringLiteral("showImageGV"));
-        showImageGV->setGeometry(QRect(40, 0, 827, 250));
+        showImageGV->setGeometry(QRect(150, 0, 827, 250));
+        QBrush brush(QColor(170, 44, 44, 255));
+        brush.setStyle(Qt::NoBrush);
+        showImageGV->setBackgroundBrush(brush);
+        showImageGV->raise();
 
         horizontalLayout_2->addWidget(CloudViewer);
 
@@ -133,9 +154,9 @@ public:
         choose->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         layoutWidget = new QWidget(choose);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(0, 0, 271, 181));
+        layoutWidget->setGeometry(QRect(10, 0, 261, 196));
         verticalLayout_3 = new QVBoxLayout(layoutWidget);
-        verticalLayout_3->setSpacing(0);
+        verticalLayout_3->setSpacing(5);
         verticalLayout_3->setContentsMargins(11, 11, 11, 11);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
@@ -199,6 +220,26 @@ public:
 
         verticalLayout_3->addLayout(horizontalLayout_5);
 
+        horizontalLayout_10 = new QHBoxLayout();
+        horizontalLayout_10->setSpacing(6);
+        horizontalLayout_10->setObjectName(QStringLiteral("horizontalLayout_10"));
+        label_8 = new QLabel(layoutWidget);
+        label_8->setObjectName(QStringLiteral("label_8"));
+
+        horizontalLayout_10->addWidget(label_8);
+
+        horizontalSpacer_6 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_10->addItem(horizontalSpacer_6);
+
+        clusterCB = new QCheckBox(layoutWidget);
+        clusterCB->setObjectName(QStringLiteral("clusterCB"));
+
+        horizontalLayout_10->addWidget(clusterCB);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_10);
+
         horizontalLayout_7 = new QHBoxLayout();
         horizontalLayout_7->setSpacing(6);
         horizontalLayout_7->setObjectName(QStringLiteral("horizontalLayout_7"));
@@ -238,6 +279,26 @@ public:
 
 
         verticalLayout_3->addLayout(horizontalLayout_8);
+
+        horizontalLayout_11 = new QHBoxLayout();
+        horizontalLayout_11->setSpacing(6);
+        horizontalLayout_11->setObjectName(QStringLiteral("horizontalLayout_11"));
+        label_9 = new QLabel(layoutWidget);
+        label_9->setObjectName(QStringLiteral("label_9"));
+
+        horizontalLayout_11->addWidget(label_9);
+
+        horizontalSpacer_7 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout_11->addItem(horizontalSpacer_7);
+
+        girdNumSB = new QSpinBox(layoutWidget);
+        girdNumSB->setObjectName(QStringLiteral("girdNumSB"));
+
+        horizontalLayout_11->addWidget(girdNumSB);
+
+
+        verticalLayout_3->addLayout(horizontalLayout_11);
 
         infoTab->addTab(choose, QString());
         tab = new QWidget();
@@ -294,6 +355,27 @@ public:
         verticalLayout_4->addWidget(paramPTE);
 
         infoTab->addTab(tab, QString());
+        tab_2 = new QWidget();
+        tab_2->setObjectName(QStringLiteral("tab_2"));
+        dockWidget = new QDockWidget(tab_2);
+        dockWidget->setObjectName(QStringLiteral("dockWidget"));
+        dockWidget->setGeometry(QRect(50, 20, 191, 111));
+        dockWidgetContents = new QWidget();
+        dockWidgetContents->setObjectName(QStringLiteral("dockWidgetContents"));
+        dockWidget->setWidget(dockWidgetContents);
+        dockWidget_2 = new QDockWidget(tab_2);
+        dockWidget_2->setObjectName(QStringLiteral("dockWidget_2"));
+        dockWidget_2->setGeometry(QRect(70, 170, 161, 111));
+        dockWidgetContents_2 = new QWidget();
+        dockWidgetContents_2->setObjectName(QStringLiteral("dockWidgetContents_2"));
+        dockWidget_2->setWidget(dockWidgetContents_2);
+        dockWidget_3 = new QDockWidget(tab_2);
+        dockWidget_3->setObjectName(QStringLiteral("dockWidget_3"));
+        dockWidget_3->setGeometry(QRect(60, 340, 181, 121));
+        dockWidgetContents_3 = new QWidget();
+        dockWidgetContents_3->setObjectName(QStringLiteral("dockWidgetContents_3"));
+        dockWidget_3->setWidget(dockWidgetContents_3);
+        infoTab->addTab(tab_2, QString());
 
         horizontalLayout_2->addWidget(infoTab);
 
@@ -368,7 +450,7 @@ public:
         QObject::connect(DataIdxVSlider, SIGNAL(valueChanged(int)), DataIdxSBox, SLOT(setValue(int)));
         QObject::connect(quit, SIGNAL(clicked()), Widget, SLOT(close()));
 
-        infoTab->setCurrentIndex(1);
+        infoTab->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(Widget);
@@ -377,16 +459,19 @@ public:
     void retranslateUi(QWidget *Widget)
     {
         Widget->setWindowTitle(QApplication::translate("Widget", "Widget", Q_NULLPTR));
-        label_3->setText(QApplication::translate("Widget", "               orgin   ", Q_NULLPTR));
+        label_3->setText(QApplication::translate("Widget", "              orgin   ", Q_NULLPTR));
         cloudCB->setText(QApplication::translate("Widget", "    cloud      ", Q_NULLPTR));
         label->setText(QApplication::translate("Widget", "           Ground", Q_NULLPTR));
         groundCB->setText(QApplication::translate("Widget", "  ground     ", Q_NULLPTR));
         label_2->setText(QApplication::translate("Widget", "           obstacle", Q_NULLPTR));
         obstacleCB->setText(QApplication::translate("Widget", "obstacle    ", Q_NULLPTR));
+        label_8->setText(QApplication::translate("Widget", "         cluster    ", Q_NULLPTR));
+        clusterCB->setText(QApplication::translate("Widget", " cluster      ", Q_NULLPTR));
         label_4->setText(QApplication::translate("Widget", "             insert    ", Q_NULLPTR));
         insertCB->setText(QApplication::translate("Widget", "    insert     ", Q_NULLPTR));
         label_5->setText(QApplication::translate("Widget", "                line     ", Q_NULLPTR));
         lineCB->setText(QApplication::translate("Widget", "     line       ", Q_NULLPTR));
+        label_9->setText(QApplication::translate("Widget", "       gridNum    ", Q_NULLPTR));
         infoTab->setTabText(infoTab->indexOf(choose), QApplication::translate("Widget", "\351\241\265", Q_NULLPTR));
         label_6->setText(QApplication::translate("Widget", "paramID", Q_NULLPTR));
         label_7->setText(QApplication::translate("Widget", "value", Q_NULLPTR));
@@ -405,8 +490,8 @@ public:
 "n_segments(240)                                          11\n"
 "null                                                                    12\n"
 "max_dist_to_line(0.15)                               13\n"
-"null                        "
-                        "                                            14\n"
+"visualize                   "
+                        "                                        14\n"
 "max_error_square(0.01)                             15\n"
 "long_threshold(2.0)                                      16\n"
 "max_long_height(0.2)                                  17\n"
@@ -417,8 +502,10 @@ public:
 "min_split_dist(0.1)                                         22\n"
 "theta_start(65.1277)                                     23\n"
 "theta_end(2)                                                    24\n"
-"angle_resolution(0.41)                                 25", Q_NULLPTR));
+"angle_resolution(0.41)                                 25\n"
+"applayMedianFilterMinZ(0)                         26", Q_NULLPTR));
         infoTab->setTabText(infoTab->indexOf(tab), QApplication::translate("Widget", "\351\241\265", Q_NULLPTR));
+        infoTab->setTabText(infoTab->indexOf(tab_2), QApplication::translate("Widget", "\351\241\265", Q_NULLPTR));
         updatePB->setText(QApplication::translate("Widget", "update", Q_NULLPTR));
         clearSelectionPB->setText(QApplication::translate("Widget", "clearSelection", Q_NULLPTR));
         resetBT->setText(QApplication::translate("Widget", "reset", Q_NULLPTR));

@@ -81,9 +81,21 @@ src/qt/QTest: src/qt/CMakeFiles/QTest.dir/main.cpp.o
 src/qt/QTest: src/qt/CMakeFiles/QTest.dir/build.make
 src/qt/QTest: src/qt/widgets/libqt_widgets.so
 src/qt/QTest: src/groundRemove/libgroundRemove.so
+src/qt/QTest: src/groundRemove/libcomponent_clustering.a
 src/qt/QTest: src/qt/viewer/libviewer.so
 src/qt/QTest: src/qt/utils/libobject.so
 src/qt/QTest: src/qt/drawables/libdrawable.so
+src/qt/QTest: /usr/lib/x86_64-linux-gnu/libQGLViewer.so
+src/qt/QTest: /home/yyg/Qt5.6.3/5.6.3/gcc_64/lib/libQt5Xml.so.5.6.3
+src/qt/QTest: /home/yyg/Qt5.6.3/5.6.3/gcc_64/lib/libQt5OpenGL.so.5.6.3
+src/qt/QTest: /home/yyg/Qt5.6.3/5.6.3/gcc_64/lib/libQt5Widgets.so.5.6.3
+src/qt/QTest: /home/yyg/Qt5.6.3/5.6.3/gcc_64/lib/libQt5Gui.so.5.6.3
+src/qt/QTest: /home/yyg/Qt5.6.3/5.6.3/gcc_64/lib/libQt5Core.so.5.6.3
+src/qt/QTest: /usr/lib/x86_64-linux-gnu/libGL.so
+src/qt/QTest: /usr/lib/x86_64-linux-gnu/libGLU.so
+src/qt/QTest: src/qt/utils/libutils.so
+src/qt/QTest: src/groundRemove/libbin.so
+src/qt/QTest: src/groundRemove/libsegment.so
 src/qt/QTest: /usr/local/lib/libopencv_dnn.so.3.4.1
 src/qt/QTest: /usr/local/lib/libopencv_ml.so.3.4.1
 src/qt/QTest: /usr/local/lib/libopencv_objdetect.so.3.4.1
@@ -102,22 +114,11 @@ src/qt/QTest: /usr/local/lib/libopencv_imgcodecs.so.3.4.1
 src/qt/QTest: /usr/local/lib/libopencv_imgproc.so.3.4.1
 src/qt/QTest: /usr/local/lib/libopencv_viz.so.3.4.1
 src/qt/QTest: /usr/local/lib/libopencv_core.so.3.4.1
-src/qt/QTest: /usr/lib/x86_64-linux-gnu/libQGLViewer.so
-src/qt/QTest: /home/yyg/Qt5.6.3/5.6.3/gcc_64/lib/libQt5Xml.so.5.6.3
-src/qt/QTest: /home/yyg/Qt5.6.3/5.6.3/gcc_64/lib/libQt5OpenGL.so.5.6.3
-src/qt/QTest: /home/yyg/Qt5.6.3/5.6.3/gcc_64/lib/libQt5Widgets.so.5.6.3
-src/qt/QTest: /home/yyg/Qt5.6.3/5.6.3/gcc_64/lib/libQt5Gui.so.5.6.3
-src/qt/QTest: /home/yyg/Qt5.6.3/5.6.3/gcc_64/lib/libQt5Core.so.5.6.3
-src/qt/QTest: /usr/lib/x86_64-linux-gnu/libGL.so
-src/qt/QTest: /usr/lib/x86_64-linux-gnu/libGLU.so
-src/qt/QTest: src/qt/utils/libutils.so
+src/qt/QTest: src/groundRemove/libcloud.so
 src/qt/QTest: /usr/lib/x86_64-linux-gnu/libboost_system.so
 src/qt/QTest: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
 src/qt/QTest: /usr/lib/x86_64-linux-gnu/libboost_regex.so
 src/qt/QTest: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
-src/qt/QTest: src/groundRemove/libbin.so
-src/qt/QTest: src/groundRemove/libsegment.so
-src/qt/QTest: src/groundRemove/libcloud.so
 src/qt/QTest: src/qt/CMakeFiles/QTest.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable QTest"
 	cd /home/yyg/code/lidarCode/build/src/qt && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/QTest.dir/link.txt --verbose=$(VERBOSE)

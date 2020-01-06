@@ -3,6 +3,7 @@
 
 src/qt/drawables/CMakeFiles/drawable.dir/drawable_cloud.cpp.o
  ../src/groundRemove/include/cloud.h
+ ../src/groundRemove/include/param.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtCore/QObject
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtCore/QScopedPointer
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtCore/qalgorithms.h

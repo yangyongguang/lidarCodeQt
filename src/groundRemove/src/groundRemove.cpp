@@ -309,11 +309,11 @@ void GroundSegmentation::applayMedianFilter()
         for (int binIdx = 1; binIdx < params_.n_bins - 1; ++binIdx)
         {
             // printf("%d, %d\n", segIdx, binIdx);
-            if (segments_[segIdx][binIdx + 1].isThisGround()&&
-                segments_[segIdx][binIdx - 1].isThisGround() &&
-                segments_[segIdx + 1][binIdx].isThisGround() &&
-                segments_[segIdx - 1][binIdx].isThisGround())
-            {
+            // if (segments_[segIdx][binIdx + 1].isThisGround()&&
+            //     segments_[segIdx][binIdx - 1].isThisGround() &&
+            //     segments_[segIdx + 1][binIdx].isThisGround() &&
+            //     segments_[segIdx - 1][binIdx].isThisGround())
+            // {
                     std::vector<double> sur{segments_[segIdx][binIdx + 1].getHeight(),
                                             segments_[segIdx][binIdx + 1].getHeight(),
                                             segments_[segIdx + 1][binIdx].getHeight(),
@@ -325,10 +325,38 @@ void GroundSegmentation::applayMedianFilter()
                     segments_[segIdx][binIdx].updateHeight(median);
                     // 将其设置为 地面点 跟新其高度， 如果条件成熟的话
                     segments_[segIdx][binIdx].updateGround();
+            // }                
+        }
+    }
+}
+
+void GroundSegmentation::applayMedianFilterMinZ()
+{
+    for (int segIdx = 1; segIdx < params_.n_segments - 1; ++segIdx)
+    {
+        for (int binIdx = 1; binIdx < params_.n_bins - 1; ++binIdx)
+        {
+            // printf("%d, %d\n", segIdx, binIdx);
+            if (segments_[segIdx][binIdx + 1].isThisGround()&&
+                segments_[segIdx][binIdx - 1].isThisGround() &&
+                segments_[segIdx + 1][binIdx].isThisGround() &&
+                segments_[segIdx - 1][binIdx].isThisGround())
+            {
+                    std::vector<double> sur{segments_[segIdx][binIdx + 1].getMinZ(),
+                                            segments_[segIdx][binIdx + 1].getMinZ(),
+                                            segments_[segIdx + 1][binIdx].getMinZ(),
+                                            segments_[segIdx - 1][binIdx].getMinZ()};
+                    std::sort(sur.begin(), sur.end());
+                    double m1 = sur[1];
+                    double m2 = sur[2];
+                    double median = (m1 + m2) / 2;
+                    segments_[segIdx][binIdx].updateMinZ(median);
+                    // 将其设置为 地面点 跟新其高度， 如果条件成熟
             }                
         }
     }
 }
+
 
 void GroundSegmentation::groundAndElevated(const Cloud & cloud, std::vector<int> * segmentation)
 {
@@ -425,6 +453,8 @@ void GroundSegmentation::segment(const Cloud & cloud, std::vector<int> * segment
         /////////////////////////////////////////////////// 使用 getline 的代码 ////////////////////
         /*时间超时了很多*/  
         // std::list<PointLine> lines;
+        //     fprintf(stderr, "applayMedianFilter %d\n");
+        //     applayMedianFilter();
         getLines(&lines);    
         // 可视化部分结果
         // 跟新 bin 是否是地面点， 根据是否在地面线段上

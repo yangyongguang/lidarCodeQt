@@ -512,6 +512,19 @@ gtest_main/fast:
 .PHONY : gtest_main/fast
 
 #=============================================================================
+# Target rules for targets named component_clustering
+
+# Build rule for target.
+component_clustering: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 component_clustering
+.PHONY : component_clustering
+
+# fast build rule for target.
+component_clustering/fast:
+	$(MAKE) -f src/groundRemove/CMakeFiles/component_clustering.dir/build.make src/groundRemove/CMakeFiles/component_clustering.dir/build
+.PHONY : component_clustering/fast
+
+#=============================================================================
 # Target rules for targets named cloud
 
 # Build rule for target.
@@ -680,6 +693,7 @@ help:
 	@echo "... ContinuousUpdate"
 	@echo "... gtest"
 	@echo "... gtest_main"
+	@echo "... component_clustering"
 	@echo "... cloud"
 	@echo "... segment"
 	@echo "... bin"

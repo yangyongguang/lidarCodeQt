@@ -35,6 +35,8 @@ public:
     void operator=(const point& other);
     void operator=(const Eigen::Vector3f& other);
     bool operator==(const point& other) const;
+public:
+    int classID = -1;
 private:
     Eigen::Vector3f _point;
     float _intensity;

@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_Widget_t {
-    QByteArrayData data[11];
-    char stringdata0[127];
+    QByteArrayData data[12];
+    char stringdata0[131];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,14 +37,15 @@ QT_MOC_LITERAL(4, 40, 15), // "onSliderMovedTo"
 QT_MOC_LITERAL(5, 56, 12), // "cloud_number"
 QT_MOC_LITERAL(6, 69, 7), // "onReset"
 QT_MOC_LITERAL(7, 77, 12), // "onUpdateShow"
-QT_MOC_LITERAL(8, 90, 8), // "onUpdate"
-QT_MOC_LITERAL(9, 99, 10), // "onParamSet"
-QT_MOC_LITERAL(10, 110, 16) // "onClearSelection"
+QT_MOC_LITERAL(8, 90, 3), // "num"
+QT_MOC_LITERAL(9, 94, 8), // "onUpdate"
+QT_MOC_LITERAL(10, 103, 10), // "onParamSet"
+QT_MOC_LITERAL(11, 114, 16) // "onClearSelection"
 
     },
     "Widget\0onOpenFolderToRead\0\0onPlayClouds\0"
     "onSliderMovedTo\0cloud_number\0onReset\0"
-    "onUpdateShow\0onUpdate\0onParamSet\0"
+    "onUpdateShow\0num\0onUpdate\0onParamSet\0"
     "onClearSelection"
 };
 #undef QT_MOC_LITERAL
@@ -55,7 +56,7 @@ static const uint qt_meta_data_Widget[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -63,14 +64,15 @@ static const uint qt_meta_data_Widget[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   54,    2, 0x08 /* Private */,
-       3,    0,   55,    2, 0x08 /* Private */,
-       4,    1,   56,    2, 0x08 /* Private */,
-       6,    0,   59,    2, 0x08 /* Private */,
-       7,    0,   60,    2, 0x08 /* Private */,
-       8,    0,   61,    2, 0x08 /* Private */,
-       9,    0,   62,    2, 0x08 /* Private */,
-      10,    0,   63,    2, 0x08 /* Private */,
+       1,    0,   59,    2, 0x08 /* Private */,
+       3,    0,   60,    2, 0x08 /* Private */,
+       4,    1,   61,    2, 0x08 /* Private */,
+       6,    0,   64,    2, 0x08 /* Private */,
+       7,    0,   65,    2, 0x08 /* Private */,
+       7,    1,   66,    2, 0x08 /* Private */,
+       9,    0,   69,    2, 0x08 /* Private */,
+      10,    0,   70,    2, 0x08 /* Private */,
+      11,    0,   71,    2, 0x08 /* Private */,
 
  // slots: parameters
     QMetaType::Void,
@@ -78,6 +80,7 @@ static const uint qt_meta_data_Widget[] = {
     QMetaType::Void, QMetaType::Int,    5,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, QMetaType::Int,    8,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -96,9 +99,10 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         case 2: _t->onSliderMovedTo((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 3: _t->onReset(); break;
         case 4: _t->onUpdateShow(); break;
-        case 5: _t->onUpdate(); break;
-        case 6: _t->onParamSet(); break;
-        case 7: _t->onClearSelection(); break;
+        case 5: _t->onUpdateShow((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 6: _t->onUpdate(); break;
+        case 7: _t->onParamSet(); break;
+        case 8: _t->onClearSelection(); break;
         default: ;
         }
     }
@@ -129,13 +133,13 @@ int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 9)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }

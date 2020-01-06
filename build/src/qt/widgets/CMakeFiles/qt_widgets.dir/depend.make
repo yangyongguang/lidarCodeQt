@@ -512,7 +512,9 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_base_viewer_widget.cpp.o: /usr/incl
 
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: ../src/groundRemove/include/bin.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: ../src/groundRemove/include/cloud.h
+src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: ../src/groundRemove/include/component_clustering.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: ../src/groundRemove/include/groundRemove.h
+src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: ../src/groundRemove/include/param.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: ../src/groundRemove/include/segment.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: ../src/qt/drawables/drawable.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: ../src/qt/drawables/drawable_selectable_cloud.h
@@ -668,7 +670,6 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qwidget.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: src/qt/widgets/moc_widget.cpp
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: ../src/qt/widgets/base_viewer_widget.h
-src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: ../src/qt/widgets/param.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: ../src/qt/widgets/widget.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /usr/include/eigen3/Eigen/Cholesky
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /usr/include/eigen3/Eigen/Core
@@ -937,6 +938,7 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /usr/local/include/op
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /usr/local/include/opencv2/flann/saving.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /usr/local/include/opencv2/flann/timer.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /usr/local/include/opencv2/highgui.hpp
+src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /usr/local/include/opencv2/highgui/highgui.hpp
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /usr/local/include/opencv2/highgui/highgui_c.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /usr/local/include/opencv2/imgcodecs.hpp
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h
@@ -1000,7 +1002,9 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: /usr/local/include/op
 
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: ../src/groundRemove/include/bin.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: ../src/groundRemove/include/cloud.h
+src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: ../src/groundRemove/include/component_clustering.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: ../src/groundRemove/include/groundRemove.h
+src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: ../src/groundRemove/include/param.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: ../src/groundRemove/include/segment.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: ../src/qt/drawables/drawable.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: ../src/qt/drawables/drawable_cloud.h
@@ -1161,6 +1165,7 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/g
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QApplication
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QButtonGroup
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QCheckBox
+src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QDockWidget
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QDoubleSpinBox
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QFileDialog
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QGraphicsScene
@@ -1193,6 +1198,7 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/g
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qcheckbox.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qdesktopwidget.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qdialog.h
+src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qdockwidget.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qfiledialog.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qframe.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgraphicsscene.h
@@ -1218,7 +1224,6 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/g
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qtextedit.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qwidget.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: ../src/qt/widgets/base_viewer_widget.h
-src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: ../src/qt/widgets/param.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: ../src/qt/widgets/widget.cpp
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: ../src/qt/widgets/widget.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /usr/include/eigen3/Eigen/Cholesky
@@ -1488,6 +1493,7 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /usr/local/include/opencv
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /usr/local/include/opencv2/flann/saving.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /usr/local/include/opencv2/flann/timer.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /usr/local/include/opencv2/highgui.hpp
+src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /usr/local/include/opencv2/highgui/highgui.hpp
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /usr/local/include/opencv2/highgui/highgui_c.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /usr/local/include/opencv2/imgcodecs.hpp
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h

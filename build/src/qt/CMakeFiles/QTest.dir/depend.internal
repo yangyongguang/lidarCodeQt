@@ -4,7 +4,9 @@
 src/qt/CMakeFiles/QTest.dir/main.cpp.o
  ../src/groundRemove/include/bin.h
  ../src/groundRemove/include/cloud.h
+ ../src/groundRemove/include/component_clustering.h
  ../src/groundRemove/include/groundRemove.h
+ ../src/groundRemove/include/param.h
  ../src/groundRemove/include/segment.h
  ../src/qt/drawables/drawable.h
  ../src/qt/drawables/drawable_selectable_cloud.h
@@ -12,7 +14,6 @@ src/qt/CMakeFiles/QTest.dir/main.cpp.o
  ../src/qt/utils/utils.h
  ../src/qt/viewer/viewer.h
  ../src/qt/widgets/base_viewer_widget.h
- ../src/qt/widgets/param.h
  ../src/qt/widgets/widget.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtCore/QDebug
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtCore/QObject
@@ -436,6 +437,7 @@ src/qt/CMakeFiles/QTest.dir/main.cpp.o
  /usr/local/include/opencv2/flann/saving.h
  /usr/local/include/opencv2/flann/timer.h
  /usr/local/include/opencv2/highgui.hpp
+ /usr/local/include/opencv2/highgui/highgui.hpp
  /usr/local/include/opencv2/highgui/highgui_c.h
  /usr/local/include/opencv2/imgcodecs.hpp
  /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h

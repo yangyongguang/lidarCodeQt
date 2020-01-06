@@ -16,9 +16,12 @@ set(GROUND_REMOVE_SET
     utils
     # cloud
     )
-
+find_package(Threads REQUIRED)
 add_library(groundRemove SHARED src/groundRemove.cpp)
-target_link_libraries(groundRemove ${GROUND_REMOVE_SET} cloud)
+target_link_libraries(groundRemove ${GROUND_REMOVE_SET} cloud ${Boost_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+
+add_library(component_clustering src/component_clustering.cpp)
+target_link_libraries(component_clustering ${OpenCV_LIBS} cloud ${Boost_LIBRARIES})
 
 
 

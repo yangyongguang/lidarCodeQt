@@ -32,6 +32,28 @@ Eigen/Core
 memory
 -
 
+../src/groundRemove/include/component_clustering.h
+iostream
+-
+array
+-
+atomic
+-
+vector
+-
+param.h
+../src/groundRemove/include/param.h
+thread
+-
+bin.h
+../src/groundRemove/include/bin.h
+opencv2/highgui/highgui.hpp
+-
+opencv2/opencv.hpp
+-
+cloud.h
+../src/groundRemove/include/cloud.h
+
 ../src/groundRemove/include/groundRemove.h
 Eigen/Core
 -
@@ -50,6 +72,16 @@ ostream
 mutex
 -
 algorithm
+-
+
+../src/groundRemove/include/param.h
+string
+-
+math.h
+-
+iostream
+-
+array
 -
 
 ../src/groundRemove/include/segment.h
@@ -148,19 +180,13 @@ QWidget
 viewer.h
 ../src/qt/widgets/viewer.h
 
-../src/qt/widgets/param.h
-string
--
-math.h
--
-
 ../src/qt/widgets/widget.h
 QWidget
 -
 iostream
 -
-param.h
-../src/qt/widgets/param.h
+groundRemove/include/param.h
+../src/qt/widgets/groundRemove/include/param.h
 QColor
 -
 QDebug
@@ -187,6 +213,8 @@ base_viewer_widget.h
 ../src/qt/widgets/base_viewer_widget.h
 groundRemove/include/groundRemove.h
 ../src/qt/widgets/groundRemove/include/groundRemove.h
+groundRemove/include/component_clustering.h
+../src/qt/widgets/groundRemove/include/component_clustering.h
 QTextEdit
 -
 QGraphicsView
@@ -3427,6 +3455,10 @@ opencv2/videoio.hpp
 /usr/local/include/opencv2/opencv2/videoio.hpp
 opencv2/highgui/highgui_c.h
 /usr/local/include/opencv2/opencv2/highgui/highgui_c.h
+
+/usr/local/include/opencv2/highgui/highgui.hpp
+opencv2/highgui.hpp
+/usr/local/include/opencv2/highgui/opencv2/highgui.hpp
 
 /usr/local/include/opencv2/highgui/highgui_c.h
 opencv2/core/core_c.h

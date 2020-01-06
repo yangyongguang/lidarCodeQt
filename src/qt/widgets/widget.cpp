@@ -37,6 +37,7 @@ Widget::Widget(QWidget *parent):
 
     connect(ui->paramDSB, SIGNAL(valueChanged(double)), this, SLOT(onParamSet()));
     connect(ui->clearSelectionPB, SIGNAL(released()), this, SLOT(onClearSelection()));
+    connect(ui->girdNumSB, SIGNAL(valueChanged(int)), this, SLOT(onUpdateShow(int)));
     // connect(ui->infoTab->curr
     // auto it = ui->infoTab->widget(0)->findChild<QRadioButton>("groundRB");
 
@@ -47,7 +48,10 @@ Widget::Widget(QWidget *parent):
     infoTextEdit->setReadOnly(true);
     infoTextEdit->document()->setMaximumBlockCount(200);
 
+    
+    // ui->CloudViewer->setBackgroundColor(QColor(1.0f, 1.0f, 1.0f));    
     _viewer = ui->CloudViewer;
+    // fprintf(stderr, "_viewer = ui->CloudViewer;\n");
     _viewer->installEventFilter(this);
     _viewer->setAutoFillBackground(true);
 
@@ -67,8 +71,8 @@ Widget::Widget(QWidget *parent):
     ui->infoTab->setCurrentIndex(0);
     // 
     ui->cloudCB->setChecked(false);
-    ui->groundCB->setChecked(true);
-    ui->obstacleCB->setChecked(true);
+    ui->groundCB->setChecked(false);
+    ui->obstacleCB->setChecked(false);
     ui->insertCB->setChecked(false);
     ui->lineCB->setChecked(false); 
     ui->updatePB->setEnabled(false);
@@ -86,7 +90,13 @@ Widget::Widget(QWidget *parent):
     //
     ui->showImageGV->setStyleSheet("padding:0px;border:0px");
 
-    
+    // 创建图像显示窗口
+    cv::namedWindow("clusterImageShow", cv::WINDOW_NORMAL);
+
+    ui->girdNumSB->setValue(200);
+    ui->girdNumSB->setSingleStep(10);
+    ui->girdNumSB->setRange(10, 1000);
+
 }
 
 Widget::~Widget()
@@ -233,11 +243,28 @@ void Widget::onSliderMovedTo(int cloud_number)
     
     groundRemove.scanCallBack(*_cloud, *ground_cloud, *obstacle_cloud);
     // fprintf(stderr, "------------------------------->>>>>>>>>>>>>>>\n");
+
+    // 聚类 ------------------------------------------------------
+    int numGrid = ui->girdNumSB->value();
+    int roiM = 100, numCluster = 0, kernelSize = 3;
+    cluster cluster(roiM, numGrid, numCluster, kernelSize, *obstacle_cloud,  _params);
+    cluster.componentClustering();
+
+    // depth_clustering -----------------------------------------
+    depth_clustering depthCluster(*_cloud);
+    depthCluster.createDepthImage();
+    cv::Mat depthImage = depthCluster.getDepthMat();
+    
+
     // 添加点云显示
     _viewer->Clear();
     GLfloat pointSize(1.8);
     Cloud::Ptr insertCloud(new Cloud);
-
+    cv::Mat visClusterImg;    
+    cluster.getClusterImg(visClusterImg);
+    cv::imshow("clusterImageShow", visClusterImg);
+    cluster.makeClusteredCloud(*obstacle_cloud);
+    // fprintf(stderr, "numClister :%d\n", cluster.getNumCluster());
     _viewer->drawSelectableCloud = DrawSelectAbleCloud(_cloud);
     if (ui->cloudCB->isChecked())
     {
@@ -261,6 +288,12 @@ void Widget::onSliderMovedTo(int cloud_number)
         _viewer->AddDrawable(DrawableCloud::FromCloud(obstacle_cloud, color, pointSize));
     }
 
+    if (ui->clusterCB->isChecked())
+    {
+        Eigen::Vector3f color;
+        color << 0.5, 0.5, 0.3;
+        _viewer->AddDrawable(DrawableCloud::FromCloud(obstacle_cloud, color, pointSize, cluster.getNumCluster()));
+    }
     // 是否显示插入点
     if (ui->insertCB->isChecked())
     {
@@ -303,6 +336,7 @@ void Widget::moveCursorToEnd()
     infoTextEdit->append("---------------------------------------------------");
 }
 
+
 void Widget::onUpdateShow()
 {
     // if (ui->obstacleCB->isChecked() || ui->groundCB->isChecked())
@@ -325,10 +359,16 @@ void Widget::onUpdateShow()
     }
 }
 
+void Widget::onUpdateShow(int num)
+{
+    onSliderMovedTo(curr_data_idx);
+}
+
 void Widget::onUpdate()
 {
     onSliderMovedTo(curr_data_idx);
 }
+
 
 void Widget::onParamSet()
 {
@@ -352,7 +392,7 @@ void Widget::onParamSet()
         case (11): params_groundRemove.n_segments = paramValue;                 break; 
         // case (12):
         case (13):params_groundRemove.max_dist_to_line = paramValue;            break; 
-        // case (14):
+        case (14):params_groundRemove.visualize = paramValue;                   break;
         case (15): params_groundRemove.max_error_square = paramValue;           break; 
         case (16): params_groundRemove.long_threshold = paramValue;             break; 
         case (17): params_groundRemove.max_long_height = paramValue;            break; 
@@ -367,9 +407,6 @@ void Widget::onParamSet()
         default:
             break;
     }
-
-    fprintf(stderr, "params_groundRemove.line_search_angle %f", params_groundRemove.line_search_angle);
-    fprintf(stderr, "params_groundRemove.max_slope %d", params_groundRemove.max_slope);
     // update show
     onUpdate();
 }

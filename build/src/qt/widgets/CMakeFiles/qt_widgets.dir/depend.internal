@@ -513,7 +513,9 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_base_viewer_widget.cpp.o
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o
  ../src/groundRemove/include/bin.h
  ../src/groundRemove/include/cloud.h
+ ../src/groundRemove/include/component_clustering.h
  ../src/groundRemove/include/groundRemove.h
+ ../src/groundRemove/include/param.h
  ../src/groundRemove/include/segment.h
  ../src/qt/drawables/drawable.h
  ../src/qt/drawables/drawable_selectable_cloud.h
@@ -669,7 +671,6 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qwidget.h
  /home/yyg/code/lidarCode/build/src/qt/widgets/moc_widget.cpp
  /home/yyg/code/lidarCode/src/qt/widgets/base_viewer_widget.h
- /home/yyg/code/lidarCode/src/qt/widgets/param.h
  /home/yyg/code/lidarCode/src/qt/widgets/widget.h
  /usr/include/eigen3/Eigen/Cholesky
  /usr/include/eigen3/Eigen/Core
@@ -938,6 +939,7 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o
  /usr/local/include/opencv2/flann/saving.h
  /usr/local/include/opencv2/flann/timer.h
  /usr/local/include/opencv2/highgui.hpp
+ /usr/local/include/opencv2/highgui/highgui.hpp
  /usr/local/include/opencv2/highgui/highgui_c.h
  /usr/local/include/opencv2/imgcodecs.hpp
  /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h
@@ -1001,7 +1003,9 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o
 src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o
  ../src/groundRemove/include/bin.h
  ../src/groundRemove/include/cloud.h
+ ../src/groundRemove/include/component_clustering.h
  ../src/groundRemove/include/groundRemove.h
+ ../src/groundRemove/include/param.h
  ../src/groundRemove/include/segment.h
  ../src/qt/drawables/drawable.h
  ../src/qt/drawables/drawable_cloud.h
@@ -1162,6 +1166,7 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QApplication
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QButtonGroup
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QCheckBox
+ /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QDockWidget
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QDoubleSpinBox
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QFileDialog
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QGraphicsScene
@@ -1194,6 +1199,7 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qcheckbox.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qdesktopwidget.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qdialog.h
+ /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qdockwidget.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qfiledialog.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qframe.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgraphicsscene.h
@@ -1219,7 +1225,6 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qtextedit.h
  /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qwidget.h
  /home/yyg/code/lidarCode/src/qt/widgets/base_viewer_widget.h
- /home/yyg/code/lidarCode/src/qt/widgets/param.h
  /home/yyg/code/lidarCode/src/qt/widgets/widget.cpp
  /home/yyg/code/lidarCode/src/qt/widgets/widget.h
  /usr/include/eigen3/Eigen/Cholesky
@@ -1489,6 +1494,7 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o
  /usr/local/include/opencv2/flann/saving.h
  /usr/local/include/opencv2/flann/timer.h
  /usr/local/include/opencv2/highgui.hpp
+ /usr/local/include/opencv2/highgui/highgui.hpp
  /usr/local/include/opencv2/highgui/highgui_c.h
  /usr/local/include/opencv2/imgcodecs.hpp
  /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h

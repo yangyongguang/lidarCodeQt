@@ -40,6 +40,7 @@
 /home/yyg/code/lidarCode/build/src/groundRemove/CMakeFiles/rebuild_cache.dir
 /home/yyg/code/lidarCode/build/src/groundRemove/CMakeFiles/edit_cache.dir
 /home/yyg/code/lidarCode/build/src/groundRemove/CMakeFiles/test.dir
+/home/yyg/code/lidarCode/build/src/groundRemove/CMakeFiles/component_clustering.dir
 /home/yyg/code/lidarCode/build/src/groundRemove/CMakeFiles/cloud.dir
 /home/yyg/code/lidarCode/build/src/groundRemove/CMakeFiles/segment.dir
 /home/yyg/code/lidarCode/build/src/groundRemove/CMakeFiles/bin.dir

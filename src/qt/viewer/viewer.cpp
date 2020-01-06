@@ -195,13 +195,20 @@ void Viewer::removeIdFromSelection(int id)
 }
 
 void Viewer::init()
-{
+{    
+    // glClearColor(1.0f,1.0f,1.0f,1.0f);
+    // glClear(GL_COLOR_BUFFER_BIT);
     // fprintf(stderr, "Viewer::init()\n");
+
     setSceneRadius(100.0);
-    setBackgroundColor(QColor(1, 1, 1));
+    // setBackgroundColor(QColor(0, 0, 0));
+    // setBackgroundColor(QColor(1, 1, 1));
+    // fprintf(stderr, "setBackgroundColor(QColor(1, 1, 1));\n");
     camera()->showEntireScene();
     glDisable(GL_LIGHTING);
     glBlendFunc(GL_ONE, GL_ONE);
+    // setBackgroundColor(QColor(0.0f, 0.0f, 0.0f));
+    // setForegroundColor(QColor(1.0f, 1.0f, 1.0f));
 }
 
 void Viewer::addIdToSelection(int id) 

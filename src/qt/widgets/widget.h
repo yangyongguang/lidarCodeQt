@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <iostream>
-#include "param.h"
+#include "groundRemove/include/param.h"
 #include <QColor>
 #include <QDebug>
 #include <QImage>
@@ -22,6 +22,8 @@
 
 // groundRemove 的代码
 #include "groundRemove/include/groundRemove.h"
+#include "groundRemove/include/component_clustering.h"
+
 #include <QTextEdit>
 
 #include <QGraphicsView>
@@ -71,6 +73,7 @@ private slots:
 
     // 重新显示， 当改变形式的时候
     void onUpdateShow();
+    void onUpdateShow(int num);
     void onUpdate();
 
     // 改变参数类型， 为了调整参数
@@ -78,6 +81,7 @@ private slots:
 
     // 清除选择的 ID
     void onClearSelection();
+
 private:
     // Ui::Widget *ui;
     std::unique_ptr<Ui::Widget> ui;
@@ -102,6 +106,9 @@ private:
 
     // 显示图像
     std::unique_ptr<QGraphicsScene> _scene = nullptr;
+
+
+    // 新建一个窗口试试
 };
 
 #endif // WIDGET_H

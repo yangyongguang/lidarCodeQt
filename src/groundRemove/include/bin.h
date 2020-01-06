@@ -55,6 +55,7 @@ public:
     // inline double getMinD(){double minD = min_z_range;return min_z_range;}
     inline double getMinD(){return min_z_range;}
     inline void updateHeight(const double & z){height = z;}
+    inline void updateMinZ(const double & z){min_z = z;}
     inline void updateSmoothed(const double & s){smoothed = s;}
     inline void updateSmoothedZ(const double & s){min_z = s;}
     inline double getHeight(){return height;}

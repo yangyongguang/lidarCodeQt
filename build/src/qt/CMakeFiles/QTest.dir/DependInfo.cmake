@@ -44,6 +44,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/home/yyg/code/lidarCode/build/src/qt/widgets/CMakeFiles/qt_widgets.dir/DependInfo.cmake"
   "/home/yyg/code/lidarCode/build/src/groundRemove/CMakeFiles/groundRemove.dir/DependInfo.cmake"
+  "/home/yyg/code/lidarCode/build/src/groundRemove/CMakeFiles/component_clustering.dir/DependInfo.cmake"
   "/home/yyg/code/lidarCode/build/src/qt/viewer/CMakeFiles/viewer.dir/DependInfo.cmake"
   "/home/yyg/code/lidarCode/build/src/qt/utils/CMakeFiles/object.dir/DependInfo.cmake"
   "/home/yyg/code/lidarCode/build/src/qt/drawables/CMakeFiles/drawable.dir/DependInfo.cmake"

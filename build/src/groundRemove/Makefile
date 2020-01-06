@@ -122,6 +122,21 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+src/groundRemove/CMakeFiles/component_clustering.dir/rule:
+	cd /home/yyg/code/lidarCode/build && $(MAKE) -f CMakeFiles/Makefile2 src/groundRemove/CMakeFiles/component_clustering.dir/rule
+.PHONY : src/groundRemove/CMakeFiles/component_clustering.dir/rule
+
+# Convenience name for target.
+component_clustering: src/groundRemove/CMakeFiles/component_clustering.dir/rule
+
+.PHONY : component_clustering
+
+# fast build rule for target.
+component_clustering/fast:
+	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/groundRemove/CMakeFiles/component_clustering.dir/build.make src/groundRemove/CMakeFiles/component_clustering.dir/build
+.PHONY : component_clustering/fast
+
+# Convenience name for target.
 src/groundRemove/CMakeFiles/cloud.dir/rule:
 	cd /home/yyg/code/lidarCode/build && $(MAKE) -f CMakeFiles/Makefile2 src/groundRemove/CMakeFiles/cloud.dir/rule
 .PHONY : src/groundRemove/CMakeFiles/cloud.dir/rule
@@ -235,6 +250,33 @@ src/cloud.cpp.s:
 	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/groundRemove/CMakeFiles/cloud.dir/build.make src/groundRemove/CMakeFiles/cloud.dir/src/cloud.cpp.s
 .PHONY : src/cloud.cpp.s
 
+src/component_clustering.o: src/component_clustering.cpp.o
+
+.PHONY : src/component_clustering.o
+
+# target to build an object file
+src/component_clustering.cpp.o:
+	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/groundRemove/CMakeFiles/component_clustering.dir/build.make src/groundRemove/CMakeFiles/component_clustering.dir/src/component_clustering.cpp.o
+.PHONY : src/component_clustering.cpp.o
+
+src/component_clustering.i: src/component_clustering.cpp.i
+
+.PHONY : src/component_clustering.i
+
+# target to preprocess a source file
+src/component_clustering.cpp.i:
+	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/groundRemove/CMakeFiles/component_clustering.dir/build.make src/groundRemove/CMakeFiles/component_clustering.dir/src/component_clustering.cpp.i
+.PHONY : src/component_clustering.cpp.i
+
+src/component_clustering.s: src/component_clustering.cpp.s
+
+.PHONY : src/component_clustering.s
+
+# target to generate assembly for a file
+src/component_clustering.cpp.s:
+	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/groundRemove/CMakeFiles/component_clustering.dir/build.make src/groundRemove/CMakeFiles/component_clustering.dir/src/component_clustering.cpp.s
+.PHONY : src/component_clustering.cpp.s
+
 src/groundRemove.o: src/groundRemove.cpp.o
 
 .PHONY : src/groundRemove.o
@@ -298,6 +340,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
+	@echo "... component_clustering"
 	@echo "... cloud"
 	@echo "... segment"
 	@echo "... bin"
@@ -308,6 +351,9 @@ help:
 	@echo "... src/cloud.o"
 	@echo "... src/cloud.i"
 	@echo "... src/cloud.s"
+	@echo "... src/component_clustering.o"
+	@echo "... src/component_clustering.i"
+	@echo "... src/component_clustering.s"
 	@echo "... src/groundRemove.o"
 	@echo "... src/groundRemove.i"
 	@echo "... src/groundRemove.s"

@@ -3,7 +3,9 @@
 
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: ../src/groundRemove/include/bin.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: ../src/groundRemove/include/cloud.h
+src/qt/CMakeFiles/QTest.dir/main.cpp.o: ../src/groundRemove/include/component_clustering.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: ../src/groundRemove/include/groundRemove.h
+src/qt/CMakeFiles/QTest.dir/main.cpp.o: ../src/groundRemove/include/param.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: ../src/groundRemove/include/segment.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: ../src/qt/drawables/drawable.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: ../src/qt/drawables/drawable_selectable_cloud.h
@@ -11,7 +13,6 @@ src/qt/CMakeFiles/QTest.dir/main.cpp.o: ../src/qt/utils/object.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: ../src/qt/utils/utils.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: ../src/qt/viewer/viewer.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: ../src/qt/widgets/base_viewer_widget.h
-src/qt/CMakeFiles/QTest.dir/main.cpp.o: ../src/qt/widgets/param.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: ../src/qt/widgets/widget.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtCore/QDebug
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtCore/QObject
@@ -435,6 +436,7 @@ src/qt/CMakeFiles/QTest.dir/main.cpp.o: /usr/local/include/opencv2/flann/samplin
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /usr/local/include/opencv2/flann/saving.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /usr/local/include/opencv2/flann/timer.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /usr/local/include/opencv2/highgui.hpp
+src/qt/CMakeFiles/QTest.dir/main.cpp.o: /usr/local/include/opencv2/highgui/highgui.hpp
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /usr/local/include/opencv2/highgui/highgui_c.h
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /usr/local/include/opencv2/imgcodecs.hpp
 src/qt/CMakeFiles/QTest.dir/main.cpp.o: /usr/local/include/opencv2/imgcodecs/imgcodecs_c.h
