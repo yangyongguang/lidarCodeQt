@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1399</width>
-    <height>1020</height>
+    <width>963</width>
+    <height>676</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -103,7 +103,7 @@
           </font>
          </property>
          <property name="currentIndex">
-          <number>2</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="choose">
           <property name="locale">
@@ -454,39 +454,6 @@ applayMedianFilterMinZ(0)                         26</string>
           <attribute name="title">
            <string>页</string>
           </attribute>
-          <widget class="QDockWidget" name="dockWidget">
-           <property name="geometry">
-            <rect>
-             <x>50</x>
-             <y>20</y>
-             <width>191</width>
-             <height>111</height>
-            </rect>
-           </property>
-           <widget class="QWidget" name="dockWidgetContents"/>
-          </widget>
-          <widget class="QDockWidget" name="dockWidget_2">
-           <property name="geometry">
-            <rect>
-             <x>70</x>
-             <y>170</y>
-             <width>161</width>
-             <height>111</height>
-            </rect>
-           </property>
-           <widget class="QWidget" name="dockWidgetContents_2"/>
-          </widget>
-          <widget class="QDockWidget" name="dockWidget_3">
-           <property name="geometry">
-            <rect>
-             <x>60</x>
-             <y>340</y>
-             <width>181</width>
-             <height>121</height>
-            </rect>
-           </property>
-           <widget class="QWidget" name="dockWidgetContents_3"/>
-          </widget>
          </widget>
         </widget>
        </item>

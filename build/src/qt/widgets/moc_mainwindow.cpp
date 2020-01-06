@@ -1,16 +1,16 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'widget.h'
+** Meta object code from reading C++ file 'mainwindow.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.6.3)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../../../src/qt/widgets/widget.h"
+#include "../../../../src/qt/widgets/mainwindow.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'widget.h' doesn't include <QObject>."
+#error "The header file 'mainwindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.6.3. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -18,39 +18,39 @@
 #endif
 
 QT_BEGIN_MOC_NAMESPACE
-struct qt_meta_stringdata_Widget_t {
+struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[12];
-    char stringdata0[131];
+    char stringdata0[135];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_Widget_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_MainWindow_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_Widget_t qt_meta_stringdata_Widget = {
+static const qt_meta_stringdata_MainWindow_t qt_meta_stringdata_MainWindow = {
     {
-QT_MOC_LITERAL(0, 0, 6), // "Widget"
-QT_MOC_LITERAL(1, 7, 18), // "onOpenFolderToRead"
-QT_MOC_LITERAL(2, 26, 0), // ""
-QT_MOC_LITERAL(3, 27, 12), // "onPlayClouds"
-QT_MOC_LITERAL(4, 40, 15), // "onSliderMovedTo"
-QT_MOC_LITERAL(5, 56, 12), // "cloud_number"
-QT_MOC_LITERAL(6, 69, 7), // "onReset"
-QT_MOC_LITERAL(7, 77, 12), // "onUpdateShow"
-QT_MOC_LITERAL(8, 90, 3), // "num"
-QT_MOC_LITERAL(9, 94, 8), // "onUpdate"
-QT_MOC_LITERAL(10, 103, 10), // "onParamSet"
-QT_MOC_LITERAL(11, 114, 16) // "onClearSelection"
+QT_MOC_LITERAL(0, 0, 10), // "MainWindow"
+QT_MOC_LITERAL(1, 11, 18), // "onOpenFolderToRead"
+QT_MOC_LITERAL(2, 30, 0), // ""
+QT_MOC_LITERAL(3, 31, 12), // "onPlayClouds"
+QT_MOC_LITERAL(4, 44, 15), // "onSliderMovedTo"
+QT_MOC_LITERAL(5, 60, 12), // "cloud_number"
+QT_MOC_LITERAL(6, 73, 7), // "onReset"
+QT_MOC_LITERAL(7, 81, 12), // "onUpdateShow"
+QT_MOC_LITERAL(8, 94, 3), // "num"
+QT_MOC_LITERAL(9, 98, 8), // "onUpdate"
+QT_MOC_LITERAL(10, 107, 10), // "onParamSet"
+QT_MOC_LITERAL(11, 118, 16) // "onClearSelection"
 
     },
-    "Widget\0onOpenFolderToRead\0\0onPlayClouds\0"
-    "onSliderMovedTo\0cloud_number\0onReset\0"
-    "onUpdateShow\0num\0onUpdate\0onParamSet\0"
-    "onClearSelection"
+    "MainWindow\0onOpenFolderToRead\0\0"
+    "onPlayClouds\0onSliderMovedTo\0cloud_number\0"
+    "onReset\0onUpdateShow\0num\0onUpdate\0"
+    "onParamSet\0onClearSelection"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_Widget[] = {
+static const uint qt_meta_data_MainWindow[] = {
 
  // content:
        7,       // revision
@@ -88,10 +88,10 @@ static const uint qt_meta_data_Widget[] = {
        0        // eod
 };
 
-void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        Widget *_t = static_cast<Widget *>(_o);
+        MainWindow *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->onOpenFolderToRead(); break;
@@ -108,26 +108,26 @@ void Widget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
     }
 }
 
-const QMetaObject Widget::staticMetaObject = {
-    { &BaseViewerWidget::staticMetaObject, qt_meta_stringdata_Widget.data,
-      qt_meta_data_Widget,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+const QMetaObject MainWindow::staticMetaObject = {
+    { &BaseViewerWidget::staticMetaObject, qt_meta_stringdata_MainWindow.data,
+      qt_meta_data_MainWindow,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
-const QMetaObject *Widget::metaObject() const
+const QMetaObject *MainWindow::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *Widget::qt_metacast(const char *_clname)
+void *MainWindow::qt_metacast(const char *_clname)
 {
     if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_Widget.stringdata0))
-        return static_cast<void*>(const_cast< Widget*>(this));
+    if (!strcmp(_clname, qt_meta_stringdata_MainWindow.stringdata0))
+        return static_cast<void*>(const_cast< MainWindow*>(this));
     return BaseViewerWidget::qt_metacast(_clname);
 }
 
-int Widget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = BaseViewerWidget::qt_metacall(_c, _id, _a);
     if (_id < 0)

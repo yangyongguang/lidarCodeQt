@@ -1660,6 +1660,10 @@ qheaderview.h
 qlabel.h
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qlabel.h
 
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QMainWindow
+qmainwindow.h
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qmainwindow.h
+
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QOpenGLWidget
 qopenglwidget.h
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qopenglwidget.h
@@ -1888,6 +1892,12 @@ QtCore/qrect.h
 limits.h
 -
 
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qmainwindow.h
+QtWidgets/qwidget.h
+-
+QtWidgets/qtabwidget.h
+-
+
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qopenglwidget.h
 QtCore/qglobal.h
 -
@@ -2035,16 +2045,16 @@ QtGui/qevent.h
 -
 
 /home/yyg/code/lidarCode/src/qt/widgets/base_viewer_widget.h
-QWidget
+QMainWindow
 -
 viewer.h
 /home/yyg/code/lidarCode/src/qt/widgets/viewer.h
 
-/home/yyg/code/lidarCode/src/qt/widgets/widget.cpp
-widget.h
-/home/yyg/code/lidarCode/src/qt/widgets/widget.h
-ui_widget.h
-/home/yyg/code/lidarCode/src/qt/widgets/ui_widget.h
+/home/yyg/code/lidarCode/src/qt/widgets/mainwindow.cpp
+mainwindow.h
+/home/yyg/code/lidarCode/src/qt/widgets/mainwindow.h
+ui_mainwindow.h
+/home/yyg/code/lidarCode/src/qt/widgets/ui_mainwindow.h
 drawable_cloud.h
 /home/yyg/code/lidarCode/src/qt/widgets/drawable_cloud.h
 drawable_line.h
@@ -2065,9 +2075,13 @@ QUuid
 -
 QRadioButton
 -
+QLabel
+-
 
-/home/yyg/code/lidarCode/src/qt/widgets/widget.h
+/home/yyg/code/lidarCode/src/qt/widgets/mainwindow.h
 QWidget
+-
+QMainWindow
 -
 iostream
 -
@@ -2116,6 +2130,10 @@ opencv2/opencv.hpp
 opencv2/highgui.hpp
 -
 opencv2/imgproc.hpp
+-
+QLabel
+-
+QDockWidget
 -
 
 /usr/include/eigen3/Eigen/Cholesky
@@ -4426,7 +4444,7 @@ opencv2/viz/viz3d.hpp
 opencv2/viz/types.hpp
 -
 
-src/qt/widgets/ui_widget.h
+src/qt/widgets/ui_mainwindow.h
 QtCore/QLocale
 -
 QtCore/QVariant
@@ -4439,17 +4457,15 @@ QtWidgets/QButtonGroup
 -
 QtWidgets/QCheckBox
 -
-QtWidgets/QDockWidget
--
 QtWidgets/QDoubleSpinBox
--
-QtWidgets/QGraphicsView
 -
 QtWidgets/QHBoxLayout
 -
 QtWidgets/QHeaderView
 -
 QtWidgets/QLabel
+-
+QtWidgets/QMainWindow
 -
 QtWidgets/QPlainTextEdit
 -

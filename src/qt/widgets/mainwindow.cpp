@@ -1,5 +1,6 @@
-#include "widget.h"
-#include "ui_widget.h"
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+
 #include "drawable_cloud.h"
 #include "drawable_line.h"
 #include "drawable_selectable_cloud.h"
@@ -11,11 +12,12 @@
 #include <QPixmap>
 #include <QUuid>
 #include <QRadioButton>
+#include <QLabel>
 
-Widget::Widget(QWidget *parent):
+MainWindow::MainWindow(QWidget *parent):
     // QWidget(parent),
     BaseViewerWidget(parent),
-    ui(new Ui::Widget)
+    ui(new Ui::MainWindow)
     // ui(new Ui::OpenGlFolderPlayer)
 {
     infoTextEdit = new QTextEdit;
@@ -87,25 +89,51 @@ Widget::Widget(QWidget *parent):
     ui->dataSeqSB->setValue(13);
     ui->dataSeqSB->setRange(0, 21);
 
-    //
-    ui->showImageGV->setStyleSheet("padding:0px;border:0px");
-
     // 创建图像显示窗口
-    cv::namedWindow("clusterImageShow", cv::WINDOW_NORMAL);
-
-    ui->girdNumSB->setValue(200);
+    ui->girdNumSB->setValue(400);
     ui->girdNumSB->setSingleStep(10);
     ui->girdNumSB->setRange(10, 1000);
 
+    // int showImageGV_x = (ui->CloudViewer->width() - ui->showImageGV->width()) / 2;
+    // ui->showImageGV->move(showImageGV_x, 0);
+    // _graphView.reset(new QGraphicsView);
+    //     //
+    // _graphView->setStyleSheet("padding:0px;border:0px");
+    dock_Image = new QDockWidget(tr("Image"), this);
+    addDockWidget(Qt::TopDockWidgetArea,dock_Image);
+    dock_Image->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetFloatable);
+    dock_Image->setAllowedAreas(Qt::AllDockWidgetAreas);
+    imgLabel = new QLabel(dock_Image);
+    imgLabel->setScaledContents(true);
+    dock_Image->setFloating(true);
+
+    dock_cluster_image = new QDockWidget(tr("Imagecluster"), this);
+    addDockWidget(Qt::TopDockWidgetArea,dock_cluster_image);
+    dock_cluster_image->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetFloatable);
+    dock_cluster_image->setAllowedAreas(Qt::AllDockWidgetAreas);
+    cluster_image = new QLabel(dock_cluster_image);
+    cluster_image->setScaledContents(true);
+    dock_cluster_image->setFloating(true);
+
+    dock_depth_image = new QDockWidget(tr("ImageDepth"), this);
+    addDockWidget(Qt::TopDockWidgetArea, dock_depth_image);
+    dock_depth_image->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetFloatable);
+    dock_depth_image->setAllowedAreas(Qt::AllDockWidgetAreas);
+    depth_image = new QLabel(dock_depth_image);
+    depth_image->setScaledContents(true);
+    dock_depth_image->setFloating(true);
+
 }
 
-Widget::~Widget()
+MainWindow::~MainWindow()
 {
     // delete ui;
     delete infoTextEdit;
+    delete dock_Image;
+    delete imgLabel;
 }
 
-void Widget::keyPressEvent(QKeyEvent *event) {
+void MainWindow::keyPressEvent(QKeyEvent *event) {
   switch (event->key()) {
     case Qt::Key_Right:
       ui->DataIdxSBox->setValue(ui->DataIdxSBox->value() + 1);
@@ -116,7 +144,7 @@ void Widget::keyPressEvent(QKeyEvent *event) {
   }
 }
 
-void Widget::onOpenFolderToRead()
+void MainWindow::onOpenFolderToRead()
 {
     int dataSeq = ui->dataSeqSB->value();
     std::string kitti_img_dir = 
@@ -165,7 +193,7 @@ void Widget::onOpenFolderToRead()
 // onPlayClouds 函数会改变 VSlider 的值， 所以会触发控件对应的槽函数 onSliderMovedTo 
 // 所以在这个函数里面读取点云 并且显示即可
 
-void Widget::onPlayClouds()
+void MainWindow::onPlayClouds()
 {
     if (this->playCloud == false)
     {
@@ -188,7 +216,7 @@ void Widget::onPlayClouds()
     }
 }
 
-void Widget::onReset()
+void MainWindow::onReset()
 {
     ui->resetBT->setEnabled(false);
     curr_data_idx = 0;
@@ -196,7 +224,7 @@ void Widget::onReset()
     ui->DataIdxSBox->setValue(curr_data_idx);
 }
 
-void Widget::onSliderMovedTo(int cloud_number)
+void MainWindow::onSliderMovedTo(int cloud_number)
 {
     if(_file_names_velo.empty())
         return;
@@ -251,7 +279,8 @@ void Widget::onSliderMovedTo(int cloud_number)
     cluster.componentClustering();
 
     // depth_clustering -----------------------------------------
-    depth_clustering depthCluster(*_cloud);
+    // depth_clustering depthCluster(*_cloud);
+    depth_clustering depthCluster(* obstacle_cloud);
     depthCluster.createDepthImage();
     cv::Mat depthImage = depthCluster.getDepthMat();
     
@@ -262,7 +291,6 @@ void Widget::onSliderMovedTo(int cloud_number)
     Cloud::Ptr insertCloud(new Cloud);
     cv::Mat visClusterImg;    
     cluster.getClusterImg(visClusterImg);
-    cv::imshow("clusterImageShow", visClusterImg);
     cluster.makeClusteredCloud(*obstacle_cloud);
     // fprintf(stderr, "numClister :%d\n", cluster.getNumCluster());
     _viewer->drawSelectableCloud = DrawSelectAbleCloud(_cloud);
@@ -316,19 +344,31 @@ void Widget::onSliderMovedTo(int cloud_number)
 
     // 显示图像
     cv::Mat imgShowCV;
-    _scene.reset(new QGraphicsScene);
     utils::ReadKittiImageByPath(_file_names_img[cloud_number], imgShowCV);    
     
     cv::cvtColor(imgShowCV, imgShowCV, cv::COLOR_BGR2RGB);
+
+    imgShowCV.resize(imgShowCV.rows, imgShowCV.cols);
     QImage qimage = utils::MatToQImage(imgShowCV);
-    _scene->addPixmap(QPixmap::fromImage(qimage));
-    ui->showImageGV->setScene(_scene.get());
-    ui->showImageGV->fitInView(_scene->itemsBoundingRect());
+    dock_Image->resize(qimage.width(), qimage.height());
+    imgLabel->setPixmap(QPixmap::fromImage(qimage));
+    imgLabel->resize(qimage.width(), qimage.height());
+
+    QImage qimage_cluster = utils::MatToQImage(visClusterImg);
+    dock_cluster_image->resize(qimage_cluster.width() , qimage_cluster.height());
+    cluster_image->setPixmap(QPixmap::fromImage(qimage_cluster));
+    cluster_image->resize(qimage_cluster.width(), qimage_cluster.height());
+
+    QImage qimage_depth = utils::MatToQImage(depthImage);
+    dock_depth_image->resize(qimage_depth.width() * 2, qimage_depth.height() * 2);
+    depth_image->setPixmap(QPixmap::fromImage(qimage_depth));
+    depth_image->resize(qimage_depth.width() * 2, qimage_depth.height() * 2);
+
     _viewer->update();
 
 }
 
-void Widget::moveCursorToEnd()
+void MainWindow::moveCursorToEnd()
 {
     QTextCursor cursor = infoTextEdit->textCursor();
     cursor.movePosition(QTextCursor::End);
@@ -337,7 +377,7 @@ void Widget::moveCursorToEnd()
 }
 
 
-void Widget::onUpdateShow()
+void MainWindow::onUpdateShow()
 {
     // if (ui->obstacleCB->isChecked() || ui->groundCB->isChecked())
     //     ui->cloudCB->setChecked(false);
@@ -359,18 +399,18 @@ void Widget::onUpdateShow()
     }
 }
 
-void Widget::onUpdateShow(int num)
+void MainWindow::onUpdateShow(int num)
 {
     onSliderMovedTo(curr_data_idx);
 }
 
-void Widget::onUpdate()
+void MainWindow::onUpdate()
 {
     onSliderMovedTo(curr_data_idx);
 }
 
 
-void Widget::onParamSet()
+void MainWindow::onParamSet()
 {
     // fprintf(stderr, "current value %f", ui->paramDSB->value());
     // fprintf(stderr, "   curren paramID %d", ui->paramSB->value());
@@ -411,7 +451,7 @@ void Widget::onParamSet()
     onUpdate();
 }
 
-void Widget::onClearSelection()
+void MainWindow::onClearSelection()
 {
     // fprintf(stderr, "current elsection id :\n");
     // for (auto & elem : _viewer->selection) fprintf(stderr, "\n%d ",elem);
@@ -420,8 +460,12 @@ void Widget::onClearSelection()
 
 
 // 为了窗口跟随， 移动到中间， 重写的事件
-void Widget::resizeEvent(QResizeEvent *event)
+void MainWindow::resizeEvent(QResizeEvent *event)
 {
-    int showImageGV_x = (ui->CloudViewer->width() - ui->showImageGV->width()) / 2;
-    ui->showImageGV->move(showImageGV_x, 0);
+    dock_Image->resize(imgLabel->width(), imgLabel->height());
+    dock_cluster_image->resize(cluster_image->width(), cluster_image->height());
+    dock_depth_image->resize(depth_image->width(), depth_image->height());
+    // int showImageGV_x = (ui->CloudViewer->width() - ui->showImageGV->width()) / 2;
+    // ui->showImageGV->move(showImageGV_x, 0);
+
 }

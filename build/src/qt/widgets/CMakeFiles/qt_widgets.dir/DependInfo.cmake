@@ -5,9 +5,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/yyg/code/lidarCode/src/qt/widgets/base_viewer_widget.cpp" "/home/yyg/code/lidarCode/build/src/qt/widgets/CMakeFiles/qt_widgets.dir/base_viewer_widget.cpp.o"
+  "/home/yyg/code/lidarCode/src/qt/widgets/mainwindow.cpp" "/home/yyg/code/lidarCode/build/src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.o"
   "/home/yyg/code/lidarCode/build/src/qt/widgets/moc_base_viewer_widget.cpp" "/home/yyg/code/lidarCode/build/src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_base_viewer_widget.cpp.o"
-  "/home/yyg/code/lidarCode/build/src/qt/widgets/moc_widget.cpp" "/home/yyg/code/lidarCode/build/src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o"
-  "/home/yyg/code/lidarCode/src/qt/widgets/widget.cpp" "/home/yyg/code/lidarCode/build/src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o"
+  "/home/yyg/code/lidarCode/build/src/qt/widgets/moc_mainwindow.cpp" "/home/yyg/code/lidarCode/build/src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

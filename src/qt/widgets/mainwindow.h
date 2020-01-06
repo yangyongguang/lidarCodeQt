@@ -1,7 +1,8 @@
-#ifndef WIDGET_H
-#define WIDGET_H
+#ifndef MAINWINDOW_H
+#define MAINWINDOW_H
 
 #include <QWidget>
+#include <QMainWindow>
 #include <iostream>
 #include "groundRemove/include/param.h"
 #include <QColor>
@@ -34,19 +35,21 @@
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui.hpp>
 #include <opencv2/imgproc.hpp>
+#include <QLabel>
+#include <QDockWidget>
 
 namespace Ui {
-class Widget;
+class MainWindow;
 }
 
 // class Widget : public QWidget
-class Widget : public BaseViewerWidget
+class MainWindow : public BaseViewerWidget
 {
     Q_OBJECT
 
 public:
-    explicit Widget(QWidget *parent = 0);
-    ~Widget();
+    explicit MainWindow(QWidget *parent = 0);
+    ~MainWindow();
 
     // log 光标移动到最后
     void moveCursorToEnd();
@@ -84,7 +87,7 @@ private slots:
 
 private:
     // Ui::Widget *ui;
-    std::unique_ptr<Ui::Widget> ui;
+    std::unique_ptr<Ui::MainWindow> ui;
 
     params _params;
     std::vector<std::string> _file_names_velo;
@@ -105,9 +108,17 @@ private:
     QTextEdit *infoTextEdit = nullptr;
 
     // 显示图像
-    std::unique_ptr<QGraphicsScene> _scene = nullptr;
+    // std::unique_ptr<QGraphicsScene> _scene = nullptr;
+    // std::unique_ptr<QGraphicsView> _graphView = nullptr;
 
+    QDockWidget *dock_Image;
+    QDockWidget *dock_cluster_image;
+    QDockWidget *dock_depth_image;
 
+    QLabel *imgLabel;
+    QLabel *cluster_image;
+    QLabel *depth_image;
+    
     // 新建一个窗口试试
 };
 

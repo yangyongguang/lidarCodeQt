@@ -57,17 +57,17 @@ include src/qt/widgets/CMakeFiles/qt_widgets.dir/progress.make
 # Include the compile flags for this target's objects.
 include src/qt/widgets/CMakeFiles/qt_widgets.dir/flags.make
 
-src/qt/widgets/ui_widget.h: ../src/qt/widgets/ui/widget.ui
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating ui_widget.h"
-	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /home/yyg/Qt5.6.3/5.6.3/gcc_64/bin/uic -o /home/yyg/code/lidarCode/build/src/qt/widgets/ui_widget.h /home/yyg/code/lidarCode/src/qt/widgets/ui/widget.ui
+src/qt/widgets/ui_mainwindow.h: ../src/qt/widgets/ui/mainwindow.ui
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating ui_mainwindow.h"
+	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /home/yyg/Qt5.6.3/5.6.3/gcc_64/bin/uic -o /home/yyg/code/lidarCode/build/src/qt/widgets/ui_mainwindow.h /home/yyg/code/lidarCode/src/qt/widgets/ui/mainwindow.ui
 
 src/qt/widgets/moc_base_viewer_widget.cpp: ../src/qt/widgets/base_viewer_widget.h
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating moc_base_viewer_widget.cpp"
 	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /home/yyg/Qt5.6.3/5.6.3/gcc_64/bin/moc @/home/yyg/code/lidarCode/build/src/qt/widgets/moc_base_viewer_widget.cpp_parameters
 
-src/qt/widgets/moc_widget.cpp: ../src/qt/widgets/widget.h
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating moc_widget.cpp"
-	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /home/yyg/Qt5.6.3/5.6.3/gcc_64/bin/moc @/home/yyg/code/lidarCode/build/src/qt/widgets/moc_widget.cpp_parameters
+src/qt/widgets/moc_mainwindow.cpp: ../src/qt/widgets/mainwindow.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating moc_mainwindow.cpp"
+	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /home/yyg/Qt5.6.3/5.6.3/gcc_64/bin/moc @/home/yyg/code/lidarCode/build/src/qt/widgets/moc_mainwindow.cpp_parameters
 
 src/qt/widgets/CMakeFiles/qt_widgets.dir/base_viewer_widget.cpp.o: src/qt/widgets/CMakeFiles/qt_widgets.dir/flags.make
 src/qt/widgets/CMakeFiles/qt_widgets.dir/base_viewer_widget.cpp.o: ../src/qt/widgets/base_viewer_widget.cpp
@@ -82,18 +82,18 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/base_viewer_widget.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/qt_widgets.dir/base_viewer_widget.cpp.s"
 	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yyg/code/lidarCode/src/qt/widgets/base_viewer_widget.cpp -o CMakeFiles/qt_widgets.dir/base_viewer_widget.cpp.s
 
-src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: src/qt/widgets/CMakeFiles/qt_widgets.dir/flags.make
-src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o: ../src/qt/widgets/widget.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o"
-	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/qt_widgets.dir/widget.cpp.o -c /home/yyg/code/lidarCode/src/qt/widgets/widget.cpp
+src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.o: src/qt/widgets/CMakeFiles/qt_widgets.dir/flags.make
+src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.o: ../src/qt/widgets/mainwindow.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.o"
+	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/qt_widgets.dir/mainwindow.cpp.o -c /home/yyg/code/lidarCode/src/qt/widgets/mainwindow.cpp
 
-src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/qt_widgets.dir/widget.cpp.i"
-	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yyg/code/lidarCode/src/qt/widgets/widget.cpp > CMakeFiles/qt_widgets.dir/widget.cpp.i
+src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/qt_widgets.dir/mainwindow.cpp.i"
+	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yyg/code/lidarCode/src/qt/widgets/mainwindow.cpp > CMakeFiles/qt_widgets.dir/mainwindow.cpp.i
 
-src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/qt_widgets.dir/widget.cpp.s"
-	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yyg/code/lidarCode/src/qt/widgets/widget.cpp -o CMakeFiles/qt_widgets.dir/widget.cpp.s
+src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/qt_widgets.dir/mainwindow.cpp.s"
+	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yyg/code/lidarCode/src/qt/widgets/mainwindow.cpp -o CMakeFiles/qt_widgets.dir/mainwindow.cpp.s
 
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_base_viewer_widget.cpp.o: src/qt/widgets/CMakeFiles/qt_widgets.dir/flags.make
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_base_viewer_widget.cpp.o: src/qt/widgets/moc_base_viewer_widget.cpp
@@ -108,33 +108,33 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_base_viewer_widget.cpp.s: cmake_for
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/qt_widgets.dir/moc_base_viewer_widget.cpp.s"
 	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yyg/code/lidarCode/build/src/qt/widgets/moc_base_viewer_widget.cpp -o CMakeFiles/qt_widgets.dir/moc_base_viewer_widget.cpp.s
 
-src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: src/qt/widgets/CMakeFiles/qt_widgets.dir/flags.make
-src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o: src/qt/widgets/moc_widget.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o"
-	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/qt_widgets.dir/moc_widget.cpp.o -c /home/yyg/code/lidarCode/build/src/qt/widgets/moc_widget.cpp
+src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.o: src/qt/widgets/CMakeFiles/qt_widgets.dir/flags.make
+src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.o: src/qt/widgets/moc_mainwindow.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.o"
+	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.o -c /home/yyg/code/lidarCode/build/src/qt/widgets/moc_mainwindow.cpp
 
-src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/qt_widgets.dir/moc_widget.cpp.i"
-	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yyg/code/lidarCode/build/src/qt/widgets/moc_widget.cpp > CMakeFiles/qt_widgets.dir/moc_widget.cpp.i
+src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.i"
+	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/yyg/code/lidarCode/build/src/qt/widgets/moc_mainwindow.cpp > CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.i
 
-src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/qt_widgets.dir/moc_widget.cpp.s"
-	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yyg/code/lidarCode/build/src/qt/widgets/moc_widget.cpp -o CMakeFiles/qt_widgets.dir/moc_widget.cpp.s
+src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.s"
+	cd /home/yyg/code/lidarCode/build/src/qt/widgets && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/yyg/code/lidarCode/build/src/qt/widgets/moc_mainwindow.cpp -o CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.s
 
 # Object files for target qt_widgets
 qt_widgets_OBJECTS = \
 "CMakeFiles/qt_widgets.dir/base_viewer_widget.cpp.o" \
-"CMakeFiles/qt_widgets.dir/widget.cpp.o" \
+"CMakeFiles/qt_widgets.dir/mainwindow.cpp.o" \
 "CMakeFiles/qt_widgets.dir/moc_base_viewer_widget.cpp.o" \
-"CMakeFiles/qt_widgets.dir/moc_widget.cpp.o"
+"CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.o"
 
 # External object files for target qt_widgets
 qt_widgets_EXTERNAL_OBJECTS =
 
 src/qt/widgets/libqt_widgets.so: src/qt/widgets/CMakeFiles/qt_widgets.dir/base_viewer_widget.cpp.o
-src/qt/widgets/libqt_widgets.so: src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o
+src/qt/widgets/libqt_widgets.so: src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.o
 src/qt/widgets/libqt_widgets.so: src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_base_viewer_widget.cpp.o
-src/qt/widgets/libqt_widgets.so: src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o
+src/qt/widgets/libqt_widgets.so: src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.o
 src/qt/widgets/libqt_widgets.so: src/qt/widgets/CMakeFiles/qt_widgets.dir/build.make
 src/qt/widgets/libqt_widgets.so: src/qt/viewer/libviewer.so
 src/qt/widgets/libqt_widgets.so: src/qt/drawables/libdrawable.so
@@ -183,9 +183,9 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/clean:
 	cd /home/yyg/code/lidarCode/build/src/qt/widgets && $(CMAKE_COMMAND) -P CMakeFiles/qt_widgets.dir/cmake_clean.cmake
 .PHONY : src/qt/widgets/CMakeFiles/qt_widgets.dir/clean
 
-src/qt/widgets/CMakeFiles/qt_widgets.dir/depend: src/qt/widgets/ui_widget.h
+src/qt/widgets/CMakeFiles/qt_widgets.dir/depend: src/qt/widgets/ui_mainwindow.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/depend: src/qt/widgets/moc_base_viewer_widget.cpp
-src/qt/widgets/CMakeFiles/qt_widgets.dir/depend: src/qt/widgets/moc_widget.cpp
+src/qt/widgets/CMakeFiles/qt_widgets.dir/depend: src/qt/widgets/moc_mainwindow.cpp
 	cd /home/yyg/code/lidarCode/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/yyg/code/lidarCode /home/yyg/code/lidarCode/src/qt/widgets /home/yyg/code/lidarCode/build /home/yyg/code/lidarCode/build/src/qt/widgets /home/yyg/code/lidarCode/build/src/qt/widgets/CMakeFiles/qt_widgets.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/qt/widgets/CMakeFiles/qt_widgets.dir/depend
 

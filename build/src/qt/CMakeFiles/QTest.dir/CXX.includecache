@@ -175,13 +175,15 @@ drawable_selectable_cloud.h
 ../src/qt/viewer/drawable_selectable_cloud.h
 
 ../src/qt/widgets/base_viewer_widget.h
-QWidget
+QMainWindow
 -
 viewer.h
 ../src/qt/widgets/viewer.h
 
-../src/qt/widgets/widget.h
+../src/qt/widgets/mainwindow.h
 QWidget
+-
+QMainWindow
 -
 iostream
 -
@@ -230,6 +232,10 @@ opencv2/opencv.hpp
 opencv2/highgui.hpp
 -
 opencv2/imgproc.hpp
+-
+QLabel
+-
+QDockWidget
 -
 
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtCore/QDebug
@@ -1146,6 +1152,16 @@ QtCore/qpoint.h
 QtCore/qsize.h
 -
 
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qicon.h
+QtCore/qglobal.h
+-
+QtCore/qsize.h
+-
+QtCore/qlist.h
+-
+QtGui/qpixmap.h
+-
+
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtGui/qimage.h
 QtGui/qcolor.h
 -
@@ -1520,6 +1536,10 @@ QtCore/qglobal.h
 qapplication.h
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qapplication.h
 
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QDockWidget
+qdockwidget.h
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qdockwidget.h
+
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QFileDialog
 qfiledialog.h
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qfiledialog.h
@@ -1531,6 +1551,14 @@ qgraphicsscene.h
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QGraphicsView
 qgraphicsview.h
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qgraphicsview.h
+
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QLabel
+qlabel.h
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qlabel.h
+
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QMainWindow
+qmainwindow.h
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qmainwindow.h
 
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/QOpenGLWidget
 qopenglwidget.h
@@ -1569,6 +1597,10 @@ QtWidgets/qwidget.h
 -
 
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qdialog.h
+QtWidgets/qwidget.h
+-
+
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qdockwidget.h
 QtWidgets/qwidget.h
 -
 
@@ -1614,6 +1646,16 @@ QtWidgets/qscrollarea.h
 QtWidgets/qgraphicsscene.h
 -
 
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qlabel.h
+QtWidgets/qframe.h
+-
+
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qmainwindow.h
+QtWidgets/qwidget.h
+-
+QtWidgets/qtabwidget.h
+-
+
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qopenglwidget.h
 QtCore/qglobal.h
 -
@@ -1630,6 +1672,12 @@ QtWidgets/qabstractscrollarea.h
 
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qsizepolicy.h
 QtCore/qobject.h
+-
+
+/home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qtabwidget.h
+QtWidgets/qwidget.h
+-
+QtGui/qicon.h
 -
 
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtWidgets/qtextedit.h
@@ -1675,8 +1723,8 @@ QtGui/qevent.h
 -
 
 /home/yyg/code/lidarCode/src/qt/main.cpp
-widget.h
-/home/yyg/code/lidarCode/src/qt/widget.h
+mainwindow.h
+/home/yyg/code/lidarCode/src/qt/mainwindow.h
 QApplication
 -
 

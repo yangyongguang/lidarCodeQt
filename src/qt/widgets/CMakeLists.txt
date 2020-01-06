@@ -4,16 +4,16 @@ set(SKIP_AUTOUIC ON)
 
 set(QT_SOURCES
     base_viewer_widget.cpp
-    widget.cpp
+    mainwindow.cpp
     )
 
 set(QT_HEADERS
     base_viewer_widget.h
-    widget.h
+    mainwindow.h
     )
 
 set(QT_UI_FILES
-    ui/widget.ui
+    ui/mainwindow.ui
     )
 
 if(Qt5_FOUND)

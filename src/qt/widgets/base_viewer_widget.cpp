@@ -6,7 +6,7 @@
 
 #include <QKeyEvent>
 
-BaseViewerWidget::BaseViewerWidget(QWidget *parent) : QWidget(parent) {}
+BaseViewerWidget::BaseViewerWidget(QWidget *parent) : QMainWindow(parent) {}
 
 bool BaseViewerWidget::eventFilter(QObject *object, QEvent *event) 
 {

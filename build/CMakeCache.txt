@@ -137,7 +137,7 @@ CMAKE_EXE_LINKER_FLAGS_RELEASE:STRING=
 CMAKE_EXE_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 
 //Enable/Disable output of compile commands during generation.
-CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=OFF
+CMAKE_EXPORT_COMPILE_COMMANDS:BOOL=Yes
 
 //Install path prefix, prepended onto install directories.
 CMAKE_INSTALL_PREFIX:PATH=/usr/local
@@ -394,9 +394,6 @@ lidarCode_SOURCE_DIR:STATIC=/home/yyg/code/lidarCode
 
 //Dependencies for the target
 qt_widgets_LIB_DEPENDS:STATIC=general;viewer;general;drawable;general;utils;general;opencv_calib3d;general;opencv_core;general;opencv_dnn;general;opencv_features2d;general;opencv_flann;general;opencv_highgui;general;opencv_imgcodecs;general;opencv_imgproc;general;opencv_ml;general;opencv_objdetect;general;opencv_photo;general;opencv_shape;general;opencv_stitching;general;opencv_superres;general;opencv_video;general;opencv_videoio;general;opencv_videostab;general;opencv_viz;general;/usr/lib/x86_64-linux-gnu/libQGLViewer.so;general;Qt5::Widgets;general;Qt5::Core;general;Qt5::Gui;general;Qt5::Xml;general;Qt5::OpenGL;general;/usr/lib/x86_64-linux-gnu/libGL.so;general;/usr/lib/x86_64-linux-gnu/libGLU.so;
-
-//The directory containing a CMake configuration file for thread.
-thread_DIR:PATH=thread_DIR-NOTFOUND
 
 //Dependencies for the target
 utils_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libboost_system.so;general;/usr/lib/x86_64-linux-gnu/libboost_filesystem.so;general;/usr/lib/x86_64-linux-gnu/libboost_regex.so;general;/usr/lib/x86_64-linux-gnu/libboost_program_options.so;

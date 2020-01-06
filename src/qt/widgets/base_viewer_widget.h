@@ -4,10 +4,10 @@
 
 #pragma once
 
-#include <QWidget>
+#include <QMainWindow>
 #include "viewer.h"
 
-class BaseViewerWidget : public QWidget {
+class BaseViewerWidget : public QMainWindow {
   Q_OBJECT
 
  public:

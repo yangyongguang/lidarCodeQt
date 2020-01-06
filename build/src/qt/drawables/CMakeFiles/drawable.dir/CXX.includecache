@@ -30,6 +30,12 @@ iostream
 array
 -
 
+../src/qt/utils/object.h
+QGLViewer/frame.h
+../src/qt/utils/QGLViewer/frame.h
+memory
+-
+
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtCore/QObject
 qobject.h
 /home/yyg/Qt5.6.3/5.6.3/gcc_64/include/QtCore/qobject.h
@@ -1217,6 +1223,28 @@ drawable.h
 /home/yyg/code/lidarCode/src/qt/drawables/drawable.h
 memory
 -
+
+/home/yyg/code/lidarCode/src/qt/drawables/drawable_line.cpp
+drawable_line.h
+/home/yyg/code/lidarCode/src/qt/drawables/drawable_line.h
+
+/home/yyg/code/lidarCode/src/qt/drawables/drawable_line.h
+drawable.h
+/home/yyg/code/lidarCode/src/qt/drawables/drawable.h
+memory
+-
+
+/home/yyg/code/lidarCode/src/qt/drawables/drawable_selectable_cloud.cpp
+drawable_selectable_cloud.h
+/home/yyg/code/lidarCode/src/qt/drawables/drawable_selectable_cloud.h
+
+/home/yyg/code/lidarCode/src/qt/drawables/drawable_selectable_cloud.h
+drawable.h
+/home/yyg/code/lidarCode/src/qt/drawables/drawable.h
+memory
+-
+object.h
+/home/yyg/code/lidarCode/src/qt/drawables/object.h
 
 /usr/include/eigen3/Eigen/Core
 src/Core/util/DisableStupidWarnings.h

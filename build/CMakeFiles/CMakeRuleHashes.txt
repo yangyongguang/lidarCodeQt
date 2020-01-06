@@ -28,5 +28,5 @@ cc4401e4ef48a5ddca4d877c5b212207 CMakeFiles/NightlySubmit
 41b5546e9cf084ffef5abec5955ec68a CMakeFiles/NightlyTest
 7d4caf324d1d513ec3bb4543a0fee0bc CMakeFiles/NightlyUpdate
 b8d9677ccb92b981c90474cbcd016505 src/qt/widgets/moc_base_viewer_widget.cpp
-567cb325240441e18a604c995089d19b src/qt/widgets/moc_widget.cpp
-1a9dde75aec830946fb5359dbce61309 src/qt/widgets/ui_widget.h
+8c21986cf269d4c19cc2859415416e21 src/qt/widgets/moc_mainwindow.cpp
+6d7fe08adf0ea61e98588f10cdb9efb6 src/qt/widgets/ui_mainwindow.h

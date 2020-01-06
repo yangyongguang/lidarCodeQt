@@ -1,5 +1,6 @@
 #include "component_clustering.h"
 
+
 cluster::cluster():params_(params())
 {
     std::atomic_init(&hasPoint, 0);
@@ -274,9 +275,10 @@ void depth_clustering::createDepthImage()
         //     static_cast<int>(dist_to_sensor * 500) % 255;
 
         int value = mapToColor(dist_to_sensor);
-        _depth_image.at<cv::Vec3b>(bin_rows, bin_cols)[0] = value;
-        _depth_image.at<cv::Vec3b>(bin_rows, bin_cols)[1] = value;
-        _depth_image.at<cv::Vec3b>(bin_rows, bin_cols)[2] = 0;
+        auto color = _params.RANDOM_COLORS[value];
+        _depth_image.at<cv::Vec3b>(bin_rows, bin_cols)[0] = color[0];
+        _depth_image.at<cv::Vec3b>(bin_rows, bin_cols)[1] = color[1];
+        _depth_image.at<cv::Vec3b>(bin_rows, bin_cols)[2] = color[2];
     }     
 
     // 翻转图像

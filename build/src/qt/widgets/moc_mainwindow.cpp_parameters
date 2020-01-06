@@ -37,5 +37,5 @@
 -I/home/yyg/code/lidarCode/src/qt/widgets
 -I/home/yyg/code/lidarCode/build/src/qt/widgets
 -o
-/home/yyg/code/lidarCode/build/src/qt/widgets/moc_widget.cpp
-/home/yyg/code/lidarCode/src/qt/widgets/widget.h
+/home/yyg/code/lidarCode/build/src/qt/widgets/moc_mainwindow.cpp
+/home/yyg/code/lidarCode/src/qt/widgets/mainwindow.h

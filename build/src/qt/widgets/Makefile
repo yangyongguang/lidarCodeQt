@@ -163,6 +163,33 @@ base_viewer_widget.cpp.s:
 	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/qt/widgets/CMakeFiles/qt_widgets.dir/build.make src/qt/widgets/CMakeFiles/qt_widgets.dir/base_viewer_widget.cpp.s
 .PHONY : base_viewer_widget.cpp.s
 
+mainwindow.o: mainwindow.cpp.o
+
+.PHONY : mainwindow.o
+
+# target to build an object file
+mainwindow.cpp.o:
+	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/qt/widgets/CMakeFiles/qt_widgets.dir/build.make src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.o
+.PHONY : mainwindow.cpp.o
+
+mainwindow.i: mainwindow.cpp.i
+
+.PHONY : mainwindow.i
+
+# target to preprocess a source file
+mainwindow.cpp.i:
+	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/qt/widgets/CMakeFiles/qt_widgets.dir/build.make src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.i
+.PHONY : mainwindow.cpp.i
+
+mainwindow.s: mainwindow.cpp.s
+
+.PHONY : mainwindow.s
+
+# target to generate assembly for a file
+mainwindow.cpp.s:
+	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/qt/widgets/CMakeFiles/qt_widgets.dir/build.make src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.s
+.PHONY : mainwindow.cpp.s
+
 moc_base_viewer_widget.o: moc_base_viewer_widget.cpp.o
 
 .PHONY : moc_base_viewer_widget.o
@@ -190,59 +217,32 @@ moc_base_viewer_widget.cpp.s:
 	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/qt/widgets/CMakeFiles/qt_widgets.dir/build.make src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_base_viewer_widget.cpp.s
 .PHONY : moc_base_viewer_widget.cpp.s
 
-moc_widget.o: moc_widget.cpp.o
+moc_mainwindow.o: moc_mainwindow.cpp.o
 
-.PHONY : moc_widget.o
-
-# target to build an object file
-moc_widget.cpp.o:
-	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/qt/widgets/CMakeFiles/qt_widgets.dir/build.make src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.o
-.PHONY : moc_widget.cpp.o
-
-moc_widget.i: moc_widget.cpp.i
-
-.PHONY : moc_widget.i
-
-# target to preprocess a source file
-moc_widget.cpp.i:
-	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/qt/widgets/CMakeFiles/qt_widgets.dir/build.make src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.i
-.PHONY : moc_widget.cpp.i
-
-moc_widget.s: moc_widget.cpp.s
-
-.PHONY : moc_widget.s
-
-# target to generate assembly for a file
-moc_widget.cpp.s:
-	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/qt/widgets/CMakeFiles/qt_widgets.dir/build.make src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_widget.cpp.s
-.PHONY : moc_widget.cpp.s
-
-widget.o: widget.cpp.o
-
-.PHONY : widget.o
+.PHONY : moc_mainwindow.o
 
 # target to build an object file
-widget.cpp.o:
-	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/qt/widgets/CMakeFiles/qt_widgets.dir/build.make src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.o
-.PHONY : widget.cpp.o
+moc_mainwindow.cpp.o:
+	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/qt/widgets/CMakeFiles/qt_widgets.dir/build.make src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.o
+.PHONY : moc_mainwindow.cpp.o
 
-widget.i: widget.cpp.i
+moc_mainwindow.i: moc_mainwindow.cpp.i
 
-.PHONY : widget.i
+.PHONY : moc_mainwindow.i
 
 # target to preprocess a source file
-widget.cpp.i:
-	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/qt/widgets/CMakeFiles/qt_widgets.dir/build.make src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.i
-.PHONY : widget.cpp.i
+moc_mainwindow.cpp.i:
+	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/qt/widgets/CMakeFiles/qt_widgets.dir/build.make src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.i
+.PHONY : moc_mainwindow.cpp.i
 
-widget.s: widget.cpp.s
+moc_mainwindow.s: moc_mainwindow.cpp.s
 
-.PHONY : widget.s
+.PHONY : moc_mainwindow.s
 
 # target to generate assembly for a file
-widget.cpp.s:
-	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/qt/widgets/CMakeFiles/qt_widgets.dir/build.make src/qt/widgets/CMakeFiles/qt_widgets.dir/widget.cpp.s
-.PHONY : widget.cpp.s
+moc_mainwindow.cpp.s:
+	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/qt/widgets/CMakeFiles/qt_widgets.dir/build.make src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.s
+.PHONY : moc_mainwindow.cpp.s
 
 # Help Target
 help:
@@ -257,15 +257,15 @@ help:
 	@echo "... base_viewer_widget.o"
 	@echo "... base_viewer_widget.i"
 	@echo "... base_viewer_widget.s"
+	@echo "... mainwindow.o"
+	@echo "... mainwindow.i"
+	@echo "... mainwindow.s"
 	@echo "... moc_base_viewer_widget.o"
 	@echo "... moc_base_viewer_widget.i"
 	@echo "... moc_base_viewer_widget.s"
-	@echo "... moc_widget.o"
-	@echo "... moc_widget.i"
-	@echo "... moc_widget.s"
-	@echo "... widget.o"
-	@echo "... widget.i"
-	@echo "... widget.s"
+	@echo "... moc_mainwindow.o"
+	@echo "... moc_mainwindow.i"
+	@echo "... moc_mainwindow.s"
 .PHONY : help
 
 
