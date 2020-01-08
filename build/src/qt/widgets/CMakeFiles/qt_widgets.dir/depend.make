@@ -265,6 +265,7 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.o: ../src/groundRemove/i
 src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.o: ../src/groundRemove/include/component_clustering.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.o: ../src/groundRemove/include/groundRemove.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.o: ../src/groundRemove/include/param.h
+src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.o: ../src/groundRemove/include/pixel_coords.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.o: ../src/groundRemove/include/segment.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.o: ../src/qt/drawables/drawable.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/mainwindow.cpp.o: ../src/qt/drawables/drawable_cloud.h
@@ -1081,6 +1082,7 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.o: ../src/groundRemo
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.o: ../src/groundRemove/include/component_clustering.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.o: ../src/groundRemove/include/groundRemove.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.o: ../src/groundRemove/include/param.h
+src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.o: ../src/groundRemove/include/pixel_coords.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.o: ../src/groundRemove/include/segment.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.o: ../src/qt/drawables/drawable.h
 src/qt/widgets/CMakeFiles/qt_widgets.dir/moc_mainwindow.cpp.o: ../src/qt/drawables/drawable_selectable_cloud.h

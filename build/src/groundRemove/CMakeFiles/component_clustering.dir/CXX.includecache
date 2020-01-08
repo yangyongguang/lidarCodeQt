@@ -51,8 +51,12 @@ opencv2/highgui/highgui.hpp
 -
 opencv2/opencv.hpp
 -
+opencv2/core.hpp
+-
 cloud.h
 ../src/groundRemove/include/cloud.h
+pixel_coords.h
+../src/groundRemove/include/pixel_coords.h
 
 ../src/groundRemove/include/param.h
 string
@@ -62,6 +66,10 @@ math.h
 iostream
 -
 array
+-
+
+../src/groundRemove/include/pixel_coords.h
+cstdint
 -
 
 /home/yyg/code/lidarCode/src/groundRemove/src/component_clustering.cpp

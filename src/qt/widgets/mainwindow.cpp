@@ -115,13 +115,21 @@ MainWindow::MainWindow(QWidget *parent):
     cluster_image->setScaledContents(true);
     dock_cluster_image->setFloating(true);
 
-    dock_depth_image = new QDockWidget(tr("ImageDepth"), this);
-    addDockWidget(Qt::TopDockWidgetArea, dock_depth_image);
-    dock_depth_image->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetFloatable);
-    dock_depth_image->setAllowedAreas(Qt::AllDockWidgetAreas);
-    depth_image = new QLabel(dock_depth_image);
+    dockshow_depth_image = new QDockWidget(tr("ImageDepth"), this);
+    addDockWidget(Qt::TopDockWidgetArea, dockshow_depth_image);
+    dockshow_depth_image->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetFloatable);
+    dockshow_depth_image->setAllowedAreas(Qt::AllDockWidgetAreas);
+    depth_image = new QLabel(dockshow_depth_image);
     depth_image->setScaledContents(true);
-    dock_depth_image->setFloating(true);
+    dockshow_depth_image->setFloating(true);
+
+    dockshow_depth_image2 = new QDockWidget(tr("ImageDepth2"), this);
+    addDockWidget(Qt::TopDockWidgetArea, dockshow_depth_image2);
+    dockshow_depth_image2->setFeatures(QDockWidget::DockWidgetMovable | QDockWidget::DockWidgetClosable | QDockWidget::DockWidgetFloatable);
+    dockshow_depth_image2->setAllowedAreas(Qt::AllDockWidgetAreas);
+    depth_image2 = new QLabel(dockshow_depth_image2);
+    depth_image2->setScaledContents(true);
+    dockshow_depth_image2->setFloating(true);
 
 }
 
@@ -260,9 +268,16 @@ void MainWindow::onSliderMovedTo(int cloud_number)
     // groundRemove.setClickedPoint(poseX, poseY);
     //////
     // 获取选择的 ID
+    Cloud::Ptr debugCloud(new Cloud);
     if (_viewer->selection.size())
     {
         groundRemove.setSelectObjectID(_viewer->selection);
+
+        // 开启 debug 模式
+        for (const int & elem : _viewer->selection)
+        {
+            debugCloud->emplace_back((*_cloud)[elem]);
+        }        
     }
     // 结束
     Cloud::Ptr ground_cloud(new Cloud);
@@ -279,10 +294,22 @@ void MainWindow::onSliderMovedTo(int cloud_number)
     cluster.componentClustering();
 
     // depth_clustering -----------------------------------------
-    // depth_clustering depthCluster(*_cloud);
-    depth_clustering depthCluster(* obstacle_cloud);
-    depthCluster.createDepthImage();
-    cv::Mat depthImage = depthCluster.getDepthMat();
+    // 开启调试模式
+    if (debugCloud->size())
+    {
+        fprintf(stderr, "has choosed %d debug point\n", debugCloud->size());
+    }
+    else
+    {
+        debugCloud = obstacle_cloud;
+    }
+    // depth_clustering depthCluster(* _cloud);
+    depth_clustering depthCluster(*debugCloud);
+    depthCluster.depthCluster();
+    // cv::Mat depthImage = depthCluster.getVisualizeDepthImage();
+    cv::Mat visImage = depthCluster.visSegmentImage();
+    cv::Mat depthImage = depthCluster.getVisualizeDepthImage();
+    // 直接聚类
     
 
     // 添加点云显示
@@ -359,11 +386,15 @@ void MainWindow::onSliderMovedTo(int cloud_number)
     cluster_image->setPixmap(QPixmap::fromImage(qimage_cluster));
     cluster_image->resize(qimage_cluster.width(), qimage_cluster.height());
 
-    QImage qimage_depth = utils::MatToQImage(depthImage);
-    dock_depth_image->resize(qimage_depth.width() * 2, qimage_depth.height() * 2);
+    QImage qimage_depth = utils::MatToQImage(visImage);
+    dockshow_depth_image->resize(qimage_depth.width() * 2, qimage_depth.height() * 2);
     depth_image->setPixmap(QPixmap::fromImage(qimage_depth));
     depth_image->resize(qimage_depth.width() * 2, qimage_depth.height() * 2);
 
+    QImage qimage_depth2 = utils::MatToQImage(depthImage);
+    dockshow_depth_image2->resize(qimage_depth2.width() * 2, qimage_depth2.height() * 2);
+    depth_image2->setPixmap(QPixmap::fromImage(qimage_depth2));
+    depth_image2->resize(qimage_depth2.width() * 2, qimage_depth2.height() * 2);
     _viewer->update();
 
 }
@@ -464,7 +495,7 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 {
     dock_Image->resize(imgLabel->width(), imgLabel->height());
     dock_cluster_image->resize(cluster_image->width(), cluster_image->height());
-    dock_depth_image->resize(depth_image->width(), depth_image->height());
+    dockshow_depth_image->resize(depth_image->width(), depth_image->height());
     // int showImageGV_x = (ui->CloudViewer->width() - ui->showImageGV->width()) / 2;
     // ui->showImageGV->move(showImageGV_x, 0);
 

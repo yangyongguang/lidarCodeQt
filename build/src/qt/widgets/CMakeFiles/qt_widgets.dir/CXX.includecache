@@ -51,8 +51,12 @@ opencv2/highgui/highgui.hpp
 -
 opencv2/opencv.hpp
 -
+opencv2/core.hpp
+-
 cloud.h
 ../src/groundRemove/include/cloud.h
+pixel_coords.h
+../src/groundRemove/include/pixel_coords.h
 
 ../src/groundRemove/include/groundRemove.h
 Eigen/Core
@@ -82,6 +86,10 @@ math.h
 iostream
 -
 array
+-
+
+../src/groundRemove/include/pixel_coords.h
+cstdint
 -
 
 ../src/groundRemove/include/segment.h
@@ -2042,6 +2050,14 @@ QtGui/qcursor.h
 QtGui/qkeysequence.h
 -
 QtGui/qevent.h
+-
+
+/home/yyg/code/lidarCode/build/src/qt/widgets/moc_mainwindow.cpp
+../../../../src/qt/widgets/mainwindow.h
+/home/yyg/code/lidarCode/src/qt/widgets/mainwindow.h
+QtCore/qbytearray.h
+-
+QtCore/qmetatype.h
 -
 
 /home/yyg/code/lidarCode/src/qt/widgets/base_viewer_widget.h

@@ -113,11 +113,13 @@ private:
 
     QDockWidget *dock_Image;
     QDockWidget *dock_cluster_image;
-    QDockWidget *dock_depth_image;
+    QDockWidget *dockshow_depth_image;
+    QDockWidget *dockshow_depth_image2;
 
     QLabel *imgLabel;
     QLabel *cluster_image;
     QLabel *depth_image;
+    QLabel *depth_image2;
     
     // 新建一个窗口试试
 };

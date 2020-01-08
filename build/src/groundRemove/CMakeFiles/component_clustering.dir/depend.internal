@@ -6,6 +6,7 @@ src/groundRemove/CMakeFiles/component_clustering.dir/src/component_clustering.cp
  ../src/groundRemove/include/cloud.h
  ../src/groundRemove/include/component_clustering.h
  ../src/groundRemove/include/param.h
+ ../src/groundRemove/include/pixel_coords.h
  /home/yyg/code/lidarCode/src/groundRemove/src/component_clustering.cpp
  /usr/include/eigen3/Eigen/Core
  /usr/include/eigen3/Eigen/src/Core/Array.h

@@ -523,5 +523,37 @@ applayMedianFilterMinZ(0)                         26</string>
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>DataIdxVSlider</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>DataIdxSBox</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>354</x>
+     <y>719</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>281</x>
+     <y>720</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>DataIdxSBox</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>DataIdxVSlider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>271</x>
+     <y>710</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>484</x>
+     <y>725</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
 </ui>

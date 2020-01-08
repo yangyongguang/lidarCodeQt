@@ -412,6 +412,8 @@ public:
 
         retranslateUi(MainWindow);
         QObject::connect(quit, SIGNAL(clicked()), MainWindow, SLOT(close()));
+        QObject::connect(DataIdxVSlider, SIGNAL(valueChanged(int)), DataIdxSBox, SLOT(setValue(int)));
+        QObject::connect(DataIdxSBox, SIGNAL(valueChanged(int)), DataIdxVSlider, SLOT(setValue(int)));
 
         infoTab->setCurrentIndex(1);
 

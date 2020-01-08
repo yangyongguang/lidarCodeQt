@@ -5,6 +5,7 @@ src/groundRemove/CMakeFiles/component_clustering.dir/src/component_clustering.cp
 src/groundRemove/CMakeFiles/component_clustering.dir/src/component_clustering.cpp.o: ../src/groundRemove/include/cloud.h
 src/groundRemove/CMakeFiles/component_clustering.dir/src/component_clustering.cpp.o: ../src/groundRemove/include/component_clustering.h
 src/groundRemove/CMakeFiles/component_clustering.dir/src/component_clustering.cpp.o: ../src/groundRemove/include/param.h
+src/groundRemove/CMakeFiles/component_clustering.dir/src/component_clustering.cpp.o: ../src/groundRemove/include/pixel_coords.h
 src/groundRemove/CMakeFiles/component_clustering.dir/src/component_clustering.cpp.o: ../src/groundRemove/src/component_clustering.cpp
 src/groundRemove/CMakeFiles/component_clustering.dir/src/component_clustering.cpp.o: /usr/include/eigen3/Eigen/Core
 src/groundRemove/CMakeFiles/component_clustering.dir/src/component_clustering.cpp.o: /usr/include/eigen3/Eigen/src/Core/Array.h

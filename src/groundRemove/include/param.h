@@ -11,19 +11,19 @@ class params
 public:
     params(){};
     int numThread = 8;
-    double start_angle = -24.0 / 180 * M_PI;
-    double end_angle = 2.0 / 180 * M_PI;
+    float start_angle = -24.0 / 180 * M_PI;
+    float end_angle = 2.0 / 180 * M_PI;
     size_t numBeam = 64;
-    double vehicle_step = (end_angle - start_angle) / static_cast<double>(numBeam);
+    float vehicle_step = (end_angle - start_angle) / static_cast<double>(numBeam);
     size_t numCols = 870;
     size_t numRows = 64;
 
-    double start_angle_horizontal = -M_PI;
-    double end_angle_horizontal = M_PI;
-    double horizontal_step = static_cast<double>(2 * M_PI / numCols);
-    double min_dist = 3.4;
-    double max_dist = 120;
-    double dist_length = max_dist - min_dist;
+    float start_angle_horizontal = -M_PI;
+    float end_angle_horizontal = M_PI;
+    float horizontal_step = static_cast<double>(2 * M_PI / numCols);
+    float min_dist = 3.4;
+    float max_dist = 120;
+    float dist_length = max_dist - min_dist;
 
     // 文件读取参数
     int sequences = 13;
@@ -109,5 +109,6 @@ public:
       {{149, 255, 152}}, {{223, 124, 170}}, {{104, 146, 255}},
       {{113, 205, 183}}, {{100, 156, 216}},
   }};
+    
 };
 #endif
