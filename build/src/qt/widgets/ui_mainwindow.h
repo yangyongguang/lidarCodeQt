@@ -60,6 +60,10 @@ public:
     QLabel *label_8;
     QSpacerItem *horizontalSpacer_6;
     QCheckBox *clusterCB;
+    QHBoxLayout *horizontalLayout;
+    QLabel *label_10;
+    QSpacerItem *horizontalSpacer_8;
+    QCheckBox *depthClusterCB;
     QHBoxLayout *horizontalLayout_8;
     QLabel *label_4;
     QSpacerItem *horizontalSpacer_4;
@@ -97,7 +101,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1174, 735);
+        MainWindow->resize(1700, 1066);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         verticalLayout_2 = new QVBoxLayout(centralWidget);
@@ -140,7 +144,7 @@ public:
         choose->setLocale(QLocale(QLocale::English, QLocale::UnitedStates));
         layoutWidget_3 = new QWidget(choose);
         layoutWidget_3->setObjectName(QStringLiteral("layoutWidget_3"));
-        layoutWidget_3->setGeometry(QRect(10, 0, 261, 196));
+        layoutWidget_3->setGeometry(QRect(0, 0, 271, 224));
         verticalLayout_3 = new QVBoxLayout(layoutWidget_3);
         verticalLayout_3->setSpacing(5);
         verticalLayout_3->setContentsMargins(11, 11, 11, 11);
@@ -226,6 +230,26 @@ public:
 
         verticalLayout_3->addLayout(horizontalLayout_10);
 
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        label_10 = new QLabel(layoutWidget_3);
+        label_10->setObjectName(QStringLiteral("label_10"));
+
+        horizontalLayout->addWidget(label_10);
+
+        horizontalSpacer_8 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
+
+        horizontalLayout->addItem(horizontalSpacer_8);
+
+        depthClusterCB = new QCheckBox(layoutWidget_3);
+        depthClusterCB->setObjectName(QStringLiteral("depthClusterCB"));
+
+        horizontalLayout->addWidget(depthClusterCB);
+
+
+        verticalLayout_3->addLayout(horizontalLayout);
+
         horizontalLayout_8 = new QHBoxLayout();
         horizontalLayout_8->setSpacing(6);
         horizontalLayout_8->setObjectName(QStringLiteral("horizontalLayout_8"));
@@ -291,7 +315,7 @@ public:
         tab->setObjectName(QStringLiteral("tab"));
         layoutWidget_4 = new QWidget(tab);
         layoutWidget_4->setObjectName(QStringLiteral("layoutWidget_4"));
-        layoutWidget_4->setGeometry(QRect(0, 0, 281, 781));
+        layoutWidget_4->setGeometry(QRect(0, 0, 281, 961));
         verticalLayout_4 = new QVBoxLayout(layoutWidget_4);
         verticalLayout_4->setSpacing(0);
         verticalLayout_4->setContentsMargins(11, 11, 11, 11);
@@ -430,8 +454,10 @@ public:
         groundCB->setText(QApplication::translate("MainWindow", "  ground     ", Q_NULLPTR));
         label_2->setText(QApplication::translate("MainWindow", "           obstacle", Q_NULLPTR));
         obstacleCB->setText(QApplication::translate("MainWindow", "obstacle    ", Q_NULLPTR));
-        label_8->setText(QApplication::translate("MainWindow", "         cluster    ", Q_NULLPTR));
+        label_8->setText(QApplication::translate("MainWindow", "girdCluster", Q_NULLPTR));
         clusterCB->setText(QApplication::translate("MainWindow", " cluster      ", Q_NULLPTR));
+        label_10->setText(QApplication::translate("MainWindow", "depthCluster", Q_NULLPTR));
+        depthClusterCB->setText(QApplication::translate("MainWindow", " cluster      ", Q_NULLPTR));
         label_4->setText(QApplication::translate("MainWindow", "             insert    ", Q_NULLPTR));
         insertCB->setText(QApplication::translate("MainWindow", "    insert     ", Q_NULLPTR));
         label_5->setText(QApplication::translate("MainWindow", "                line     ", Q_NULLPTR));
@@ -468,7 +494,14 @@ public:
 "theta_start(65.1277)                                     23\n"
 "theta_end(2)                                                    24\n"
 "angle_resolution(0.41)                                 25\n"
-"applayMedianFilterMinZ(0)                         26", Q_NULLPTR));
+"applayMedianFilterMinZ(0)                         26\n"
+"\n"
+"depthCluster:\n"
+"filter(1)                                                                 27\n"
+"angle_threshold(10)                                        28\n"
+"gridImageResize(1) "
+                        "                                         29\n"
+"", Q_NULLPTR));
         infoTab->setTabText(infoTab->indexOf(tab), QApplication::translate("MainWindow", "\351\241\265", Q_NULLPTR));
         updatePB->setText(QApplication::translate("MainWindow", "update", Q_NULLPTR));
         clearSelectionPB->setText(QApplication::translate("MainWindow", "clearSelection", Q_NULLPTR));

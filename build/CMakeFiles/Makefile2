@@ -987,7 +987,7 @@ gtest/preinstall:
 gtest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f gtest/CMakeFiles/gtest.dir/build.make gtest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=15,16 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=17,18 "Built target gtest"
 .PHONY : gtest/CMakeFiles/gtest.dir/all
 
 # Include target in all.
@@ -1024,7 +1024,7 @@ clean: gtest/CMakeFiles/gtest.dir/clean
 gtest/CMakeFiles/gtest_main.dir/all: gtest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f gtest/CMakeFiles/gtest_main.dir/build.make gtest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=17,18 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=19,20 "Built target gtest_main"
 .PHONY : gtest/CMakeFiles/gtest_main.dir/all
 
 # Include target in all.
@@ -1079,6 +1079,7 @@ src/preinstall: src/qt/preinstall
 # Directory level rules for directory src/groundRemove
 
 # Convenience name for "all" pass in the directory.
+src/groundRemove/all: src/groundRemove/CMakeFiles/Text.dir/all
 src/groundRemove/all: src/groundRemove/CMakeFiles/component_clustering.dir/all
 src/groundRemove/all: src/groundRemove/CMakeFiles/cloud.dir/all
 src/groundRemove/all: src/groundRemove/CMakeFiles/segment.dir/all
@@ -1088,6 +1089,7 @@ src/groundRemove/all: src/groundRemove/CMakeFiles/groundRemove.dir/all
 .PHONY : src/groundRemove/all
 
 # Convenience name for "clean" pass in the directory.
+src/groundRemove/clean: src/groundRemove/CMakeFiles/Text.dir/clean
 src/groundRemove/clean: src/groundRemove/CMakeFiles/component_clustering.dir/clean
 src/groundRemove/clean: src/groundRemove/CMakeFiles/cloud.dir/clean
 src/groundRemove/clean: src/groundRemove/CMakeFiles/segment.dir/clean
@@ -1102,13 +1104,50 @@ src/groundRemove/preinstall:
 .PHONY : src/groundRemove/preinstall
 
 #=============================================================================
+# Target rules for target src/groundRemove/CMakeFiles/Text.dir
+
+# All Build rule for target.
+src/groundRemove/CMakeFiles/Text.dir/all:
+	$(MAKE) -f src/groundRemove/CMakeFiles/Text.dir/build.make src/groundRemove/CMakeFiles/Text.dir/depend
+	$(MAKE) -f src/groundRemove/CMakeFiles/Text.dir/build.make src/groundRemove/CMakeFiles/Text.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=3,4 "Built target Text"
+.PHONY : src/groundRemove/CMakeFiles/Text.dir/all
+
+# Include target in all.
+all: src/groundRemove/CMakeFiles/Text.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+src/groundRemove/CMakeFiles/Text.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyg/code/lidarCode/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 src/groundRemove/CMakeFiles/Text.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/yyg/code/lidarCode/build/CMakeFiles 0
+.PHONY : src/groundRemove/CMakeFiles/Text.dir/rule
+
+# Convenience name for target.
+Text: src/groundRemove/CMakeFiles/Text.dir/rule
+
+.PHONY : Text
+
+# clean rule for target.
+src/groundRemove/CMakeFiles/Text.dir/clean:
+	$(MAKE) -f src/groundRemove/CMakeFiles/Text.dir/build.make src/groundRemove/CMakeFiles/Text.dir/clean
+.PHONY : src/groundRemove/CMakeFiles/Text.dir/clean
+
+# clean rule for target.
+clean: src/groundRemove/CMakeFiles/Text.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Target rules for target src/groundRemove/CMakeFiles/component_clustering.dir
 
 # All Build rule for target.
 src/groundRemove/CMakeFiles/component_clustering.dir/all: src/groundRemove/CMakeFiles/cloud.dir/all
 	$(MAKE) -f src/groundRemove/CMakeFiles/component_clustering.dir/build.make src/groundRemove/CMakeFiles/component_clustering.dir/depend
 	$(MAKE) -f src/groundRemove/CMakeFiles/component_clustering.dir/build.make src/groundRemove/CMakeFiles/component_clustering.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=7,8 "Built target component_clustering"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=9,10 "Built target component_clustering"
 .PHONY : src/groundRemove/CMakeFiles/component_clustering.dir/all
 
 # Include target in all.
@@ -1145,7 +1184,7 @@ clean: src/groundRemove/CMakeFiles/component_clustering.dir/clean
 src/groundRemove/CMakeFiles/cloud.dir/all:
 	$(MAKE) -f src/groundRemove/CMakeFiles/cloud.dir/build.make src/groundRemove/CMakeFiles/cloud.dir/depend
 	$(MAKE) -f src/groundRemove/CMakeFiles/cloud.dir/build.make src/groundRemove/CMakeFiles/cloud.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=5,6 "Built target cloud"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=7,8 "Built target cloud"
 .PHONY : src/groundRemove/CMakeFiles/cloud.dir/all
 
 # Include target in all.
@@ -1182,7 +1221,7 @@ clean: src/groundRemove/CMakeFiles/cloud.dir/clean
 src/groundRemove/CMakeFiles/segment.dir/all:
 	$(MAKE) -f src/groundRemove/CMakeFiles/segment.dir/build.make src/groundRemove/CMakeFiles/segment.dir/depend
 	$(MAKE) -f src/groundRemove/CMakeFiles/segment.dir/build.make src/groundRemove/CMakeFiles/segment.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=29,30 "Built target segment"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=31,32 "Built target segment"
 .PHONY : src/groundRemove/CMakeFiles/segment.dir/all
 
 # Include target in all.
@@ -1219,7 +1258,7 @@ clean: src/groundRemove/CMakeFiles/segment.dir/clean
 src/groundRemove/CMakeFiles/bin.dir/all:
 	$(MAKE) -f src/groundRemove/CMakeFiles/bin.dir/build.make src/groundRemove/CMakeFiles/bin.dir/depend
 	$(MAKE) -f src/groundRemove/CMakeFiles/bin.dir/build.make src/groundRemove/CMakeFiles/bin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=3,4 "Built target bin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=5,6 "Built target bin"
 .PHONY : src/groundRemove/CMakeFiles/bin.dir/all
 
 # Include target in all.
@@ -1259,7 +1298,7 @@ src/groundRemove/CMakeFiles/groundRemove.dir/all: src/groundRemove/CMakeFiles/bi
 src/groundRemove/CMakeFiles/groundRemove.dir/all: src/qt/utils/CMakeFiles/utils.dir/all
 	$(MAKE) -f src/groundRemove/CMakeFiles/groundRemove.dir/build.make src/groundRemove/CMakeFiles/groundRemove.dir/depend
 	$(MAKE) -f src/groundRemove/CMakeFiles/groundRemove.dir/build.make src/groundRemove/CMakeFiles/groundRemove.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=13,14 "Built target groundRemove"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=15,16 "Built target groundRemove"
 .PHONY : src/groundRemove/CMakeFiles/groundRemove.dir/all
 
 # Include target in all.
@@ -1391,7 +1430,7 @@ src/qt/utils/preinstall:
 src/qt/utils/CMakeFiles/utils.dir/all:
 	$(MAKE) -f src/qt/utils/CMakeFiles/utils.dir/build.make src/qt/utils/CMakeFiles/utils.dir/depend
 	$(MAKE) -f src/qt/utils/CMakeFiles/utils.dir/build.make src/qt/utils/CMakeFiles/utils.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=31,32 "Built target utils"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=33,34 "Built target utils"
 .PHONY : src/qt/utils/CMakeFiles/utils.dir/all
 
 # Include target in all.
@@ -1428,7 +1467,7 @@ clean: src/qt/utils/CMakeFiles/utils.dir/clean
 src/qt/utils/CMakeFiles/object.dir/all:
 	$(MAKE) -f src/qt/utils/CMakeFiles/object.dir/build.make src/qt/utils/CMakeFiles/object.dir/depend
 	$(MAKE) -f src/qt/utils/CMakeFiles/object.dir/build.make src/qt/utils/CMakeFiles/object.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=19,20 "Built target object"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=21,22 "Built target object"
 .PHONY : src/qt/utils/CMakeFiles/object.dir/all
 
 # Include target in all.
@@ -1483,7 +1522,7 @@ src/qt/drawables/preinstall:
 src/qt/drawables/CMakeFiles/drawable.dir/all: src/qt/utils/CMakeFiles/utils.dir/all
 	$(MAKE) -f src/qt/drawables/CMakeFiles/drawable.dir/build.make src/qt/drawables/CMakeFiles/drawable.dir/depend
 	$(MAKE) -f src/qt/drawables/CMakeFiles/drawable.dir/build.make src/qt/drawables/CMakeFiles/drawable.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=9,10,11,12 "Built target drawable"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=11,12,13,14 "Built target drawable"
 .PHONY : src/qt/drawables/CMakeFiles/drawable.dir/all
 
 # Include target in all.
@@ -1540,7 +1579,7 @@ src/qt/viewer/CMakeFiles/viewer.dir/all: src/qt/utils/CMakeFiles/object.dir/all
 src/qt/viewer/CMakeFiles/viewer.dir/all: src/qt/drawables/CMakeFiles/drawable.dir/all
 	$(MAKE) -f src/qt/viewer/CMakeFiles/viewer.dir/build.make src/qt/viewer/CMakeFiles/viewer.dir/depend
 	$(MAKE) -f src/qt/viewer/CMakeFiles/viewer.dir/build.make src/qt/viewer/CMakeFiles/viewer.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=33,34 "Built target viewer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=35,36 "Built target viewer"
 .PHONY : src/qt/viewer/CMakeFiles/viewer.dir/all
 
 # Include target in all.
@@ -1598,7 +1637,7 @@ src/qt/widgets/CMakeFiles/qt_widgets.dir/all: src/qt/drawables/CMakeFiles/drawab
 src/qt/widgets/CMakeFiles/qt_widgets.dir/all: src/qt/viewer/CMakeFiles/viewer.dir/all
 	$(MAKE) -f src/qt/widgets/CMakeFiles/qt_widgets.dir/build.make src/qt/widgets/CMakeFiles/qt_widgets.dir/depend
 	$(MAKE) -f src/qt/widgets/CMakeFiles/qt_widgets.dir/build.make src/qt/widgets/CMakeFiles/qt_widgets.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=21,22,23,24,25,26,27,28 "Built target qt_widgets"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/yyg/code/lidarCode/build/CMakeFiles --progress-num=23,24,25,26,27,28,29,30 "Built target qt_widgets"
 .PHONY : src/qt/widgets/CMakeFiles/qt_widgets.dir/all
 
 # Include target in all.

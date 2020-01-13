@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1174</width>
-    <height>735</height>
+    <width>1700</width>
+    <height>1066</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -88,10 +88,10 @@
            <widget class="QWidget" name="layoutWidget_3">
             <property name="geometry">
              <rect>
-              <x>10</x>
+              <x>0</x>
               <y>0</y>
-              <width>261</width>
-              <height>196</height>
+              <width>271</width>
+              <height>224</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -205,7 +205,7 @@
                <item>
                 <widget class="QLabel" name="label_8">
                  <property name="text">
-                  <string>         cluster    </string>
+                  <string>girdCluster</string>
                  </property>
                 </widget>
                </item>
@@ -227,6 +227,40 @@
                </item>
                <item>
                 <widget class="QCheckBox" name="clusterCB">
+                 <property name="text">
+                  <string> cluster      </string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout">
+               <item>
+                <widget class="QLabel" name="label_10">
+                 <property name="text">
+                  <string>depthCluster</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <spacer name="horizontalSpacer_8">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Expanding</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QCheckBox" name="depthClusterCB">
                  <property name="text">
                   <string> cluster      </string>
                  </property>
@@ -336,7 +370,7 @@
               <x>0</x>
               <y>0</y>
               <width>281</width>
-              <height>781</height>
+              <height>961</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -416,7 +450,13 @@ min_split_dist(0.1)                                         22
 theta_start(65.1277)                                     23
 theta_end(2)                                                    24
 angle_resolution(0.41)                                 25
-applayMedianFilterMinZ(0)                         26</string>
+applayMedianFilterMinZ(0)                         26
+
+depthCluster:
+filter(1)                                                                 27
+angle_threshold(10)                                        28
+gridImageResize(1)                                          29
+</string>
                </property>
               </widget>
              </item>

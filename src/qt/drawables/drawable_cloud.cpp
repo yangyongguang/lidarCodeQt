@@ -25,7 +25,8 @@ void DrawableCloud::Draw() const
         }
         else
         {
-            int classID = point.classID % 200;
+            int classID = point.classID % _param.RANDOM_COLORS.size();
+            // fprintf(stderr, "classID[%d]\n", classID);
             glColor3f((float)_param.RANDOM_COLORS[classID][0] / 255,
                       (float)_param.RANDOM_COLORS[classID][1] / 255,
                       (float)_param.RANDOM_COLORS[classID][2] / 255

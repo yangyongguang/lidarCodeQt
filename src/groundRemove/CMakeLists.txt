@@ -23,5 +23,8 @@ target_link_libraries(groundRemove ${GROUND_REMOVE_SET} cloud ${Boost_LIBRARIES}
 add_library(component_clustering src/component_clustering.cpp)
 target_link_libraries(component_clustering ${OpenCV_LIBS} cloud ${Boost_LIBRARIES})
 
+add_executable(Text src/test.cpp)
+
+
 
 

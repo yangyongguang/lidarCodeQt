@@ -20,6 +20,9 @@ MainWindow::MainWindow(QWidget *parent):
     ui(new Ui::MainWindow)
     // ui(new Ui::OpenGlFolderPlayer)
 {
+    angle_threshold = 10;
+    depthImagefilter = false;
+    girdImageResize = 1;
     infoTextEdit = new QTextEdit;
     this->playCloud = false;
     this->curr_data_idx = 0;
@@ -266,61 +269,115 @@ void MainWindow::onSliderMovedTo(int cloud_number)
     // _viewer->getClickedPoint(poseX, poseY);
     // fprintf(stderr, "clicked(%f, %f)\n", poseX, poseY);
     // groundRemove.setClickedPoint(poseX, poseY);
-    //////
-    // 获取选择的 ID
-    Cloud::Ptr debugCloud(new Cloud);
-    if (_viewer->selection.size())
-    {
-        groundRemove.setSelectObjectID(_viewer->selection);
-
-        // 开启 debug 模式
-        for (const int & elem : _viewer->selection)
-        {
-            debugCloud->emplace_back((*_cloud)[elem]);
-        }        
-    }
+    /////
     // 结束
     Cloud::Ptr ground_cloud(new Cloud);
     Cloud::Ptr obstacle_cloud(new Cloud);
     // Cloud ground_cloud, obstacle_cloud;
-    
+    Cloud::Ptr cloudTmp(new Cloud);
     groundRemove.scanCallBack(*_cloud, *ground_cloud, *obstacle_cloud);
+    // 获取选择的 ID
+    if (_viewer->selection.size())
+    {
+        fprintf(stderr, "_viewer->selection has size :%d\n", _viewer->selection.size());
+        for (const int & elem : _viewer->selection)
+        {
+            cloudTmp->emplace_back((*obstacle_cloud)[elem]);
+        }
+
+        obstacle_cloud->clear();
+        obstacle_cloud = cloudTmp;        
+        fprintf(stderr, "obstacle_cloud has point size :%d\n", obstacle_cloud->size());
+    }
+    // 验证角度
+    /*
+    if (_viewer->selection.size())
+    {
+        std::vector<point> selectedPointVec;
+        std::vector<float> pointAngles;
+        for (auto it = _viewer->selection.begin(); it != _viewer->selection.end(); ++it)
+        {
+            selectedPointVec.emplace_back((*_cloud)[*it]);
+        }        
+        std::sort(selectedPointVec.begin(), selectedPointVec.end(), [](point & pt1, point & pt2){return (pt1.x() * pt1.x() + pt1.y() * pt1.y()) < (pt2.x() * pt2.x() + pt2.y() * pt2.y());});
+
+        fprintf(stderr, "angle:\n");
+        for (auto it = selectedPointVec.begin(); it != selectedPointVec.end(); ++it)
+        {
+            float dist_to_sensor = sqrt(it->x() * it->x() + it->y() * it->y() + it->z() * it->z());
+            float angle = asin(it->z() / dist_to_sensor);
+            fprintf(stderr, "%f %f %f \n",it->z(), dist_to_sensor, angle / M_PI * 180);
+            pointAngles.emplace_back(angle);
+        }
+
+        fprintf(stderr, "\nangle diff:\n");
+        if (pointAngles.size() != 0)
+            fprintf(stderr, "%f:\n", pointAngles[0]);
+
+        for (int idx = 1; idx < pointAngles.size(); ++idx)
+        {
+            if ((pointAngles[idx] - pointAngles[idx - 1]) / M_PI * 180 > 0.1)
+            {
+                fprintf(stderr, "[%f]", pointAngles[idx] / M_PI * 180);
+                fprintf(stderr, "%f  ", (pointAngles[idx] - pointAngles[idx - 1]) / M_PI * 180);
+            }
+        }
+    }
+    */
+
+    // if (_viewer->selection.size())
+    // {
+    //     obstacle_cloud->clear();
+    //     groundRemove.setSelectObjectID(_viewer->selection);
+
+    //     // 开启 debug 模式
+    //     for (const int & elem : _viewer->selection)
+    //     {
+    //         obstacle_cloud->emplace_back((*_cloud)[elem]);
+    //     }        
+    // }
     // fprintf(stderr, "------------------------------->>>>>>>>>>>>>>>\n");
-
-    // 聚类 ------------------------------------------------------
-    int numGrid = ui->girdNumSB->value();
-    int roiM = 100, numCluster = 0, kernelSize = 3;
-    cluster cluster(roiM, numGrid, numCluster, kernelSize, *obstacle_cloud,  _params);
-    cluster.componentClustering();
-
     // depth_clustering -----------------------------------------
     // 开启调试模式
-    if (debugCloud->size())
+    if (obstacle_cloud->size() && _viewer->selection.size() != 0)
     {
-        fprintf(stderr, "has choosed %d debug point\n", debugCloud->size());
+        fprintf(stderr, "has choosed %d debug point\n", obstacle_cloud->size());
     }
-    else
-    {
-        debugCloud = obstacle_cloud;
-    }
-    // depth_clustering depthCluster(* _cloud);
-    depth_clustering depthCluster(*debugCloud);
-    depthCluster.depthCluster();
-    // cv::Mat depthImage = depthCluster.getVisualizeDepthImage();
-    cv::Mat visImage = depthCluster.visSegmentImage();
-    cv::Mat depthImage = depthCluster.getVisualizeDepthImage();
-    // 直接聚类
     
+    // 聚类 ------------------------------------------------------
+    GLfloat pointSize(1.8);
+    Cloud::Ptr insertCloud(new Cloud);
+    cv::Mat visClusterImg;
+    int numGrid = ui->girdNumSB->value();
+    int roiM = _params.max_dist, numCluster = 0, kernelSize = 3;
+    cluster cluster(roiM, numGrid, numCluster, kernelSize, *obstacle_cloud,  _params);
+    if (ui->clusterCB->isChecked())
+    {
+        cluster.componentClustering();                  
+        cluster.getClusterImg(visClusterImg);
+        cluster.makeClusteredCloud(*obstacle_cloud);
+    }
+
+    cv::Mat visImage, depthImage;
+    depth_clustering depthCluster(*obstacle_cloud, depthImagefilter, angle_threshold);
+    if (ui->depthClusterCB->isChecked())
+    {
+        // depth_clustering depthCluster(* _cloud);
+        depthCluster.depthCluster();
+        depthCluster.LabelCloud(*obstacle_cloud);
+        // cv::Mat depthImage = depthCluster.getVisualizeDepthImage();
+        visImage = depthCluster.visSegmentImage();
+        depthImage = depthCluster.getVisualizeDepthImage();
+        // 直接聚类
+    }   
 
     // 添加点云显示
     _viewer->Clear();
-    GLfloat pointSize(1.8);
-    Cloud::Ptr insertCloud(new Cloud);
-    cv::Mat visClusterImg;    
-    cluster.getClusterImg(visClusterImg);
-    cluster.makeClusteredCloud(*obstacle_cloud);
     // fprintf(stderr, "numClister :%d\n", cluster.getNumCluster());
-    _viewer->drawSelectableCloud = DrawSelectAbleCloud(_cloud);
+    // _viewer->drawSelectableCloud = DrawSelectAbleCloud(_cloud);
+    // 选取对象为 障碍物
+    _viewer->drawSelectableCloud = DrawSelectAbleCloud(obstacle_cloud);
+    // _viewer->drawSelectableCloud = DrawSelectAbleCloud(_cloud);
     if (ui->cloudCB->isChecked())
     {
         // _viewer->AddDrawable(DrawableCloud::FromCloud(_cloud));
@@ -335,7 +392,7 @@ void MainWindow::onSliderMovedTo(int cloud_number)
         color << 0.0, 1.0, 0.0;
         _viewer->AddDrawable(DrawableCloud::FromCloud(ground_cloud, color, pointSize));
     }
-
+    
     if (ui->obstacleCB->isChecked())
     {
         Eigen::Vector3f color;
@@ -345,10 +402,29 @@ void MainWindow::onSliderMovedTo(int cloud_number)
 
     if (ui->clusterCB->isChecked())
     {
+        ui->depthClusterCB->setChecked(false);
         Eigen::Vector3f color;
         color << 0.5, 0.5, 0.3;
         _viewer->AddDrawable(DrawableCloud::FromCloud(obstacle_cloud, color, pointSize, cluster.getNumCluster()));
     }
+        
+    if (ui->depthClusterCB->isChecked())
+    {
+        ui->clusterCB->setChecked(false);
+        Eigen::Vector3f color;
+        color << 0.5, 0.5, 0.3;
+        if (obstacle_cloud->size() < 200)
+        {
+            for (int idx = 0; idx < obstacle_cloud->size(); ++idx)
+            {
+                fprintf(stderr, "point id(%d) ---> (%f, %f, %f)[%d]\n", idx, 
+                        (*obstacle_cloud)[idx].x(), (*obstacle_cloud)[idx].y(), (*obstacle_cloud)[idx].z(),
+                        (*obstacle_cloud)[idx].classID);
+            }
+        }
+        _viewer->AddDrawable(DrawableCloud::FromCloud(obstacle_cloud, color, pointSize, depthCluster.getNumCluster()));
+    }
+
     // 是否显示插入点
     if (ui->insertCB->isChecked())
     {
@@ -381,20 +457,27 @@ void MainWindow::onSliderMovedTo(int cloud_number)
     imgLabel->setPixmap(QPixmap::fromImage(qimage));
     imgLabel->resize(qimage.width(), qimage.height());
 
-    QImage qimage_cluster = utils::MatToQImage(visClusterImg);
-    dock_cluster_image->resize(qimage_cluster.width() , qimage_cluster.height());
-    cluster_image->setPixmap(QPixmap::fromImage(qimage_cluster));
-    cluster_image->resize(qimage_cluster.width(), qimage_cluster.height());
+    if (!visClusterImg.empty())
+    {
+        cv::resize(visClusterImg, visClusterImg, cv::Size(), girdImageResize, girdImageResize);
+        QImage qimage_cluster = utils::MatToQImage(visClusterImg);
+        dock_cluster_image->resize(qimage_cluster.width() , qimage_cluster.height());
+        cluster_image->setPixmap(QPixmap::fromImage(qimage_cluster));
+        cluster_image->resize(qimage_cluster.width(), qimage_cluster.height());
+    }
 
-    QImage qimage_depth = utils::MatToQImage(visImage);
-    dockshow_depth_image->resize(qimage_depth.width() * 2, qimage_depth.height() * 2);
-    depth_image->setPixmap(QPixmap::fromImage(qimage_depth));
-    depth_image->resize(qimage_depth.width() * 2, qimage_depth.height() * 2);
+    if (ui->depthClusterCB->isChecked())
+    {
+        QImage qimage_depth = utils::MatToQImage(visImage);
+        dockshow_depth_image->resize(qimage_depth.width() * 2, qimage_depth.height() * 2);
+        depth_image->setPixmap(QPixmap::fromImage(qimage_depth));
+        depth_image->resize(qimage_depth.width() * 2, qimage_depth.height() * 2);
 
-    QImage qimage_depth2 = utils::MatToQImage(depthImage);
-    dockshow_depth_image2->resize(qimage_depth2.width() * 2, qimage_depth2.height() * 2);
-    depth_image2->setPixmap(QPixmap::fromImage(qimage_depth2));
-    depth_image2->resize(qimage_depth2.width() * 2, qimage_depth2.height() * 2);
+        QImage qimage_depth2 = utils::MatToQImage(depthImage);
+        dockshow_depth_image2->resize(qimage_depth2.width() * 2, qimage_depth2.height() * 2);
+        depth_image2->setPixmap(QPixmap::fromImage(qimage_depth2));
+        depth_image2->resize(qimage_depth2.width() * 2, qimage_depth2.height() * 2);
+    }
     _viewer->update();
 
 }
@@ -475,6 +558,9 @@ void MainWindow::onParamSet()
         case (23):params_groundRemove.theta_start = paramValue;                 break; 
         case (24): params_groundRemove.theta_end = paramValue;                  break; 
         case (25): params_groundRemove.angle_resolution = paramValue;           break; 
+        case (27):depthImagefilter = static_cast<bool>(paramValue);             break;
+        case (28):angle_threshold = paramValue;                                 break; 
+        case (29):girdImageResize = static_cast<size_t>(paramValue);            break;
         default:
             break;
     }

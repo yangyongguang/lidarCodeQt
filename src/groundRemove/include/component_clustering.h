@@ -14,6 +14,9 @@
 #include "cloud.h"
 #include "pixel_coords.h"
 
+#include <functional>
+#include <unordered_map>
+
 typedef std::vector<std::vector<int>> mapGrid;
 typedef Cloud PointCloud;
 class cluster
@@ -57,7 +60,7 @@ class depth_clustering
 {
 public:
     enum class Direction {HORIZONTAL, VERTICAL};
-    depth_clustering(PointCloud & cloud, float angle_threshold = 10.0 / 180 * M_PI);
+    depth_clustering(const PointCloud & cloud, bool filter = false, float angle_threshold = 10);
 
     cv::Mat getVisualizeDepthImage();
 
@@ -101,6 +104,12 @@ public:
     cv::Mat visSegmentImage();
     cv::Mat visAngleImage();
 
+    // 为点云打上标签
+    void LabelCloud(Cloud & cloud);
+
+    inline int getNumCluster() const {return numCluster;}
+
+
 private:
     params _params;
     PointCloud _cloud;
@@ -109,8 +118,13 @@ private:
     std::vector<float> _row_angles;
     std::vector<float> _col_angles;    
 
+    bool _filter;
     // 存储距离的
     cv::Mat _depthImage;
+
+    // 避免二次计算， 存储映射过程
+    // std::unordered_multimap<uint16_t, uint16_t> imageToPointID;    
+    std::vector<std::pair<int, int>> pointToImageCoord;
 
     // 存储 Row 和 col 的各种值 避免重复计算
     std::vector<float> _row_angles_sines;

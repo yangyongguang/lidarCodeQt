@@ -512,6 +512,19 @@ gtest_main/fast:
 .PHONY : gtest_main/fast
 
 #=============================================================================
+# Target rules for targets named Text
+
+# Build rule for target.
+Text: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Text
+.PHONY : Text
+
+# fast build rule for target.
+Text/fast:
+	$(MAKE) -f src/groundRemove/CMakeFiles/Text.dir/build.make src/groundRemove/CMakeFiles/Text.dir/build
+.PHONY : Text/fast
+
+#=============================================================================
 # Target rules for targets named component_clustering
 
 # Build rule for target.
@@ -693,6 +706,7 @@ help:
 	@echo "... ContinuousUpdate"
 	@echo "... gtest"
 	@echo "... gtest_main"
+	@echo "... Text"
 	@echo "... component_clustering"
 	@echo "... cloud"
 	@echo "... segment"

@@ -1,21 +1,55 @@
-#include "bin.h"
+// #include "bin.h"
 #include <iostream>
-#include "segment.h"
+// #include "segment.h"
 #include <cmath>
 #include <list>
-#include "utils.h"
-#include "param.h"
-typedef std::pair<double, double> lineParam;
+// #include "utils.h"
+// #include "param.h"
+// typedef std::pair<double, double> lineParam;
 
-struct point
-{
-    /* data */
-    double x, y;
-    point(double x, double y):x(x),y(y){}
-};
+// struct point
+// {
+//     /* data */
+//     double x, y;
+//     point(double x, double y):x(x),y(y){}
+// };
+#include <hash_map>
+#include <unordered_map>
 
 int main()
 {
+    std::unordered_multimap<uint16_t, uint16_t> imageToPointID;
+    imageToPointID.insert({0, 1});
+    imageToPointID.insert({0, 2});
+    imageToPointID.insert({0, 3});
+    imageToPointID.insert({0, 4});
+    imageToPointID.insert({0, 5});
+    imageToPointID.insert({0, 6});
+
+    imageToPointID.insert({1, 1});
+    imageToPointID.insert({1, 2});
+    imageToPointID.insert({1, 6});
+
+    imageToPointID.insert({2, 1});
+
+    imageToPointID.insert({3, 1});
+    imageToPointID.insert({3, 2});
+
+    // for (int numBucker = 0; numBucker < imageToPointID.bucket_count(); ++numBucker)
+    // {
+    //     for (int idx = 0; idx < imageToPointID[num])
+
+    // }
+    for (auto it = imageToPointID.begin(); it != imageToPointID.end(); ++it)
+    {
+        std::cout << it->first << " " <<it->second << "\n";
+    }
+
+    auto its = imageToPointID.equal_range(3);
+    for (auto it = its.first; it != its.second; ++it)
+    {
+        std::cout << it->first << '\t' << it->second << std::endl;
+    }
     // point p1(0, -1), p2(1, 0), p3(1, 1);
     // lineParam line;
     // line.first = (p2.y - p1.y) / (p2.x - p1.x);
@@ -58,19 +92,19 @@ int main()
     //     printf("%d ", *it);
     // }
     // printf("\n");
-    params params;
-    // fn  --> fileName
-    std::vector<std::string> fnBin;
-    utils::ReadKittiFileByDir(params.kitti_velo_dir, fnBin);
-    // printf("---------------------------------------------------------\n");
-    // for (int idx = 0; idx < fn.size(); ++idx)
-    //     std::cout << fn[idx] << std::endl;
+    // params params;
+    // // fn  --> fileName
+    // std::vector<std::string> fnBin;
+    // utils::ReadKittiFileByDir(params.kitti_velo_dir, fnBin);
+    // // printf("---------------------------------------------------------\n");
+    // // for (int idx = 0; idx < fn.size(); ++idx)
+    // //     std::cout << fn[idx] << std::endl;
+    // // printf("code finished !\n");
+    // std::vector<std::string> fnImage;
+    // utils::ReadKittiFileByDir(params.kitti_img_dir, fnImage);
+    // for (int idx = 0; idx < fnImage.size(); ++idx)
+    //     std::cout << fnImage[idx] << std::endl;
     // printf("code finished !\n");
-    std::vector<std::string> fnImage;
-    utils::ReadKittiFileByDir(params.kitti_img_dir, fnImage);
-    for (int idx = 0; idx < fnImage.size(); ++idx)
-        std::cout << fnImage[idx] << std::endl;
-    printf("code finished !\n");
     return 0;
 }
 

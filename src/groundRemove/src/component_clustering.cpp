@@ -182,11 +182,13 @@ void cluster::makeClusteredCloud(PointCloud & clusterCloud)
 
 
 /// depth_clustering
-depth_clustering::depth_clustering(PointCloud & cloud, float angle_threshold):
-        _cloud(cloud),
-        _params(params()),
-        _angle_threshold(angle_threshold)
+depth_clustering::depth_clustering(const PointCloud & cloud, bool filter, float angle_threshold):
+        // _cloud(cloud),
+        _filter(filter),
+        _params(params())
 {
+    _angle_threshold = (angle_threshold / 180 * M_PI);
+    _cloud = cloud;
     show_depth_image = cv::Mat(_params.numBeam, _params.numCols, CV_8UC3, cv::Scalar(0, 0, 0));
     fillVector();
     FillCosSin();
@@ -207,13 +209,17 @@ depth_clustering::depth_clustering(PointCloud & cloud, float angle_threshold):
 
 void depth_clustering::fillVector(/*std::vector<double> & input, const Direction & direction*/)
 {
-    float rad = _params.start_angle;
-    for (int i = 0; i < _params.numBeam; ++i)
-    {
-        _row_angles.emplace_back(rad);
-        rad += _params.vehicle_step;
-    }
 
+    _row_angles.assign(_params.row_angles.begin(), _params.row_angles.end());
+
+    // float rad = _params.start_angle;
+    // for (int i = 0; i < _params.numBeam; ++i)
+    // {
+    //     _row_angles.emplace_back(rad);
+    //     rad += _params.vehicle_step;
+    // }
+
+    // _row_angles.assign(_params.raw_angles.begin(), _params.raw_angles.end());
     double rad_horizontal = _params.start_angle_horizontal;
     for (int i = 0; i < _params.numCols; ++i)
     {
@@ -224,6 +230,18 @@ void depth_clustering::fillVector(/*std::vector<double> & input, const Direction
     assert(_row_angles.size() == _params.numRows);
     assert(_col_angles.size() == _params.numCols);
 
+    // fprintf(stderr, "_row_angles\n");
+    // for (auto it = _row_angles.begin(); it != _row_angles.end(); ++it)
+    // {
+    //     fprintf(stderr, "%f ", *it / M_PI * 180);
+    // }
+    // fprintf(stderr, "\n\n\n\n");
+    // fprintf(stderr, "numBeam[%d], numRows[%d], calculate[%d]\n", 
+    //         _params.numBeam,
+    //         _params.numRows,
+    //         (int)((_params.end_angle - _params.start_angle) / 0.4)
+    // );
+    // fprintf(stderr, "start_angle[%f], end_angle[%f]\n", _params.start_angle, _params.end_angle);
 }
 
 void depth_clustering::FillCosSin()
@@ -231,15 +249,13 @@ void depth_clustering::FillCosSin()
     _row_angles_cosines.clear();
     _row_angles_sines.clear();
 
-    for (const auto & angle : _row_angles)
-    {
-        _row_angles_sines.emplace_back(sin(angle));
-        _row_angles_cosines.emplace_back(cos(angle));
-    }
+    _row_angles_sines.assign(_params.row_angle_sines.begin(), _params.row_angle_sines.end());
+    _row_angles_cosines.assign(_params.row_angle_cosines.begin(), _params.row_angle_cosines.end());
 
-    // for (const auto & angle : _col_angles)
+    // for (const auto & angle : _row_angles)
     // {
-
+    //     _row_angles_sines.emplace_back(sin(angle));
+    //     _row_angles_cosines.emplace_back(cos(angle));
     // }
 }
 
@@ -247,8 +263,10 @@ void depth_clustering::FillCosSin()
 size_t depth_clustering::RowFromAngle(float angle_rows)
 {
     size_t found = 0;
-    found = std::upper_bound(_row_angles.begin(), _row_angles.end(), angle_rows) -
-        _row_angles.begin();
+    // found = std::upper_bound(_row_angles.begin(), _row_angles.end(), angle_rows) -
+    //     _row_angles.begin();
+    found = std::upper_bound(_row_angles.begin(), _row_angles.end(), angle_rows, std::greater<float>())
+         - _row_angles.begin();
     
     if (found == 0) return found;
     if (found == _row_angles.size()) return found - 1;
@@ -315,11 +333,28 @@ void depth_clustering::createDepthImage()
         double angle_rows = asin(point.z() / dist_to_sensor);
         double angle_cols = atan2(point.y(), point.x());
 
+        // fprintf(stderr, "angle:%f\n", angle_rows);
         size_t bin_rows = RowFromAngle(angle_rows);
         size_t bin_cols = ColFromAngle(angle_cols);
-
+        // fprintf(stderr, "(%f, %f, %f)[%d, %d]\n", _cloud[idx].x(), _cloud[idx].y(),_cloud[idx].z(), bin_rows, bin_cols);
         _depthImage.at<float>(bin_rows, bin_cols) = dist_to_sensor;
+        // 存储每个点映射到的坐标
+        pointToImageCoord.emplace_back(std::make_pair(bin_rows, bin_cols));
+
     }     
+    
+    if (_cloud.size() < 200)
+    {
+        for(int idx = 0; idx < _cloud.size(); ++idx)
+        {
+            fprintf(stderr, "point id(%d) ---> (%f, %f, %f)(%d, %d)[%d], angle[%f]\n", idx, 
+                        _cloud[idx].x(), _cloud[idx].y(), _cloud[idx].z(),
+                        pointToImageCoord[idx].first, pointToImageCoord[idx].second,
+                        _cloud[idx].classID,
+                        std::atan2(_cloud[idx].y(), _cloud[idx].x()) / M_PI * 180);
+        }
+    }
+    // fprintf(stderr, "\n\n\n\n\n\n\n");
 }
 
 cv::Mat depth_clustering::getVisualizeDepthImage()
@@ -340,7 +375,7 @@ cv::Mat depth_clustering::getVisualizeDepthImage()
         }
     }
     cv::cvtColor(show_depth_image, res, cv::COLOR_HSV2BGR);
-    cv::flip(res, res, -1);
+    cv::flip(res, res, 1);
     return res;
 }
 
@@ -409,7 +444,8 @@ void depth_clustering::depthCluster()
 {
     createDepthImage();
     _depthImage = RepairDepth(_depthImage, 5, 1.0f);
-    // _depthImage = ApplySavitskyGolaySmoothing(_depthImage, 5);   
+    if (_filter)
+        _depthImage = ApplySavitskyGolaySmoothing(_depthImage, 5);   
     int numPixel = 0;
     // for(int row = 0; row < _depthImage.rows; ++row)
     // {
@@ -424,7 +460,10 @@ void depth_clustering::depthCluster()
     // fprintf(stderr, "has no empty pixel: %d\n", numPixel);
     // auto angle_image = CreateAngleImage(_depthImage);
     // _depthImage = ApplySavitskyGolaySmoothing(angle_image, 5); 
+    // 为depthImage 打标签
     ComputeLabels();
+    // 给点云打标签 classID
+    // LabelCloud();
     fprintf(stderr, "cluster :%d\n", numCluster);
     // fprintf(stderr, "\n\n\n\n\n\n\n\n");
 }
@@ -720,7 +759,18 @@ float depth_clustering::DiffAt(const PixelCoord & from, const PixelCoord & to) c
     {
         // fprintf(stderr, "row changed\n");
         sinAlpha = sinRowAlpha;
-        cosAlpha = cosRowAlpha;        
+        cosAlpha = cosRowAlpha; 
+        // if (from.row < to.row)
+        // {
+        //     sinAlpha = _row_angles_sines[from.row];
+        //     cosAlpha = _row_angles_cosines[from.row];      
+        // }
+        // else
+        // {
+        //     sinAlpha = _row_angles_sines[to.row];
+        //     cosAlpha = _row_angles_cosines[to.row];  
+        // }
+        
     }
     else
     {
@@ -752,6 +802,28 @@ cv::Mat depth_clustering::visSegmentImage()
         }
     }
 
-    cv::flip(color_image, color_image, -1);
+    cv::flip(color_image, color_image, 1);
     return color_image;
+}
+
+void depth_clustering::LabelCloud(Cloud & cloud)
+{
+    for (int idx = 0; idx < cloud.size(); ++idx)
+    {
+        // 该点的坐标， 向 _label_image 找索引
+        auto cood = pointToImageCoord[idx];
+        cloud[idx].classID = _label_image.at<uint16_t>(cood.first, cood.second);
+    }
+
+    if (cloud.size() < 200)
+    {
+        for(int idx = 0; idx < cloud.size(); ++idx)
+        {
+            fprintf(stderr, "point id(%d) ---> (%f, %f, %f)(%d, %d)[%d], angle[%f]\n", idx, 
+                        cloud[idx].x(), cloud[idx].y(), cloud[idx].z(),
+                        pointToImageCoord[idx].first, pointToImageCoord[idx].second,
+                        cloud[idx].classID,
+                        std::atan2(cloud[idx].y(), cloud[idx].x()) / M_PI * 180);
+        }
+    }
 }

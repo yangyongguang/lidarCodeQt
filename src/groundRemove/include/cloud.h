@@ -63,6 +63,7 @@ public:
     inline std::vector<point>::iterator end() {return _points.end();}
 
     // std::vector<point> _points;
+    inline void clear(){_points.clear();}
 
     typedef std::shared_ptr<Cloud> Ptr;
     typedef std::shared_ptr<const Cloud> ConstPtr;

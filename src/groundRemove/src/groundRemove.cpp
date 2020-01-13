@@ -642,8 +642,8 @@ void GroundSegmentation::assignClusterByLineThread(const unsigned int &start_ind
                 double dist = point_2d.z - segments_[segment_idx][bin_idx].getMinZ();
                 if (dist < params_.max_dist_to_line)
                 {
-                    if (isDebug)
-                        fprintf(stderr, "dist: %f\n", dist);    
+                    // if (isDebug)
+                        // fprintf(stderr, "dist: %f\n", dist);    
                     segmentation->at(idx) = 1;
                     continue;
                 }

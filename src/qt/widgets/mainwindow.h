@@ -37,6 +37,7 @@
 #include <opencv2/imgproc.hpp>
 #include <QLabel>
 #include <QDockWidget>
+#include <unordered_map>
 
 namespace Ui {
 class MainWindow;
@@ -60,6 +61,9 @@ public:
     // Viewer *_viewer = nullptr;
     // groundRemove 的参数
     GroundSegmentationParams params_groundRemove;
+    float angle_threshold;
+    bool depthImagefilter;
+    size_t girdImageResize;
 protected:
     void keyPressEvent(QKeyEvent *event) override;
     virtual void resizeEvent(QResizeEvent *event) override;

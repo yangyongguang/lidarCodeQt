@@ -67,17 +67,6 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/local/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -88,6 +77,17 @@ test:
 test/fast: test
 
 .PHONY : test/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/local/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -120,6 +120,21 @@ preinstall/fast:
 depend:
 	cd /home/yyg/code/lidarCode/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+src/groundRemove/CMakeFiles/Text.dir/rule:
+	cd /home/yyg/code/lidarCode/build && $(MAKE) -f CMakeFiles/Makefile2 src/groundRemove/CMakeFiles/Text.dir/rule
+.PHONY : src/groundRemove/CMakeFiles/Text.dir/rule
+
+# Convenience name for target.
+Text: src/groundRemove/CMakeFiles/Text.dir/rule
+
+.PHONY : Text
+
+# fast build rule for target.
+Text/fast:
+	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/groundRemove/CMakeFiles/Text.dir/build.make src/groundRemove/CMakeFiles/Text.dir/build
+.PHONY : Text/fast
 
 # Convenience name for target.
 src/groundRemove/CMakeFiles/component_clustering.dir/rule:
@@ -331,6 +346,33 @@ src/segment.cpp.s:
 	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/groundRemove/CMakeFiles/segment.dir/build.make src/groundRemove/CMakeFiles/segment.dir/src/segment.cpp.s
 .PHONY : src/segment.cpp.s
 
+src/test.o: src/test.cpp.o
+
+.PHONY : src/test.o
+
+# target to build an object file
+src/test.cpp.o:
+	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/groundRemove/CMakeFiles/Text.dir/build.make src/groundRemove/CMakeFiles/Text.dir/src/test.cpp.o
+.PHONY : src/test.cpp.o
+
+src/test.i: src/test.cpp.i
+
+.PHONY : src/test.i
+
+# target to preprocess a source file
+src/test.cpp.i:
+	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/groundRemove/CMakeFiles/Text.dir/build.make src/groundRemove/CMakeFiles/Text.dir/src/test.cpp.i
+.PHONY : src/test.cpp.i
+
+src/test.s: src/test.cpp.s
+
+.PHONY : src/test.s
+
+# target to generate assembly for a file
+src/test.cpp.s:
+	cd /home/yyg/code/lidarCode/build && $(MAKE) -f src/groundRemove/CMakeFiles/Text.dir/build.make src/groundRemove/CMakeFiles/Text.dir/src/test.cpp.s
+.PHONY : src/test.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -338,8 +380,9 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... edit_cache"
 	@echo "... test"
+	@echo "... edit_cache"
+	@echo "... Text"
 	@echo "... component_clustering"
 	@echo "... cloud"
 	@echo "... segment"
@@ -360,6 +403,9 @@ help:
 	@echo "... src/segment.o"
 	@echo "... src/segment.i"
 	@echo "... src/segment.s"
+	@echo "... src/test.o"
+	@echo "... src/test.i"
+	@echo "... src/test.s"
 .PHONY : help
 
 
